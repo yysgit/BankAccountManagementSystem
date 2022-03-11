@@ -18,8 +18,8 @@ export default {
    */
   baseUrl: {
 
-    dev: 'http://127.0.0.1:7089',
-    pro: 'http://127.0.0.1:7089',
+    dev: 'http://118.31.187.222:7089',
+    pro: 'http://118.31.187.222:7089',
 
 
     // dev: 'https://api.blog996.com',
