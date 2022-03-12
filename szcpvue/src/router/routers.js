@@ -196,4 +196,61 @@ export default [
       },
     ]
   },
+  {
+    path: '',
+    name: '银行系统',
+    meta: {
+      hideInMenu: true,
+      icon: 'md-ribbon',
+      title: '银行系统管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'bankAccountPro/client',
+        name: 'bankAccountPro/client',
+        meta: {
+          icon: 'md-people',
+          title: '客户信息'
+        },
+        component: () => import('@/view/bankAccountPro/client.vue')
+      },
+      {
+        path: 'bankAccountPro/cardBalance',
+        name: 'bankAccountPro/cardBalance',
+        meta: {
+          icon: 'ios-card',
+          title: '银行卡余额信息'
+        },
+        component: () => import('@/view/bankAccountPro/cardBalance.vue')
+      },
+      {
+        path: 'bankAccountPro/bankCardFundsFlow',
+        name: 'bankAccountPro/bankCardFundsFlow',
+        meta: {
+          icon: 'ios-card',
+          title: '银行卡资金流向'
+        },
+        component: () => import('@/view/bankAccountPro/bankCardFundsFlow.vue')
+      },
+      {
+        path: 'bankAccountPro/financialProducts',
+        name: 'bankAccountPro/financialProducts',
+        meta: {
+          icon: 'ios-card',
+          title: '理财产品'
+        },
+        component: () => import('@/view/bankAccountPro/financialProducts.vue')
+      },
+      {
+        path: 'bankAccountPro/loan',
+        name: 'bankAccountPro/loan',
+        meta: {
+          icon: 'ios-card',
+          title: '贷款'
+        },
+        component: () => import('@/view/bankAccountPro/loan.vue')
+      },
+    ]
+  },
 ]
