@@ -251,6 +251,24 @@ export default [
         },
         component: () => import('@/view/bankAccountPro/loan.vue')
       },
+      {
+        path: 'bankAccountPro/employeeInformation',
+        name: 'bankAccountPro/employeeInformation',
+        meta: {
+          icon: 'ios-card',
+          title: '员工信息'
+        },
+        component: () => import('@/view/bankAccountPro/employeeInformation.vue')
+      },
+      {
+        path: 'bankAccountPro/superAdmin',
+        name: 'bankAccountPro/superAdmin',
+        meta: {
+          icon: 'ios-card',
+          title: '超级管理员'
+        },
+        component: () => import('@/view/bankAccountPro/superAdmin.vue')
+      },
     ]
   },
 ]
