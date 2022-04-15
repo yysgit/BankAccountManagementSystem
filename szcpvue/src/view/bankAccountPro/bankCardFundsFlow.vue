@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="min-width:1000px">
-      银行卡资金流向
+      银行卡信息
       <Card shadow>
         <Row>
           <Col span="3" style="margin-right: 10px;">

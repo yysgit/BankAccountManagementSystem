@@ -3,7 +3,7 @@
     <div style="min-width:1000px">
       理财产品
       <Card shadow>
-        <!-- <Row>
+        <Row>
           <Col span="3" style="margin-right: 10px;">
           <Input v-model="titleSearch" placeholder="客户名" clearable></Input>
           </Col>
@@ -18,7 +18,7 @@
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
-        </Row> -->
+        </Row>
         <!--表格-->
         <Table ref="tables" width="1200px" stripe border :loading="loading" :data="tableData" :columns="columns">
         </Table>

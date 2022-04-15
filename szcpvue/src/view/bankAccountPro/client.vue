@@ -1,9 +1,9 @@
 <template>
   <div>
     <div style="min-width:1000px">
-      客户信息
+      理财产品
       <Card shadow>
-        <!-- <Row>
+        <Row>
           <Col span="3" style="margin-right: 10px;">
           <Input v-model="titleSearch" placeholder="客户名" clearable></Input>
           </Col>
@@ -17,7 +17,7 @@
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
-        </Row> -->
+        </Row>
         <!--表格-->
         <Table ref="tables" width="1200px" stripe border :loading="loading" :data="tableData" :columns="columns">
         </Table>
@@ -60,29 +60,14 @@
               );
             }
           },
-          { title: "客户id", align: "center", width: 180, key: "id" },
-          { title: "客户名", align: "center", width: 200, key: "username" },
-          { title: "身份证号", align: "center", width: 250, key: "idcard" },
-          { title: "手机号", align: "center", width: 200, key: "phone" },
-          { title: "第一张银行卡号", align: "center", width: 200, key: "bankcard1" },
-          { title: "第二张银行卡号", align: "center", width: 200, key: "bankcard2" },
-          { title: "住址", align: "center", width: 200, key: "address" },
-          {
-            title: "客户信用值",
-            align: "center",
-            width: 150,
-            key: "type",
-            render: (h, params) => {
-              if (params.row.type == 1) {
-                return h("div", { style: {} }, "良好");
-              } else if (params.row.type == 2) {
-                return h("div", { style: {} }, "优秀");
-              } else if (params.row.type == 3) {
-                return h("div", { style: {} }, "差");
-              }
-            }
-          },
-
+          { title: "理财产品id", align: "center", width: 180, key: "id" },
+          { title: "理财产品", align: "center", width: 200, key: "idname" },
+          { title: "理财产品名称", align: "center", width: 250, key: "annualIncome" },
+          { title: "七日年化收益率", align: "center", width: 200, key: "preIncome" },
+          { title: "每万元收益", align: "center", width: 200, key: "investerm" },
+          { title: "投资期限", align: "center", width: 200, key: "invesmoney" },
+          { title: "起投金额", align: "center", width: 200, key: "beginmoney" },
+          
         ],
 
         //表格数据

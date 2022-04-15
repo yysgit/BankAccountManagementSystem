@@ -1,9 +1,9 @@
 <template>
   <div>
     <div style="min-width:1000px">
-      贷款
+      贷款产品
       <Card shadow>
-        <!-- <Row>
+        <Row>
           <Col span="3" style="margin-right: 10px;">
           <Input v-model="titleSearch" placeholder="客户名" clearable></Input>
           </Col>
@@ -17,7 +17,7 @@
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
-        </Row> -->
+        </Row>
         <!--表格-->
         <Table ref="tables" width="1200px" stripe border :loading="loading" :data="tableData" :columns="columns">
         </Table>
@@ -47,14 +47,29 @@
         loading: true, //表格加载转圈
         //表格列
         columns: [
-          { title: "网贷信息id", align: "center", key: "id"},
-          { title: "借贷人（客户）id", align: "center", key: "loanid"},
-          { title: "审核人（员工）id", align: "center", key: "examineid"},
-          { title: "借贷时间", align: "center", key: "loanTime"},
+          { title: "网贷信息", align: "center", key: "id"},
+          { title: "借贷人（客户）id", align: "center", key: "idloanid"},
+          { title: "审核人（员工）id", align: "center", key: "idexamineid"},
+          { title: "借贷时间", align: "center", key: "idloanTime"},
           { title: "借贷金额", align: "center", key: "amoune"},
           { title: "借贷期限", align: "center", key: "term"},
           {
             title: "客户信用值",
+            align: "center",
+            width: 150,
+            key: "applyStatus",
+            render: (h, params) => {
+              if (params.row.applyStatus == 0) {
+                return h("div", { style: {} }, "未审核");
+              } else if (params.row.applyStatus == 1) {
+                return h("div", { style: {} }, "审核未通过");
+              } else if (params.row.applyStatus == 2) {
+                return h("div", { style: {} }, "审核通过");
+              }
+            }
+          },          
+          {
+            title: "申请状态",
             align: "center",
             width: 150,
             key: "applyStatus",
