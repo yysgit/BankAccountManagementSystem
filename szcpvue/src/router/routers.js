@@ -224,6 +224,15 @@ export default [
         },
         component: () => import('@/view/bankAccountPro/bankCardFundsFlow.vue')
       },
+      {
+        path: 'bankAccountPro/cardBalance',
+        name: 'bankAccountPro/cardBalance',
+        meta: {
+          icon: 'ios-card',
+          title: '银行卡信息'
+        },
+        component: () => import('@/view/bankAccountPro/cardBalance.vue')
+      },
     ]
   },
   {
@@ -245,24 +254,8 @@ export default [
         },
         component: () => import('@/view/bankAccountPro/client.vue')
       },
-      {
-        path: 'bankAccountPro/cardBalance',
-        name: 'bankAccountPro/cardBalance',
-        meta: {
-          icon: 'ios-card',
-          title: '银行卡余额信息'
-        },
-        component: () => import('@/view/bankAccountPro/cardBalance.vue')
-      },
-      {
-        path: 'bankAccountPro/employeeInformation',
-        name: 'bankAccountPro/employeeInformation',
-        meta: {
-          icon: 'ios-card',
-          title: '员工信息'
-        },
-        component: () => import('@/view/bankAccountPro/employeeInformation.vue')
-      }
+
+      
     ]
   },
 ]

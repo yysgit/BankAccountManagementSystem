@@ -1,9 +1,16 @@
 <template>
   <div>
     <div style="min-width:1000px">
-      银行卡余额信息
+      <!-- v-if="buttonVerifAuthention('sys:recruitmentInformation:addRecruitmentInformation')" -->
+      <Button 
+        type="primary"
+        icon="md-add"
+        @click="addFundInfoButton"
+        style="margin-bottom: 10px;"
+      >添加职位
+      </Button>
       <Card shadow>
-        <!-- <Row>
+        <Row>
           <Col span="3" style="margin-right: 10px;">
           <Input v-model="titleSearch" placeholder="客户名" clearable></Input>
           </Col>
@@ -17,12 +24,86 @@
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
-        </Row> -->
+        </Row>
         <!--表格-->
         <Table ref="tables" width="1200px" stripe border :loading="loading" :data="tableData" :columns="columns">
         </Table>
         <Page :total="totalPage" show-total :styles="stylePage" @on-change="changePage" />
       </Card>
+
+      <!--添加工作弹出框-->
+      <Modal v-model="modalFundInfoAdd" title="发布工作" :mask-closable="false">
+        <Form
+          ref="formValidateFundTypeAdd"
+          :model="formValidateFundTypeAdd"
+          :label-width="120"
+        >
+          <FormItem label="岗位名称" prop="postName">
+            <Input
+              type="textarea"
+              :autosize="{minRows: 2,maxRows: 5}"
+              v-model="formValidateFundTypeAdd.postName"
+            ></Input>
+          </FormItem>
+          <FormItem label="年薪" prop="postAnnualSalary">
+            <Input
+              v-model="formValidateFundTypeAdd.postAnnualSalary"
+            ></Input>
+          </FormItem>
+          <FormItem label="职位类型" prop="postType">
+            <Select v-model="formValidateFundTypeAdd.postType">
+              <Option v-for="(item, index) in jobStyle" :key="index" v-text="item.label"
+                      :value="item.value+''">{{ item.label }}
+              </Option>
+            </Select>
+          </FormItem>
+          <FormItem label="学历" prop="postEducation">
+            <Input v-model="formValidateFundTypeAdd.postEducation"></Input>
+          </FormItem>
+
+          <FormItem label="职位简介" prop="postProfile">
+            <Input
+              type="textarea"
+              :autosize="{minRows: 2,maxRows: 5}"
+              v-model="formValidateFundTypeAdd.postProfile"
+            ></Input>
+          </FormItem>
+
+          <FormItem label="工作地区" prop="companyRegion">
+            <Select v-model="formValidateFundTypeAdd.companyRegion" clearable>
+              <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
+
+          <FormItem label="详细地址" prop="companyAddress">
+            <Input
+              type="textarea"
+              :autosize="{minRows: 2,maxRows: 5}"
+              v-model="formValidateFundTypeAdd.companyAddress"
+            ></Input>
+          </FormItem>
+
+          <FormItem label="公司名称" prop="companyName">
+            <Input v-model="formValidateFundTypeAdd.companyName"></Input>
+          </FormItem>
+
+          <FormItem label="公司简介" prop="companyProfile">
+            <Input
+              type="textarea"
+              :autosize="{minRows: 2,maxRows: 5}"
+              v-model="formValidateFundTypeAdd.companyProfile"
+            ></Input>
+          </FormItem>
+          <FormItem label="公司邮箱" prop="companyMailbox">
+            <Input v-model="formValidateFundTypeAdd.companyMailbox"></Input>
+          </FormItem>
+
+        </Form>
+        <div slot="footer">
+          <Button type="text" size="large" @click="modalFundInfoAdd=false">取消</Button>
+          <Button type="primary" size="large" @click="addFundTypeClick" v-if="modalType!='view'">确定</Button>
+        </div>
+      </Modal>
     </div>
   </div>
 </template>
@@ -41,10 +122,32 @@
         currentPage: 1,
         fetchNum: 10,
         totalPage: 0,
+
+        //对话框
+        loading: false, //表格加载转圈
+        modalFundInfoAdd: false, //添加工作弹窗
+
         titleSearch: "", //名称
         typeSearch: "", //类型
         //对话框
-        loading: true, //表格加载转圈
+        loading: true, //表格加载转圈 
+        
+        //工作数据（添加弹窗）
+        formValidateFundTypeAdd: {
+          id: "",
+          postName: "", //岗位名称
+          postAnnualSalary: "", //年薪
+          postType: "",   //职位类型
+          postEducation: "", //学历
+          postProfile: "", //职位简介
+          companyAddress: "", //详细地址
+          companyRegion: "", //地区
+          companyName: "", //公司名称
+          companyProfile: "", //公司简介
+          companyMailbox: "", //公司邮箱
+        },
+
+
 
         //表格列
         columns: [
@@ -74,14 +177,23 @@
       };
     },
     created() {
-      //初始化菜单列表
-      this.queryList();
+      this.init();
+      this.queryList()//获取列表
     },
     methods: {
       ...mapActions([
-        "getFundTypeList", //获取表格数据
+        "addJobSearchType",
+        "getJobSearchTableList",
+        "deleteJobSearchById",
+        "upJobSearchType"
       ]),
 
+      buttonVerifAuthention(perms) {
+        return permsVerifAuthention(perms, this.$store.state.user.authentionList);
+      },
+      init() {
+       console.log("银行卡信息")
+      },
       //分页改变
       changePage(page) {
         this.currentPage = page;
@@ -93,25 +205,157 @@
         let searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
-          titleSearch: this.titleSearch, //基金类型名称
-          typeSearch: this.typeSearch //类型
-        };
+          searchPostType: this.model2, //职位类型
+          searchCompanyRegion: this.model1 //公司区域
+        }
+        if (this.model1 == '0') {
+          searchPream.searchCompanyRegion = "";
+        }
+        if (this.model2 == '0') {
+          searchPream.searchPostType = "";
+        }
         //发送请求
-        this.getFundTypeList({ searchPream }).then(res => {
+        this.getJobSearchTableList({ searchPream }).then(res => {
           this.tableData = res.data;
           this.totalPage = res.count;
           this.loading = false;
         }).catch((e) => {
-          console.log(e);
           this.loading = false;
-        })
+        });
       },
-
       //查询
       searchQuery() {
         this.currentPage = 1;
         this.queryList();
       },
+      //点击添加子菜单按钮
+      addFundInfoButton(scope) {
+        console.log("add")
+        this.modalFundInfoAdd = true;
+        this.modalType = "add";
+        this.formValidateFundTypeAdd = {
+          id: "",
+          postName: "", //岗位名称
+          postAnnualSalary: "", //年薪
+          postType: "",   //职位类型
+          postEducation: "", //学历
+          postProfile: "", //职位简介
+          companyAddress: "", //详细地址
+          companyRegion: "", //地区
+          companyName: "", //公司名称
+          companyProfile: "", //公司简介
+          companyMailbox: "", //公司邮箱
+        }
+      },
+      /**
+       * 添加数据提交
+       */
+      addFundTypeClick() {
+        let fundType = {
+          "postName": this.formValidateFundTypeAdd.postName,//岗位名称
+          "postAnnualSalary": this.formValidateFundTypeAdd.postAnnualSalary, //年薪
+          "postType": this.formValidateFundTypeAdd.postType,
+          "postEducation": this.formValidateFundTypeAdd.postEducation,
+          "postProfile": this.formValidateFundTypeAdd.postProfile,
+          "companyAddress": this.formValidateFundTypeAdd.companyAddress,
+          "companyRegion": this.formValidateFundTypeAdd.companyRegion,
+          "companyName": this.formValidateFundTypeAdd.companyName,
+          "companyProfile": this.formValidateFundTypeAdd.companyProfile,
+          "companyMailbox": this.formValidateFundTypeAdd.companyMailbox,
+        }
+        if (fundType.postType == '0') {
+          fundType.postType = "";
+        }
+        if (this.modalType == "add") {
+          this.addJobSearchType({ fundType }).then(res => {
+            console.log(res, '添加返回')
+            if (res.code == 200) {
+              this.$Message.success("添加成功!");
+              this.modalFundInfoAdd = false;
+              // 可以做些清空form表单的动作
+              //刷新菜单页面
+              this.queryList();
+            }
+          });
+        }
+        if (this.modalType == "edit") {
+          fundType.id = this.editId;
+          this.upJobSearchType({ fundType }).then(res => {
+            if (res.code == 200) {
+              this.$Message.success("更新成功!");
+              this.modalFundInfoAdd = false;
+              // 可以做些清空form表单的动作
+              //刷新菜单页面
+              this.queryList();
+            }
+          });
+        }
+      },
+
+      //删除
+      deleteFundInfoButton(scope) {
+        console.log(scope, "<<<<<<<del")
+        this.$Modal.confirm({
+          title: "删除",
+          content: "<p>你确认要删除此条信息吗!</p>",
+          onOk: () => {
+            let recruitmentInformationId = scope.row.id;
+            this.deleteJobSearchById({ recruitmentInformationId }).then(res => {
+              this.$Message.info(res.msg);
+              //刷新菜单页面
+              this.queryList();
+            });
+          },
+          onCancel: () => {
+            this.$Message.info("取消删除!");
+          }
+        });
+      },
+
+      //编辑
+      editFundInfoButton(scope) {
+        this.modalFundInfoAdd = true;
+        this.formValidateFundTypeAdd.postName = scope.row.postName;
+        this.formValidateFundTypeAdd.postAnnualSalary = scope.row.postAnnualSalary;
+        this.formValidateFundTypeAdd.postType = scope.row.postType;
+        if (!this.formValidateFundTypeAdd.postType) {
+          this.formValidateFundTypeAdd.postType = "0";
+        }
+        this.formValidateFundTypeAdd.postEducation = scope.row.postEducation;
+        this.formValidateFundTypeAdd.postProfile = scope.row.postProfile;
+        this.formValidateFundTypeAdd.companyAddress = scope.row.companyAddress;
+        this.formValidateFundTypeAdd.companyRegion = scope.row.companyRegion;
+        this.formValidateFundTypeAdd.companyName = scope.row.companyName;
+        this.formValidateFundTypeAdd.companyProfile = scope.row.companyProfile;
+        this.formValidateFundTypeAdd.companyMailbox = scope.row.companyMailbox;
+        this.editId = scope.row.id;
+        this.modalType = "edit";
+      },
+
+      //查看
+      viewData(scope) {
+        this.modalFundInfoAdd = true;
+        this.formValidateFundTypeAdd.postName = scope.row.postName;
+        this.formValidateFundTypeAdd.postAnnualSalary = scope.row.postAnnualSalary;
+        this.formValidateFundTypeAdd.postType = scope.row.postType;
+        if (!this.formValidateFundTypeAdd.postType) {
+          this.formValidateFundTypeAdd.postType = "0";
+        }
+        this.formValidateFundTypeAdd.postEducation = scope.row.postEducation;
+        this.formValidateFundTypeAdd.postProfile = scope.row.postProfile;
+        this.formValidateFundTypeAdd.companyAddress = scope.row.companyAddress;
+        this.formValidateFundTypeAdd.companyRegion = scope.row.companyRegion;
+        this.formValidateFundTypeAdd.companyName = scope.row.companyName;
+        this.formValidateFundTypeAdd.companyProfile = scope.row.companyProfile;
+        this.formValidateFundTypeAdd.companyMailbox = scope.row.companyMailbox;
+        this.editId = scope.row.id;
+        this.modalType = "view";
+      },
+      // 跳转到百度百科
+      jumpUrl(pram) {
+        let _url = `https://baike.baidu.com/item/${pram.row.companyName}`
+        window.open(_url);
+      }
     }
   };
 </script>

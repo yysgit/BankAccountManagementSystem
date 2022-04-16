@@ -9,7 +9,7 @@ import sysorgan from './module/sysorgan'
 import sysrole from './module/sysrole'
 import sysfundtype  from './module/sysfundtype'
 import sysfundinfo  from './module/sysfundinfo'
-
+import jobSearch  from './module/jobSearch'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -32,6 +32,6 @@ export default new Vuex.Store({
     sysrole,
     sysfundtype,
     sysfundinfo,
-
+    jobSearch  
   }
 })
