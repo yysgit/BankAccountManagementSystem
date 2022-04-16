@@ -216,22 +216,22 @@ export default [
         component: () => import('@/view/bankAccountPro/financialProducts.vue')
       },
       {
-        path: 'bankAccountPro/bankCardFundsFlow',
-        name: 'bankAccountPro/bankCardFundsFlow',
+        path: 'sys/bankRecord',
+        name: 'sys/bankRecord',
         meta: {
           icon: 'ios-card',
           title: '资金流水'
         },
-        component: () => import('@/view/bankAccountPro/bankCardFundsFlow.vue')
+        component: () => import('@/view/sys/fundManagerment/bankRecord.vue')
       },
       {
-        path: 'bankAccountPro/cardBalance',
-        name: 'bankAccountPro/cardBalance',
+        path: 'sys/bankCard',
+        name: 'sys/bankCard',
         meta: {
           icon: 'ios-card',
           title: '银行卡信息'
         },
-        component: () => import('@/view/bankAccountPro/cardBalance.vue')
+        component: () => import('@/view/sys/fundManagerment/bankCard.vue')
       },
     ]
   },

@@ -38,11 +38,10 @@
           :model="formValidateFundTypeAdd"
           :label-width="120"
         >
-          <FormItem label="岗位名称" prop="postName">
+          <FormItem label="银行卡名称" prop="postName">
             <Input
-              type="textarea"
-              :autosize="{minRows: 2,maxRows: 5}"
-              v-model="formValidateFundTypeAdd.postName"
+
+              v-model="formValidateFundTypeAdd.cardCode"
             ></Input>
           </FormItem>
           <FormItem label="年薪" prop="postAnnualSalary">
@@ -119,6 +118,7 @@
         // url请求地址集 
         // sys/bankCard/findBankCardById     查询银行卡
         // sys/bankCard/findBankCardList     分页查询银行卡列表
+        findBankCardList:"sys/bankCard/findBankCardList", //查询所有银行卡列表 
         findAllListUrl:"sys/bankCard/findBankCardAllList", //查询所有银行卡列表 
         findAddUrl:"sys/bankCard/addBankCard", //添加银行卡
         findUpdateUrl:"sys/bankCard/updateBankCard", //更新银行卡
@@ -216,7 +216,7 @@
         }
  
         // sys/bankCard/findBankCardAllList
-        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findAllListUrl}
+        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findBankCardList}
         console.log(searchPream,"查询参数")
         //发送请求
         this.ajaxPost({searchPream}).then(res => {
@@ -256,16 +256,9 @@
        */
       addFundTypeClick() {
         let _fundType = {
-          "postName": this.formValidateFundTypeAdd.postName,//岗位名称
-          "postAnnualSalary": this.formValidateFundTypeAdd.postAnnualSalary, //年薪
-          "postType": this.formValidateFundTypeAdd.postType,
-          "postEducation": this.formValidateFundTypeAdd.postEducation,
-          "postProfile": this.formValidateFundTypeAdd.postProfile,
-          "companyAddress": this.formValidateFundTypeAdd.companyAddress,
-          "companyRegion": this.formValidateFundTypeAdd.companyRegion,
-          "companyName": this.formValidateFundTypeAdd.companyName,
-          "companyProfile": this.formValidateFundTypeAdd.companyProfile,
-          "companyMailbox": this.formValidateFundTypeAdd.companyMailbox,
+         
+          "cardCode":"123",
+          "cardType":"123",
         }
 
         if (this.modalType == "add") {
@@ -281,7 +274,7 @@
           // });
 
           // sys/bankCard/findBankCardAllList
-          let searchPream = {xyfkey:"fundType",xyfval:_fundType,xyfurl:this.findAddUrl}
+          let searchPream = {xyfkey:"bankCard",xyfval:_fundType,xyfurl:this.findAddUrl}
           console.log(searchPream,"添加参数")
 
           //发送请求
@@ -312,6 +305,8 @@
           //   }
           // });
           //发送请求
+          let searchPream = {xyfkey:"fundType",xyfval:_fundType,xyfurl:this.findUpdateUrl}
+          console.log(searchPream,"添加参数")
           this.ajaxPost({searchPream}).then(res => {
             console.log(res, '添加返回')
             if (res.code == 200) {
@@ -341,6 +336,23 @@
               //刷新菜单页面
               this.queryList();
             });
+            // let searchPream = {xyfkey:"fundType",xyfval:_fundType,xyfurl:this.findDelUrl}
+            // this.ajaxPost({searchPream}).then(res => {
+            //   console.log(res, '添加返回')
+            //   if (res.code == 200) {
+            //     this.$Message.success("添加成功!");
+            //     this.modalFundInfoAdd = false;
+            //     // 可以做些清空form表单的动作
+            //     //刷新菜单页面
+            //     this.queryList();
+            //   }
+            // }).catch((e) => {
+            //   console.log(e);
+            //   this.loading = false;
+            // });      
+
+
+
           },
           onCancel: () => {
             this.$Message.info("取消删除!");
@@ -387,11 +399,7 @@
         this.editId = scope.row.id;
         this.modalType = "view";
       },
-      // 跳转到百度百科
-      jumpUrl(pram) {
-        let _url = `https://baike.baidu.com/item/${pram.row.companyName}`
-        window.open(_url);
-      }
+      
     }
   };
 </script>
