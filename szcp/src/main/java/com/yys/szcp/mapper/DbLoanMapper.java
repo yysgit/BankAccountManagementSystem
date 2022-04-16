@@ -1,6 +1,7 @@
 package com.yys.szcp.mapper;
 
 import com.yys.szcp.entity.DbLoan;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,10 +23,12 @@ public interface DbLoanMapper {
      * @param map
      * @return
      */
+    @MapKey("id")
     List<Map> findLoanList(Map map);
     int findLoanListCount(Map map);
 
-
+    @MapKey("id")
+    List<Map> findLoanAllList(Map map);
 
 
     /**
@@ -55,5 +58,5 @@ public interface DbLoanMapper {
      * @param loanName
      * @return
      */
-    List<DbLoan> findLoanByName(@Param("loanId")  Integer loanId,@Param("loanName") String loanName);
+
 }

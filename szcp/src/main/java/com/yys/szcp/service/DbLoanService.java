@@ -40,12 +40,5 @@ public interface DbLoanService {
     int updateLoan(DbLoan loan);
     int deleteLoan(DbLoan loan);
 
-    /**
-     * 根据名称查询贷款
-     * @param loanId
-     * @param loanName
-     * @return
-     */
-    List<DbLoan> findLoanByName(Integer loanId, String loanName);
 
 }
