@@ -282,15 +282,15 @@
       },
       //点击添加子菜单按钮
       addMenuChild(scope){
-        this.formValidate = {
-          id:'',
-          title: '',
-          icon: '',
-          href: '',
-          sorting: '',
-          perms: '',
-          parentId:0
-        };
+        // this.formValidate = {
+        //   id:'',
+        //   title: '',
+        //   icon: '',
+        //   href: '',
+        //   sorting: '',
+        //   perms: '',
+        //   parentId:0
+        // };
         this.formValidate.parentId=scope.row.id;
         this.modal7=true;
       },
