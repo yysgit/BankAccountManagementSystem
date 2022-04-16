@@ -9,13 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 16:34:58
- * Email: 1095737364@qq.com
- */
+
 @Service
 public class RoleServiceImpl implements DbRoleService {
     @Autowired

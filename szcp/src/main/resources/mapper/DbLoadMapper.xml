@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbLoanMapper">
+
+
+    <!--添加贷款-->
+    <insert id="addLoan" parameterType="com.yys.szcp.entity.DbLoan">
+        insert into db_loan (loan_user_id, examine_user_id,loan_time,amoune,term,apply_status,loan_status)
+        values (#{loanUserId},#{examineUserId},now(),#{amoune},#{term},#{applyStatus}, #{loanStatus});
+    </insert>
+
+    <!--分页查询贷款列表-->
+    <select id="findLoanList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               loan_user_id    as loanUserId,
+               examine_user_id as examineUserId,
+               loan_time       as loanTime,
+               amoune,
+               term,
+               apply_status    as applyStatus,
+               loan_status     as loanStatus
+        from db_loan
+        order by loan_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findLoanListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_loan
+    </select>
+
+    <!--通过贷款id 获取贷款-->
+    <select id="findLoanById" resultType="com.yys.szcp.entity.DbLoan" parameterType="java.lang.Integer">
+        select id,
+               loan_user_id    as loanUserId,
+               examine_user_id as examineUserId,
+               loan_time       as loanTime,
+               amoune,
+               term,
+               apply_status    as applyStatus,
+               loan_status     as loanStatus
+        from db_loan
+        where id = #{loanId}
+    </select>
+
+
+    <!--更新贷款-->
+    <update id="updateLoan" parameterType="com.yys.szcp.entity.DbLoan">
+        update db_loan
+        set loan_user_id    = #{loanUserId}
+          , examine_user_id = #{examineUserId}
+          , loan_time       = #{loanTime}
+          , amoune          = #{amoune}
+          , term            = #{term}
+          , apply_status    = #{applyStatus}
+          , loan_status     = #{loanStatus}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteLoan" parameterType="com.yys.szcp.entity.DbLoan">
+        delete
+        from db_loan
+        where id = #{id}
+    </delete>
+
+    <!--查询贷款列表-->
+    <select id="findLoanAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               loan_user_id    as loanUserId,
+               examine_user_id as examineUserId,
+               loan_time       as loanTime,
+               amoune,
+               term,
+               apply_status    as applyStatus,
+               loan_status     as loanStatus
+        from db_loan
+        where apply_status = #{applyStatus}
+          and loan_status = #{loanStatus}
+        order by loan_time DESC;
+    </select>
+
+
+</mapper>

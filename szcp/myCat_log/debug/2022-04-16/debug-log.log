@@ -1,0 +1,362 @@
+[DEBUG] 10:27:11.849 [main] org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[DEBUG] 10:27:11.855 [main] c.b.m.generator.AutoGenerator - ==========================准备生成文件...==========================
+[DEBUG] 10:28:02.934 [main] org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[DEBUG] 10:28:02.941 [main] c.b.m.generator.AutoGenerator - ==========================准备生成文件...==========================
+[DEBUG] 10:28:03.710 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\service\impl]
+[DEBUG] 10:28:03.711 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\entity]
+[DEBUG] 10:28:03.711 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\web]
+[DEBUG] 10:28:03.712 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\mapper\xml]
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - CommonsLogLogChute name is 'org.apache.velocity'
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Initializing Velocity, Calling init()...
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+[DEBUG] 10:28:03.746 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.Log4JLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log4j/Layout).  Falling back to next log system...
+[DEBUG] 10:28:03.747 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:28:03.747 [main] org.apache.velocity - Using logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:28:03.750 [main] org.apache.velocity - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.760 [main] org.apache.velocity - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+[DEBUG] 10:28:03.762 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+[DEBUG] 10:28:03.763 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+[DEBUG] 10:28:03.763 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+[DEBUG] 10:28:03.764 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+[DEBUG] 10:28:03.765 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[DEBUG] 10:28:03.766 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[DEBUG] 10:28:03.767 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[DEBUG] 10:28:03.767 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[DEBUG] 10:28:03.768 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[DEBUG] 10:28:03.791 [main] org.apache.velocity - Created '20' parsers.
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Velocimacro : Default library not found.
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Velocimacro : allowInline = true : VMs can be defined inline in templates
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[DEBUG] 10:28:03.796 [main] org.apache.velocity - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[DEBUG] 10:28:03.797 [main] org.apache.velocity - Velocimacro : autoload off : VM system will not automatically reload global library macros
+[DEBUG] 10:28:03.816 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.831 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbAdminUser.java
+[DEBUG] 10:28:03.832 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.833 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbAdminUserEntity.java
+[DEBUG] 10:28:03.836 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.838 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbAdminUserMapper.xml
+[DEBUG] 10:28:03.840 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.840 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbAdminUserService.java
+[DEBUG] 10:28:03.841 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.842 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbAdminUserServiceImap.java
+[DEBUG] 10:28:03.843 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.844 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbAdminUserController.java
+[DEBUG] 10:28:03.847 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.848 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbFinancial products.java
+[DEBUG] 10:28:03.849 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:28:03.850 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbFinancial productsEntity.java
+[DEBUG] 10:28:03.852 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:24.761 [main] org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[DEBUG] 10:29:24.772 [main] c.b.m.generator.AutoGenerator - ==========================准备生成文件...==========================
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - CommonsLogLogChute name is 'org.apache.velocity'
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Initializing Velocity, Calling init()...
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.Log4JLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log4j/Layout).  Falling back to next log system...
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:29:25.433 [main] org.apache.velocity - Using logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:29:25.437 [main] org.apache.velocity - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.444 [main] org.apache.velocity - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+[DEBUG] 10:29:25.445 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+[DEBUG] 10:29:25.446 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+[DEBUG] 10:29:25.447 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+[DEBUG] 10:29:25.448 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+[DEBUG] 10:29:25.448 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[DEBUG] 10:29:25.449 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[DEBUG] 10:29:25.450 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[DEBUG] 10:29:25.451 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[DEBUG] 10:29:25.452 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[DEBUG] 10:29:25.473 [main] org.apache.velocity - Created '20' parsers.
+[DEBUG] 10:29:25.477 [main] org.apache.velocity - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Velocimacro : Default library not found.
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Velocimacro : allowInline = true : VMs can be defined inline in templates
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[DEBUG] 10:29:25.478 [main] org.apache.velocity - Velocimacro : autoload off : VM system will not automatically reload global library macros
+[DEBUG] 10:29:25.495 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.509 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbAdminUser.java
+[DEBUG] 10:29:25.511 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.512 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbAdminUserEntity.java
+[DEBUG] 10:29:25.514 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.515 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbAdminUserMapper.xml
+[DEBUG] 10:29:25.516 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.517 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbAdminUserService.java
+[DEBUG] 10:29:25.518 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.519 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbAdminUserServiceImap.java
+[DEBUG] 10:29:25.520 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.521 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbAdminUserController.java
+[DEBUG] 10:29:25.524 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.532 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbRole.java
+[DEBUG] 10:29:25.533 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.534 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbRoleEntity.java
+[DEBUG] 10:29:25.536 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.537 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbRoleMapper.xml
+[DEBUG] 10:29:25.538 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.538 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbRoleService.java
+[DEBUG] 10:29:25.539 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.540 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbRoleServiceImap.java
+[DEBUG] 10:29:25.541 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.542 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbRoleController.java
+[DEBUG] 10:29:25.546 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.547 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbOrgan.java
+[DEBUG] 10:29:25.548 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.549 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbOrganEntity.java
+[DEBUG] 10:29:25.550 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.551 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbOrganMapper.xml
+[DEBUG] 10:29:25.551 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.552 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbOrganService.java
+[DEBUG] 10:29:25.553 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.554 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbOrganServiceImap.java
+[DEBUG] 10:29:25.555 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.556 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbOrganController.java
+[DEBUG] 10:29:25.560 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.561 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbRoleMenu.java
+[DEBUG] 10:29:25.562 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.562 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbRoleMenuEntity.java
+[DEBUG] 10:29:25.564 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.565 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbRoleMenuMapper.xml
+[DEBUG] 10:29:25.566 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.567 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbRoleMenuService.java
+[DEBUG] 10:29:25.568 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.569 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbRoleMenuServiceImap.java
+[DEBUG] 10:29:25.570 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.571 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbRoleMenuController.java
+[DEBUG] 10:29:25.573 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.574 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbFinancialProducts.java
+[DEBUG] 10:29:25.575 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.575 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbFinancialProductsEntity.java
+[DEBUG] 10:29:25.577 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.578 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbFinancialProductsMapper.xml
+[DEBUG] 10:29:25.578 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.579 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbFinancialProductsService.java
+[DEBUG] 10:29:25.580 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.581 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbFinancialProductsServiceImap.java
+[DEBUG] 10:29:25.582 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.582 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbFinancialProductsController.java
+[DEBUG] 10:29:25.585 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.586 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbBankRecord.java
+[DEBUG] 10:29:25.586 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.587 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbBankRecordEntity.java
+[DEBUG] 10:29:25.588 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.589 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbBankRecordMapper.xml
+[DEBUG] 10:29:25.589 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.590 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbBankRecordService.java
+[DEBUG] 10:29:25.591 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.591 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbBankRecordServiceImap.java
+[DEBUG] 10:29:25.592 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.593 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbBankRecordController.java
+[DEBUG] 10:29:25.596 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.597 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbLoan.java
+[DEBUG] 10:29:25.598 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.599 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbLoanEntity.java
+[DEBUG] 10:29:25.600 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.601 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbLoanMapper.xml
+[DEBUG] 10:29:25.602 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.602 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbLoanService.java
+[DEBUG] 10:29:25.603 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.604 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbLoanServiceImap.java
+[DEBUG] 10:29:25.605 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.605 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbLoanController.java
+[DEBUG] 10:29:25.608 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.609 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbBankCard.java
+[DEBUG] 10:29:25.610 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.611 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbBankCardEntity.java
+[DEBUG] 10:29:25.612 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.613 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbBankCardMapper.xml
+[DEBUG] 10:29:25.614 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.614 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbBankCardService.java
+[DEBUG] 10:29:25.615 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.616 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbBankCardServiceImap.java
+[DEBUG] 10:29:25.616 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.617 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbBankCardController.java
+[DEBUG] 10:29:25.620 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.621 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbLog.java
+[DEBUG] 10:29:25.621 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.622 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbLogEntity.java
+[DEBUG] 10:29:25.623 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.624 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbLogMapper.xml
+[DEBUG] 10:29:25.625 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.625 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbLogService.java
+[DEBUG] 10:29:25.626 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.627 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbLogServiceImap.java
+[DEBUG] 10:29:25.628 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.628 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbLogController.java
+[DEBUG] 10:29:25.632 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.633 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbMenu.java
+[DEBUG] 10:29:25.634 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.635 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbMenuEntity.java
+[DEBUG] 10:29:25.636 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.637 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbMenuMapper.xml
+[DEBUG] 10:29:25.637 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.638 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbMenuService.java
+[DEBUG] 10:29:25.639 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.640 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbMenuServiceImap.java
+[DEBUG] 10:29:25.641 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:29:25.642 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbMenuController.java
+[DEBUG] 10:29:25.696 [main] c.b.m.generator.AutoGenerator - ==========================文件生成完成！！！==========================
+[DEBUG] 10:33:36.759 [main] org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[DEBUG] 10:33:36.765 [main] c.b.m.generator.AutoGenerator - ==========================准备生成文件...==========================
+[DEBUG] 10:33:37.350 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\service\impl]
+[DEBUG] 10:33:37.356 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\entity]
+[DEBUG] 10:33:37.357 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\web]
+[DEBUG] 10:33:37.357 [main] c.b.m.generator.AutoGenerator - 创建目录： [E://\com\yys\szcp\mapper\xml]
+[DEBUG] 10:33:37.386 [main] org.apache.velocity - CommonsLogLogChute name is 'org.apache.velocity'
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Initializing Velocity, Calling init()...
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Target log system for org.apache.velocity.runtime.log.Log4JLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log4j/Layout).  Falling back to next log system...
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Trying to use logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:33:37.387 [main] org.apache.velocity - Using logger class org.apache.velocity.runtime.log.CommonsLogLogChute
+[DEBUG] 10:33:37.390 [main] org.apache.velocity - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.398 [main] org.apache.velocity - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+[DEBUG] 10:33:37.399 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+[DEBUG] 10:33:37.400 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+[DEBUG] 10:33:37.401 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+[DEBUG] 10:33:37.401 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+[DEBUG] 10:33:37.402 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+[DEBUG] 10:33:37.403 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+[DEBUG] 10:33:37.404 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+[DEBUG] 10:33:37.405 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+[DEBUG] 10:33:37.406 [main] org.apache.velocity - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+[DEBUG] 10:33:37.425 [main] org.apache.velocity - Created '20' parsers.
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Velocimacro : Default library not found.
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Velocimacro : allowInline = true : VMs can be defined inline in templates
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+[DEBUG] 10:33:37.431 [main] org.apache.velocity - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+[DEBUG] 10:33:37.432 [main] org.apache.velocity - Velocimacro : autoload off : VM system will not automatically reload global library macros
+[DEBUG] 10:33:37.448 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.461 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbAdminUser.java
+[DEBUG] 10:33:37.462 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.463 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbAdminUserEntity.java
+[DEBUG] 10:33:37.465 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.466 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbAdminUserMapper.xml
+[DEBUG] 10:33:37.466 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.467 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbAdminUserService.java
+[DEBUG] 10:33:37.468 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.469 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbAdminUserServiceImap.java
+[DEBUG] 10:33:37.470 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.470 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbAdminUserController.java
+[DEBUG] 10:33:37.475 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.476 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbRole.java
+[DEBUG] 10:33:37.477 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.478 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbRoleEntity.java
+[DEBUG] 10:33:37.479 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.480 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbRoleMapper.xml
+[DEBUG] 10:33:37.481 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.481 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbRoleService.java
+[DEBUG] 10:33:37.483 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.483 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbRoleServiceImap.java
+[DEBUG] 10:33:37.484 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.485 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbRoleController.java
+[DEBUG] 10:33:37.489 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.490 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbOrgan.java
+[DEBUG] 10:33:37.491 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.491 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbOrganEntity.java
+[DEBUG] 10:33:37.493 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.494 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbOrganMapper.xml
+[DEBUG] 10:33:37.495 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.495 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbOrganService.java
+[DEBUG] 10:33:37.496 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.497 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbOrganServiceImap.java
+[DEBUG] 10:33:37.498 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.498 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbOrganController.java
+[DEBUG] 10:33:37.502 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.503 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbRoleMenu.java
+[DEBUG] 10:33:37.504 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.505 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbRoleMenuEntity.java
+[DEBUG] 10:33:37.507 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.508 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbRoleMenuMapper.xml
+[DEBUG] 10:33:37.509 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.509 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbRoleMenuService.java
+[DEBUG] 10:33:37.511 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.511 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbRoleMenuServiceImap.java
+[DEBUG] 10:33:37.513 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.513 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbRoleMenuController.java
+[DEBUG] 10:33:37.516 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.518 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbFinancialProducts.java
+[DEBUG] 10:33:37.518 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.519 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbFinancialProductsEntity.java
+[DEBUG] 10:33:37.520 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.521 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbFinancialProductsMapper.xml
+[DEBUG] 10:33:37.522 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.522 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbFinancialProductsService.java
+[DEBUG] 10:33:37.524 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.524 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbFinancialProductsServiceImap.java
+[DEBUG] 10:33:37.525 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.526 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbFinancialProductsController.java
+[DEBUG] 10:33:37.528 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.529 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbBankRecord.java
+[DEBUG] 10:33:37.530 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.530 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbBankRecordEntity.java
+[DEBUG] 10:33:37.531 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.532 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbBankRecordMapper.xml
+[DEBUG] 10:33:37.533 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.533 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbBankRecordService.java
+[DEBUG] 10:33:37.534 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.535 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbBankRecordServiceImap.java
+[DEBUG] 10:33:37.536 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.536 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbBankRecordController.java
+[DEBUG] 10:33:37.539 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.540 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbLoan.java
+[DEBUG] 10:33:37.541 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.542 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbLoanEntity.java
+[DEBUG] 10:33:37.543 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.544 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbLoanMapper.xml
+[DEBUG] 10:33:37.544 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.545 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbLoanService.java
+[DEBUG] 10:33:37.546 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.546 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbLoanServiceImap.java
+[DEBUG] 10:33:37.547 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.548 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbLoanController.java
+[DEBUG] 10:33:37.550 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.552 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbBankCard.java
+[DEBUG] 10:33:37.553 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.553 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbBankCardEntity.java
+[DEBUG] 10:33:37.554 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.555 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbBankCardMapper.xml
+[DEBUG] 10:33:37.556 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.557 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbBankCardService.java
+[DEBUG] 10:33:37.558 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.559 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbBankCardServiceImap.java
+[DEBUG] 10:33:37.560 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.561 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbBankCardController.java
+[DEBUG] 10:33:37.565 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.566 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbLog.java
+[DEBUG] 10:33:37.568 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.569 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbLogEntity.java
+[DEBUG] 10:33:37.570 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.571 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbLogMapper.xml
+[DEBUG] 10:33:37.572 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.572 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbLogService.java
+[DEBUG] 10:33:37.573 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.574 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbLogServiceImap.java
+[DEBUG] 10:33:37.575 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.575 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbLogController.java
+[DEBUG] 10:33:37.578 [main] org.apache.velocity - ResourceManager : found /templates/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.580 [main] c.b.m.generator.AutoGenerator - 模板:/templates/entity.java.vm;  文件:E://\com\yys\szcp\entity\DbMenu.java
+[DEBUG] 10:33:37.581 [main] org.apache.velocity - ResourceManager : found /templates/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.581 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.java.vm;  文件:E://\com\yys\szcp\mapper\DbMenuEntity.java
+[DEBUG] 10:33:37.582 [main] org.apache.velocity - ResourceManager : found /templates/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.584 [main] c.b.m.generator.AutoGenerator - 模板:/templates/mapper.xml.vm;  文件:E://\com\yys\szcp\mapper\xml\DbMenuMapper.xml
+[DEBUG] 10:33:37.585 [main] org.apache.velocity - ResourceManager : found /templates/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.586 [main] c.b.m.generator.AutoGenerator - 模板:/templates/service.java.vm;  文件:E://\com\yys\szcp\service\DbMenuService.java
+[DEBUG] 10:33:37.587 [main] org.apache.velocity - ResourceManager : found /templates/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.587 [main] c.b.m.generator.AutoGenerator - 模板:/templates/serviceImpl.java.vm;  文件:E://\com\yys\szcp\service\impl\DbMenuServiceImap.java
+[DEBUG] 10:33:37.588 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+[DEBUG] 10:33:37.589 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbMenuController.java
+[DEBUG] 10:33:37.605 [main] c.b.m.generator.AutoGenerator - ==========================文件生成完成！！！==========================

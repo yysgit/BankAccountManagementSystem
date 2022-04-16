@@ -8,13 +8,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/22 14:34:34
- * Email: 1095737364@qq.com
- */
+
 public class CustomGenerator {
     public static void main(String[] args) throws InterruptedException {
         AutoGenerator mpg = new AutoGenerator();
@@ -50,9 +44,9 @@ public class CustomGenerator {
         });*/
 
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUrl("jdbc:mysql://118.31.187.222:3306/fullstackdevelopment?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT");
+        dsc.setUrl("jdbc:mysql://118.31.187.222:3306/bankAccount?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT");
         dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setPassword("12369");
         mpg.setDataSource(dsc);
 
         // 策略配置

@@ -10,13 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 19:34:53
- * Email: 1095737364@qq.com
- */
+
 @Service
 public class MenuServiceImpl implements DbMenuService {
     @Autowired

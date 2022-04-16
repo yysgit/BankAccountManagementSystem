@@ -3,13 +3,7 @@ package com.yys.szcp.entityVo;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/30 16:23:19
- * Email: 1095737364@qq.com
- */
+
 public class MenuManageTree implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;

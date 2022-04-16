@@ -23,13 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 19:37:54
- * Email: 1095737364@qq.com
- */
+
 @Controller
 @RequestMapping("sys/menu/")
 public class MenuController {

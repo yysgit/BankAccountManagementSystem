@@ -5,13 +5,7 @@ import com.yys.szcp.entity.DbMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/07/04 13:23:09
- * Email: 1095737364@qq.com
- */
+
 public class MenuToRoleTreeUtil {
     public static List<MenuToRoleTree> getMenuToRoleTree(List<DbMenu> menuList, List<DbMenu> menuListToChecked){
         List<MenuToRoleTree> menuToRoleTreeList=new ArrayList<>();

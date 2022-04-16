@@ -5,13 +5,7 @@ import com.yys.szcp.entity.DbRoleMenu;
 
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 19:34:16
- * Email: 1095737364@qq.com
- */
+
 public interface DbMenuService {
 
     /**

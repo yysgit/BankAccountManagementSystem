@@ -7,13 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/26 19:37:37
- * Email: 1095737364@qq.com
- */
+
 public class MenuTreeUtil{
     public static List<MenuTree> getMenuTree(List<DbMenu> menuList){
         List<MenuTree> menuTreeList=new ArrayList<>();

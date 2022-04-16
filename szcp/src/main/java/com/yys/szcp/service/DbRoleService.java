@@ -5,13 +5,7 @@ import com.yys.szcp.entity.DbRole;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 16:33:56
- * Email: 1095737364@qq.com
- */
+
 public interface DbRoleService {
 
     /**
