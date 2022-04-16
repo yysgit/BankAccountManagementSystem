@@ -20,13 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 17:37:12
- * Email: 1095737364@qq.com
- */
+
 @Controller
 @RequestMapping("sys/organ/")
 public class OrganController {

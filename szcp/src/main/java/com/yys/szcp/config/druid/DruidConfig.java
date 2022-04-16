@@ -14,13 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Describe:数据库连接池Druid配置
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/22 12:07:28
- * Email: 1095737364@qq.com
- */
+
 @Configuration
 public class DruidConfig {
 

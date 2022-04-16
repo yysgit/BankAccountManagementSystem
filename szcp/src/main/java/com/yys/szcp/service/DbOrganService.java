@@ -4,13 +4,7 @@ import com.yys.szcp.entity.DbOrgan;
 
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 17:33:25
- * Email: 1095737364@qq.com
- */
+
 public interface DbOrganService {
 
     /**

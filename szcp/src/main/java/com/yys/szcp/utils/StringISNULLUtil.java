@@ -5,13 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/07/04 10:47:16
- * Email: 1095737364@qq.com
- */
+
 public class StringISNULLUtil {
     public static String mapToString(Object object){
         if(object!=null&&!"".equals(object)&& !"null".equals(object)){

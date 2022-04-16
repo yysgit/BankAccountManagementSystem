@@ -20,13 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe: 角色操作
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 16:37:30
- * Email: 1095737364@qq.com
- */
+
 @Controller
 @RequestMapping("sys/role/")
 public class RoleController {

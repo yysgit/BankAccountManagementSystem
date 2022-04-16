@@ -1,0 +1,66 @@
+[INFO ] 21:55:08.256 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 76596 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 21:55:08.257 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 21:55:09.221 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 21:55:09.223 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 21:55:09.248 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+[INFO ] 21:55:09.534 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 21:55:09.784 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 21:55:09.792 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:55:09.792 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 21:55:09.793 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 21:55:09.886 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 21:55:09.886 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1549 ms
+[INFO ] 21:55:09.953 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 21:55:09.955 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 21:55:10.200 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 21:55:10.204 [main] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+[INFO ] 21:56:34.759 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 58924 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 21:56:34.760 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 21:56:35.540 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 21:56:35.542 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 21:56:35.567 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+[INFO ] 21:56:35.847 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 21:56:36.091 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 21:56:36.098 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:56:36.099 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 21:56:36.099 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 21:56:36.193 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 21:56:36.193 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1391 ms
+[INFO ] 21:56:36.258 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 21:56:36.261 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 21:56:37.408 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 21:56:37.805 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 21:56:38.114 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 21:56:38.343 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 21:56:38.378 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 21:56:38.393 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 21:56:38.423 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 21:56:38.683 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:56:38.704 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 7089 (http) with context path ''
+[INFO ] 21:56:38.707 [main] com.yys.szcp.SzcpApplication - Started SzcpApplication in 4.273 seconds (JVM running for 5.395)
+[INFO ] 22:16:47.497 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 22:16:47.498 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 22:16:47.520 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 22:16:57.689 [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.yys.szcp.SzcpApplicationTests], using SpringBootContextLoader
+[INFO ] 22:16:57.694 [main] o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.yys.szcp.SzcpApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+[INFO ] 22:16:57.694 [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.yys.szcp.SzcpApplicationTests]: SzcpApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[INFO ] 22:16:57.786 [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.yys.szcp.SzcpApplication for test class com.yys.szcp.SzcpApplicationTests
+[INFO ] 22:16:57.894 [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[INFO ] 22:16:57.910 [main] o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@420a85c4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1c39680d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@62833051, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1c852c0f, org.springframework.test.context.support.DirtiesContextTestExecutionListener@a37aefe, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5d99c6b5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@266374ef, org.springframework.test.context.event.EventPublishingTestExecutionListener@13b3d178, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@24c4ddae, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@37fb0bed, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@a82c5f1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7b7fdc8, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@51c693d]
+[INFO ] 22:16:58.239 [main] com.yys.szcp.SzcpApplicationTests - Starting SzcpApplicationTests on LAPTOP-T7DEB7H8 with PID 68112 (started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 22:16:58.239 [main] com.yys.szcp.SzcpApplicationTests - The following profiles are active: dev
+[INFO ] 22:16:59.136 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 22:16:59.139 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 22:16:59.163 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+[INFO ] 22:16:59.608 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 22:17:00.991 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 22:17:01.946 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 22:17:02.929 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 22:17:03.753 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 22:17:03.855 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 22:17:03.902 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 22:17:03.964 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 22:17:04.667 [main] com.yys.szcp.SzcpApplicationTests - Started SzcpApplicationTests in 6.712 seconds (JVM running for 7.678)
+[INFO ] 22:17:05.048 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 22:17:05.049 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 22:17:05.075 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

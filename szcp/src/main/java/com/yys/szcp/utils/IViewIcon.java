@@ -3,13 +3,7 @@ package com.yys.szcp.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/25 20:13:55
- * Email: 1095737364@qq.com
- */
+
 public class IViewIcon {
     public static List getAllIviewIcon() {
         List<String> list = new ArrayList();

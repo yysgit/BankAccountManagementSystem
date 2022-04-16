@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbFinancialProductsMapper">
+
+
+    <!--添加理财产品-->
+    <insert id="addFinancialProducts" parameterType="com.yys.szcp.entity.DbFinancialProducts">
+        insert into db_financial_products (name, annual_income, pre_income, inves_term, inves_money)
+        values (#{name}, #{annualIncome}, #{preIncome}, #{invesTerm}, #{invesMoney});
+    </insert>
+
+
+    <!--分页查询理财产品列表-->
+    <select id="findFinancialProductsList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               name          as name,
+               annual_income as annualIncome,
+               pre_income    as preIncome,
+               inves_term    as invesTerm,
+               inves_money   as invesMoney
+        from db_financial_products
+        order by id DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findFinancialProductsListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_financial_products
+    </select>
+
+    <!--通过理财产品id 获取理财产品-->
+    <select id="findFinancialProductsById" resultType="com.yys.szcp.entity.DbFinancialProducts"
+            parameterType="java.lang.Integer">
+        select id,
+               name          as name,
+               annual_income as annualIncome,
+               pre_income    as preIncome,
+               inves_term    as inves_term,
+               inves_money   as invesMoney
+        from db_financial_products
+        where id = #{loanId}
+    </select>
+
+
+    <!--更新理财产品-->
+    <update id="updateFinancialProducts" parameterType="com.yys.szcp.entity.DbFinancialProducts">
+        update db_financial_products
+        set name          = #{name}
+          , annual_income = #{annualIncome}
+          , pre_income    = #{preIncome}
+          , inves_term    = #{inves_term}
+          , inves_money   = #{invesMoney}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFinancialProducts" parameterType="com.yys.szcp.entity.DbFinancialProducts">
+        delete
+        from db_financial_products
+        where id = #{id}
+    </delete>
+
+    <!--查询理财产品列表-->
+    <select id="findFinancialProductsAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               name          as name,
+               annual_income as annualIncome,
+               pre_income    as preIncome,
+               inves_term    as inves_term,
+               inves_money   as invesMoney
+        from db_financial_products
+        order by id DESC;
+    </select>
+
+</mapper>

@@ -3,13 +3,7 @@ package com.yys.szcp.entityVo;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/07/04 16:52:48
- * Email: 1095737364@qq.com
- */
+
 public class OrganManageTree implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;

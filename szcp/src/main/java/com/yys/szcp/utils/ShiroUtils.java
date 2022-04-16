@@ -6,13 +6,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
 
-/**
- * 
- * @Desc: Shiro工具类
- * @author yangyongsheng
- * @createTime 2018年2月25日
- * @version: v1.0
- */
+
 public class ShiroUtils {
 
 	public static Session getSession() {

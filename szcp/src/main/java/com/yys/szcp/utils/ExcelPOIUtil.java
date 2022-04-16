@@ -10,13 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/08/31 16:55:48
- * Email: 1095737364@qq.com
- */
+
 public class ExcelPOIUtil {
     private final static String excel2003L = ".xls";    //2003- 版本的excel
     private final static String excel2007U = ".xlsx";   //2007+ 版本的excel

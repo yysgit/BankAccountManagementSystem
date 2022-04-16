@@ -5,13 +5,7 @@ import com.yys.szcp.entity.DbMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Describe:
- * -------------------
- * User: yangyongsheng
- * Date: 2019/06/26 19:37:37
- * Email: 1095737364@qq.com
- */
+
 public class MenuManageTreeUtil {
     public static List<MenuManageTree> getMenuManageTree(List<DbMenu> menuManageList) {
         List<MenuManageTree> menuManageTreeList = new ArrayList<>();
