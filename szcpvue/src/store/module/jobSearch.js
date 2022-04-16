@@ -2,7 +2,8 @@ import {
     addJobSearchType,
     getJobSearchTableList,
     upJobSearchType,
-    deleteJobSearchById
+    deleteJobSearchById,
+    ajaxPost
   } from '@/api/jobSearch'
   import { setToken, getToken } from '@/libs/util'
 
@@ -20,6 +21,7 @@ import {
 
     },
     actions: {
+
       //提交表单
       addJobSearchType({ state, commit }, {fundType} ) {
           console.log(fundType,12345)
@@ -52,8 +54,38 @@ import {
         })
       },
 
+      //提交表单
+      ajaxPost({ state, commit }, {searchPream} ) {
+        console.log(searchPream,"searchPream123456")
+        // let _params = {};
+        // let _url = "";
+        // _params.token = token;
+        // if(searchPream.xyfkey){
+        //   _params[searchPream.xyfkey] = searchPream.xyfval;
+        //   _url = searchPream.xyfurl;
+        // }else{
+        //   _params.searchPream = searchPream;
+        //   _url = "sys/bankCard/findBankCardAllList"
+        // }
+
+        
+				return new Promise((resolve, reject) => {
+          try {
+            ajaxPost(state.token,searchPream).then(res => {
+              const data = res.data;
+              resolve(data)
+          }).catch(err => {
+              reject(err)
+          })
+          } catch (error) {
+            reject(error)
+          }
+				})
+      },
+
 			//获取列表
 			getJobSearchTableList({ state, commit }, { searchPream }) {
+        console.log(searchPream,"searchPream123456")
 				return new Promise((resolve, reject) => {
 						try {
 							getJobSearchTableList(state.token,searchPream).then(res => {

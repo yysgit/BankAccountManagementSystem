@@ -116,6 +116,13 @@
     data() {
 
       return {
+        // url请求地址集 
+        // sys/bankCard/findBankCardById     查询银行卡
+        // sys/bankCard/findBankCardList     分页查询银行卡列表
+        findAllListUrl:"sys/bankCard/findBankCardAllList", //查询所有银行卡列表 
+        findAddUrl:"sys/bankCard/addBankCard", //添加银行卡
+        findUpdateUrl:"sys/bankCard/updateBankCard", //更新银行卡
+        findDelUrl:"sys/bankCard/deleteBankCard", //删除银行卡
         stylePage: {
           marginTop: "20px"
         },
@@ -146,9 +153,6 @@
           companyProfile: "", //公司简介
           companyMailbox: "", //公司邮箱
         },
-
-
-
         //表格列
         columns: [
           { title: "银行卡号", align: "center", key: "id" },
@@ -173,7 +177,8 @@
         ],
 
         //表格数据
-        tableData: []
+        tableData: [],
+
       };
     },
     created() {
@@ -185,7 +190,8 @@
         "addJobSearchType",
         "getJobSearchTableList",
         "deleteJobSearchById",
-        "upJobSearchType"
+        "upJobSearchType",
+        "ajaxPost"
       ]),
 
       buttonVerifAuthention(perms) {
@@ -202,20 +208,18 @@
       //获取页面菜单列表
       queryList() {
         this.loading = true;
-        let searchPream = {
+        let _searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
-          searchPostType: this.model2, //职位类型
-          searchCompanyRegion: this.model1 //公司区域
+          searchPostType: "123", //职位类型
+          searchCompanyRegion:"334" //公司区域
         }
-        if (this.model1 == '0') {
-          searchPream.searchCompanyRegion = "";
-        }
-        if (this.model2 == '0') {
-          searchPream.searchPostType = "";
-        }
+ 
+        // sys/bankCard/findBankCardAllList
+        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findAllListUrl}
+        console.log(searchPream,"查询参数")
         //发送请求
-        this.getJobSearchTableList({ searchPream }).then(res => {
+        this.ajaxPost({searchPream}).then(res => {
           this.tableData = res.data;
           this.totalPage = res.count;
           this.loading = false;
@@ -251,7 +255,7 @@
        * 添加数据提交
        */
       addFundTypeClick() {
-        let fundType = {
+        let _fundType = {
           "postName": this.formValidateFundTypeAdd.postName,//岗位名称
           "postAnnualSalary": this.formValidateFundTypeAdd.postAnnualSalary, //年薪
           "postType": this.formValidateFundTypeAdd.postType,
@@ -263,11 +267,25 @@
           "companyProfile": this.formValidateFundTypeAdd.companyProfile,
           "companyMailbox": this.formValidateFundTypeAdd.companyMailbox,
         }
-        if (fundType.postType == '0') {
-          fundType.postType = "";
-        }
+
         if (this.modalType == "add") {
-          this.addJobSearchType({ fundType }).then(res => {
+          // this.addJobSearchType({ fundType }).then(res => {
+          //   console.log(res, '添加返回')
+          //   if (res.code == 200) {
+          //     this.$Message.success("添加成功!");
+          //     this.modalFundInfoAdd = false;
+          //     // 可以做些清空form表单的动作
+          //     //刷新菜单页面
+          //     this.queryList();
+          //   }
+          // });
+
+          // sys/bankCard/findBankCardAllList
+          let searchPream = {xyfkey:"fundType",xyfval:_fundType,xyfurl:this.findAddUrl}
+          console.log(searchPream,"添加参数")
+
+          //发送请求
+          this.ajaxPost({searchPream}).then(res => {
             console.log(res, '添加返回')
             if (res.code == 200) {
               this.$Message.success("添加成功!");
@@ -276,19 +294,37 @@
               //刷新菜单页面
               this.queryList();
             }
-          });
+          }).catch((e) => {
+            console.log(e);
+            this.loading = false;
+          });  
+
         }
         if (this.modalType == "edit") {
           fundType.id = this.editId;
-          this.upJobSearchType({ fundType }).then(res => {
+          // this.upJobSearchType({ fundType }).then(res => {
+          //   if (res.code == 200) {
+          //     this.$Message.success("更新成功!");
+          //     this.modalFundInfoAdd = false;
+          //     // 可以做些清空form表单的动作
+          //     //刷新菜单页面
+          //     this.queryList();
+          //   }
+          // });
+          //发送请求
+          this.ajaxPost({searchPream}).then(res => {
+            console.log(res, '添加返回')
             if (res.code == 200) {
-              this.$Message.success("更新成功!");
+              this.$Message.success("添加成功!");
               this.modalFundInfoAdd = false;
               // 可以做些清空form表单的动作
               //刷新菜单页面
               this.queryList();
             }
-          });
+          }).catch((e) => {
+            console.log(e);
+            this.loading = false;
+          });  
         }
       },
 
