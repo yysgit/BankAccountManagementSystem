@@ -7,7 +7,7 @@
         icon="md-add"
         @click="addFundInfoButton"
         style="margin-bottom: 10px;"
-      >添加职位
+      >添加银行卡
       </Button>
       <Card shadow>
         <Row>
@@ -50,13 +50,13 @@
               v-model="formValidateFundTypeAdd.postAnnualSalary"
             ></Input>
           </FormItem>
-          <FormItem label="职位类型" prop="postType">
+          <!-- <FormItem label="职位类型" prop="postType">
             <Select v-model="formValidateFundTypeAdd.postType">
               <Option v-for="(item, index) in jobStyle" :key="index" v-text="item.label"
                       :value="item.value+''">{{ item.label }}
               </Option>
             </Select>
-          </FormItem>
+          </FormItem> -->
           <FormItem label="学历" prop="postEducation">
             <Input v-model="formValidateFundTypeAdd.postEducation"></Input>
           </FormItem>
@@ -69,11 +69,11 @@
             ></Input>
           </FormItem>
 
-          <FormItem label="工作地区" prop="companyRegion">
+          <!-- <FormItem label="工作地区" prop="companyRegion">
             <Select v-model="formValidateFundTypeAdd.companyRegion" clearable>
               <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>
-          </FormItem>
+          </FormItem> -->
 
           <FormItem label="详细地址" prop="companyAddress">
             <Input
@@ -131,7 +131,7 @@
         typeSearch: "", //类型
         //对话框
         loading: true, //表格加载转圈 
-        
+        modalType:"",
         //工作数据（添加弹窗）
         formValidateFundTypeAdd: {
           id: "",
