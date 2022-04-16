@@ -1,22 +1,21 @@
 package com.yys.szcp.mapper;
 
-import com.yys.szcp.entity.DbLoan;
+import com.yys.szcp.entity.DbBankCard;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface DbLoanMapper {
+public interface DbBankCardMapper {
 
     /**
      * 添加贷款
-     * @param loan
+     * @param bankCard
      * @return
      */
-    int addLoan(DbLoan loan);
+    int addBankCard(DbBankCard bankCard);
 
     /**
      * 查询贷款列表
@@ -24,32 +23,34 @@ public interface DbLoanMapper {
      * @return
      */
     @MapKey("id")
-    List<Map> findLoanList(Map map);
-    int findLoanListCount(Map map);
+    List<Map> findBankCardList(Map map);
+    int findBankCardListCount(Map map);
 
     @MapKey("id")
-    List<Map> findLoanAllList(Map map);
+    List<Map> findBankCardAllList(Map map);
 
 
     /**
      * 根据id 查询贷款
-     * @param loanId
+     * @param bankCardId
      * @return
      */
-    DbLoan findLoanById(Integer loanId);
+    DbBankCard findBankCardById(Integer bankCardId);
 
     /**
      * 更新贷款
-     * @param loan
+     * @param bankCard
      * @return
      */
-    int updateLoan(DbLoan loan);
+    int updateBankCard(DbBankCard bankCard);
 
     /**
      * 删除贷款
-     * @param loan
+     * @param bankCard
      * @return
      */
-    int deleteLoan(DbLoan loan);
+    int deleteBankCard(DbBankCard bankCard);
+
+
 
 }

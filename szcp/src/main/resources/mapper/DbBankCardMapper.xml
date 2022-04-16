@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbBankCardMapper">
+
+
+    <!--添加银行卡-->
+    <insert id="addBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
+        insert into db_bank_card (card_code,user_id,balance,pay_password,card_type,card_time,last_active_time)
+        values (#{cardCode}, #{userId},#{balance}, #{payPassword}, #{cardType},  now(),now());
+    </insert>
+
+    <!--分页查询银行卡列表-->
+    <select id="findBankCardList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               card_code        as cardCode,
+               user_id          as userId,
+               balance          as balance,
+               pay_password     as payPassword,
+               card_type        as cardType,
+               card_time        as cardTime,
+               last_active_time as lastActiveTime
+        from db_bank_card
+        order by card_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findBankCardListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_bank_card
+    </select>
+
+    <!--通过银行卡id 获取银行卡-->
+    <select id="findBankCardById" resultType="com.yys.szcp.entity.DbBankCard" parameterType="java.lang.Integer">
+        select  id,
+                card_code        as cardCode,
+                user_id          as userId,
+                balance          as balance,
+                pay_password     as payPassword,
+                card_type        as cardType,
+                card_time        as cardTime,
+                last_active_time as lastActiveTime
+        from db_bank_card
+        where id = #{loanId}
+    </select>
+
+
+    <!--更新银行卡-->
+    <update id="updateBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
+        update db_bank_card
+        set card_code        = #{cardCode}
+          , user_id          = #{userId}
+          , balance          = #{balance}
+          , pay_password     = #{payPassword}
+          , card_type        = #{cardType}
+          , last_active_time = now()
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
+        delete
+        from db_bank_card
+        where id = #{id}
+    </delete>
+
+    <!--查询银行卡列表-->
+    <select id="findBankCardAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select id,
+               card_code        as cardCode,
+               user_id          as userId,
+               balance          as balance,
+               pay_password     as payPassword,
+               card_type        as cardType,
+               card_time        as cardTime,
+               last_active_time as lastActiveTime
+        from db_bank_card
+        where user_id = #{userId}
+          and card_type = #{cardType}
+        order by card_time DESC;
+    </select>
+
+</mapper>
