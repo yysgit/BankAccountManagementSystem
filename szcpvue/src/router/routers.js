@@ -227,6 +227,15 @@ export default [
         },
         component: () => import('@/view/sys/fundManagerment/bankCard.vue')
       },
+      {
+        path: 'sys/myFinancialProducts',
+        name: 'sys/myFinancialProducts',
+        meta: {
+          icon: 'ios-card',
+          title: '我的理财'
+        },
+        component: () => import('@/view/sys/fundManagerment/myFinancialProducts.vue')
+      },
       
     ]
   },
