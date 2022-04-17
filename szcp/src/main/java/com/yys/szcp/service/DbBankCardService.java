@@ -1,6 +1,7 @@
 package com.yys.szcp.service;
 
 import com.yys.szcp.entity.DbBankCard;
+import com.yys.szcp.entity.DbBankRecord;
 
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,13 @@ public interface DbBankCardService {
      * @return
      */
     int updateBankCard(DbBankCard bankCard);
+    int updateBankCardByCardCode(DbBankRecord bankRecord);
     int deleteBankCard(DbBankCard bankCard);
 
-
+    /**
+     * 通过查询银行卡号
+     * @param bankCardCardCode
+     * @return
+     */
+    DbBankCard findBankCardByCardCode(String bankCardCardCode,Integer id);
 }

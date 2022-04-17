@@ -1,6 +1,7 @@
 package com.yys.szcp.service.impl;
 
 import com.yys.szcp.entity.DbBankCard;
+import com.yys.szcp.entity.DbBankRecord;
 import com.yys.szcp.mapper.DbBankCardMapper;
 import com.yys.szcp.service.DbBankCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,13 @@ public class BankCardServiceImpl implements DbBankCardService {
         return bankCardMapper.deleteBankCard(bankCard);
     }
 
+    @Override
+    public DbBankCard findBankCardByCardCode(String bankCardCardCode,Integer id) {
+        return bankCardMapper.findBankCardByCardCode(bankCardCardCode,id);
+    }
 
+    @Override
+    public int updateBankCardByCardCode(DbBankRecord bankRecord) {
+        return  bankCardMapper.updateBankCardByCardCode(bankRecord);
+    }
 }

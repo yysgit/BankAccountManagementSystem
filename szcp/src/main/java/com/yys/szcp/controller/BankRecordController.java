@@ -3,7 +3,9 @@ package com.yys.szcp.controller;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.yys.szcp.constant.ExceptionConstant;
 import com.yys.szcp.entity.DbAdminUser;
+import com.yys.szcp.entity.DbBankCard;
 import com.yys.szcp.entity.DbBankRecord;
+import com.yys.szcp.service.DbBankCardService;
 import com.yys.szcp.service.DbBankRecordService;
 import com.yys.szcp.utils.ResultUtil;
 import com.yys.szcp.utils.StringISNULLUtil;
@@ -28,6 +30,8 @@ public class BankRecordController {
 
     @Autowired
     private DbBankRecordService bankRecordService;
+    @Autowired
+    private DbBankCardService bankCardService;
 
 
     /**
@@ -53,6 +57,13 @@ public class BankRecordController {
 
 
             bankRecordService.addBankRecord(bankRecordMy);
+            DbBankCard bankCard=   bankCardService.findBankCardByCardCode(bankRecordMy.getBankCode(),null);
+            bankRecordMy.setFlowMoney(bankCard.getBalance()+bankRecordMy.getFlowMoney());
+
+            bankCardService.updateBankCardByCardCode(bankRecordMy);
+
+
+
             return ResultUtil.success("添加成功!");
         } catch (Exception e) {
             logger.error("添加银行卡记录错误: " + e.getMessage());

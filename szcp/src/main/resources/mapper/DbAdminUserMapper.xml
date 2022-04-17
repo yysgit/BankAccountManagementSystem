@@ -5,8 +5,8 @@
 
     <!--添加管理员用户-->
     <insert id="addAdminUser" parameterType="com.yys.szcp.entity.DbAdminUser">
-    insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,organ_id,role_id,create_time,update_time)
-    values (#{adminName}, #{adminPassword},#{adminFullname},#{adminPhone},#{organId},#{roleId},now(),now());
+    insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address)
+    values (#{adminName}, #{adminPassword},#{adminFullname},#{adminPhone},#{roleId},now(),now(),#{address});
   </insert>
 
     <!--查询管理员用户列表-->
@@ -16,35 +16,21 @@
         dbau.admin_name AS adminName,
         dbau.admin_fullname AS adminFullname,
         dbau.admin_phone AS adminPhone,
-        dbau.organ_id AS organId,
         dbau.role_id AS roleId,
         dbau.create_time AS createTime,
         dbau.update_time AS updateTime,
-        dbon.organ_name AS organName,
-        dbon.level ,
-        dbr.role_name AS roleName
+        dbr.role_name AS roleName,
+        dbau.address AS address,
+        dbau.credit AS credit
         from db_admin_user dbau
         left join db_role dbr on dbr.id=dbau.role_id
-        left join db_organ dbon on dbon.id=dbau.organ_id
-        where dbau.organ_id in
-
-        <foreach item="item" collection="ids" index="index" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-
-        and dbau.delete_status=0
+        where  dbau.delete_status=0
         order by dbau.update_time DESC limit #{page} , #{limit};
     </select>
     <select id="findAdminUserListByOrganIdCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
         from db_admin_user
-        where organ_id in
-
-        <foreach item="item" collection="ids" index="index" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-
-        and delete_status=0
+        where  delete_status=0
     </select>
 
 
@@ -64,16 +50,14 @@
       dbau.admin_name AS adminName,
       dbau.admin_fullname AS adminFullname,
       dbau.admin_phone AS adminPhone,
-      dbau.organ_id AS organId,
       dbau.role_id AS roleId,
       dbau.create_time AS createTime,
       dbau.update_time AS updateTime,
-      dbon.organ_name AS organName,
-      dbon.level ,
-      dbr.role_name AS roleName
+      dbr.role_name AS roleName,
+      dbau.address AS address,
+      dbau.credit AS credit
     from db_admin_user dbau
     left join db_role dbr on dbr.id=dbau.role_id
-    left join db_organ dbon on dbon.id=dbau.organ_id
     where dbau.id=#{adminUserId}
   </select>
 
@@ -84,13 +68,12 @@
       dbau.admin_name AS adminName,
       dbau.admin_fullname AS adminFullname,
       dbau.admin_phone AS adminPhone,
-      dbau.organ_id AS organId,
-      dbon.level ,
       dbau.role_id AS roleId,
       dbau.create_time AS createTime,
-      dbau.update_time AS updateTime
+      dbau.update_time AS updateTime,
+      dbau.address AS address,
+      dbau.credit AS credit
     from db_admin_user dbau
-     left join db_organ dbon on dbon.id=dbau.organ_id
     where dbau.id=#{adminUserId}
   </select>
 
@@ -103,10 +86,11 @@
        dbau.admin_name AS adminName,
        dbau.admin_fullname AS adminFullname,
        dbau.admin_phone AS adminPhone,
-       dbau.organ_id AS organId,
        dbau.role_id AS roleId,
        dbau.create_time AS createTime,
-       dbau.update_time AS updateTime
+       dbau.update_time AS updateTime,
+       dbau.address AS address,
+       dbau.credit AS credit
     from db_admin_user dbau
     where dbau.admin_name=#{adminName} and dbau.admin_password=#{adminPassword} and dbau.delete_status=0;
   </select>
@@ -119,8 +103,9 @@
             ,admin_name = #{adminName}
             ,admin_fullname = #{adminFullname}
             ,admin_phone = #{adminPhone}
-            ,organ_id = #{organId}
             ,role_id = #{roleId}
+            ,address = #{address}
+            ,credit = #{credit}
         where id = #{id}
     </update>
 
@@ -141,13 +126,12 @@
         dbau.admin_name AS adminName,
         dbau.admin_fullname AS adminFullname,
         dbau.admin_phone AS adminPhone,
-        dbau.organ_id AS organId,
         dbau.role_id AS roleId,
-        dbon.level,
         dbau.create_time AS createTime,
-        dbau.update_time AS updateTime
+        dbau.update_time AS updateTime,
+        dbau.address AS address,
+        dbau.credit AS credit
         from db_admin_user dbau
-        left join db_organ dbon on dbon.id=dbau.organ_id
         <if test="adminUserId==null or adminUserId==0">
             where dbau.admin_name=#{adminName};
         </if>

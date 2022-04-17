@@ -1,6 +1,7 @@
 package com.yys.szcp.mapper;
 
 import com.yys.szcp.entity.DbBankCard;
+import com.yys.szcp.entity.DbBankRecord;
 import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -38,12 +39,19 @@ public interface DbBankCardMapper {
     DbBankCard findBankCardById(Integer bankCardId);
 
     /**
+     * 通过查询银行卡号
+     * @param cardCode  id
+     * @return
+     */
+    DbBankCard findBankCardByCardCode(String cardCode,Integer id);
+
+    /**
      * 更新贷款
      * @param bankCard
      * @return
      */
     int updateBankCard(DbBankCard bankCard);
-
+    int updateBankCardByCardCode(DbBankRecord bankRecord);
     /**
      * 删除贷款
      * @param bankCard

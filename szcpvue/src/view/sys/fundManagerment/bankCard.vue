@@ -6,17 +6,16 @@
         <Button v-if="buttonVerifAuthention('sys:bankRecord:addBankRecord')" type="primary" icon="md-add"
           @click="addBankCardButton" style="margin-bottom: 10px;">添加银行卡</Button>
         <Row>
-          <!-- <Col span="3" style="margin-right: 10px;">
-          <Input v-model="titleSearch" placeholder="银行卡名称" clearable></Input>
-          </Col>
           <Col span="3" style="margin-right: 10px;">
-          <Select v-model="typeSearch" placeholder="类型" clearable>
-            <Option value="1" key="1">银行卡</Option>
-            <Option value="2" key="2">基金版块</Option>
-            <Option value="3" key="3">基金公司</Option>
-            <Option value="4" key="4">购买等级</Option>
+          <Input v-model="searchCardCode" placeholder="卡号" clearable></Input>
+          </Col>
+         <Col span="3" style="margin-right: 10px;">
+          <Select v-model="searchCardType" placeholder="类型" clearable>
+            <Option value="0" key="0">借记卡</Option>
+            <Option value="1" key="1">信用卡</Option>
+
           </Select>
-          </Col> -->
+          </Col>
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
@@ -33,10 +32,10 @@
             <FormItem label="银行卡编号" prop="cardCode">
               <Input v-model.trim="formValidateBankCardAdd.cardCode" placeholder="请输入银行卡编号"></Input>
             </FormItem>
-            <FormItem label="银行卡密码" prop="cardCode">
+            <FormItem label="银行卡密码" prop="payPassword">
               <Input type="password" v-model.trim="formValidateBankCardAdd.payPassword" placeholder="请输入支付密码"></Input>
             </FormItem>
-            <FormItem label="银行卡类型" prop="cardCode">
+            <FormItem label="银行卡类型" prop="cardType">
               <Select v-model="formValidateBankCardAdd.cardType" placeholder="请选择类型" clearable>
                 <Option value="0" key="0">借记卡</Option>
                 <Option value="1" key="1">信用卡</Option>
@@ -56,10 +55,10 @@
             <FormItem label="银行卡编号" prop="cardCode">
               <Input v-model.trim="formValidateBankCardEdit.cardCode" placeholder="请输入银行卡编号"></Input>
             </FormItem>
-            <FormItem label="银行卡密码" prop="cardCode">
+            <FormItem label="银行卡密码" prop="payPassword">
               <Input type="password" v-model.trim="formValidateBankCardEdit.payPassword" placeholder="请输入支付密码"></Input>
             </FormItem>
-            <FormItem label="银行卡类型" prop="cardCode">
+            <FormItem label="银行卡类型" prop="cardType">
               <Select v-model="formValidateBankCardEdit.cardType" placeholder="请选择类型" clearable>
                 <Option value="0" key="0">借记卡</Option>
                 <Option value="1" key="1">信用卡</Option>
@@ -109,8 +108,8 @@
         fetchNum: 10,
         totalPage: 0,
 
-        titleSearch: "", //银行卡名称
-        typeSearch: "", //类型
+        searchCardType: "", //银行卡号
+        searchCardCode: "", //类型
         //对话框
 
         loading: true, //表格加载转圈
@@ -205,8 +204,8 @@
               }
             }
           },
-          { title: "用户", align: "center", width: 100, key: " userName" },
-          { title: "余额", align: "center", width: 150, key: "balance" },
+          { title: "用户", align: "center", width: 100, key: "userName" },
+          { title: "余额(元)", align: "center", width: 150, key: "balance" },
           { title: "办卡时间", align: "center", width: 150, key: "cardTime" },
           { title: "上次操作时间", align: "center", width: 150, key: "lastActiveTime" },
           {
@@ -310,7 +309,9 @@
         // });
         let _searchPream = {
           page: this.currentPage,
-          limit: this.fetchNum
+          limit: this.fetchNum,
+          searchCardType: this.searchCardType, //银行卡号
+          searchCardCode:this.searchCardCode
         }
         let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
@@ -349,7 +350,7 @@
             //console.log(this.formValidate);
             let bankCard = this.formValidateBankCardAdd;
             this.loadingModel = true; //启动提交按钮转圈
-            
+
             // this.addBankCard({ bankCard }).then(res => {
             //   this.loadingModel = false; //关闭提交按钮转圈
             //   this.modalBankCardAdd = false; //关闭弹窗
@@ -362,7 +363,7 @@
             //   //刷新菜单页面
             //   this.queryList();
             // });
-            
+
             let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
@@ -380,7 +381,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            }); 
+            });
 
           } else {
             this.$Message.error("验证失败!");
@@ -409,7 +410,7 @@
             }).catch((e) => {
               console.log(e);
               this.$Message.error("操作失败了!");
-            });  
+            });
 
           },
           onCancel: () => {
@@ -451,7 +452,7 @@
             //   //刷新菜单页面
             //   this.queryList();
             // });
-            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
@@ -469,7 +470,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            });     
+            });
 
           } else {
             this.$Message.error("Fail!");

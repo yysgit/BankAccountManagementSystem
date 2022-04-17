@@ -21,10 +21,7 @@ public class DbAdminUser{
      * 所属角色（外键）
      */
 	private Integer roleId;
-    /**
-     * 机构(外键)
-     */
-	private Integer organId;
+
     /**
      * 所属父级
      */
@@ -67,6 +64,25 @@ public class DbAdminUser{
      */
 	private Integer level;
 
+	private String address ;
+	private Integer credit;
+
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getCredit() {
+		return credit;
+	}
+
+	public void setCredit(Integer credit) {
+		this.credit = credit;
+	}
 
 	public Integer getId() {
 		return id;
@@ -84,13 +100,6 @@ public class DbAdminUser{
 		this.roleId = roleId;
 	}
 
-	public Integer getOrganId() {
-		return organId;
-	}
-
-	public void setOrganId(Integer organId) {
-		this.organId = organId;
-	}
 
 	public Integer getParentId() {
 		return parentId;

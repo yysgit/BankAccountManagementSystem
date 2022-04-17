@@ -5,8 +5,8 @@
 
     <!--添加贷款-->
     <insert id="addLoan" parameterType="com.yys.szcp.entity.DbLoan">
-        insert into db_loan (loan_user_id, examine_user_id,loan_time,amoune,term,apply_status,loan_status)
-        values (#{loanUserId},#{examineUserId},now(),#{amoune},#{term},#{applyStatus}, #{loanStatus});
+        insert into db_loan (loan_user_id,loan_time,amoune,term)
+        values (#{loanUserId},now(),#{amoune},#{term});
     </insert>
 
     <!--分页查询贷款列表-->

@@ -1,0 +1,73 @@
+[ERROR] 16:18:51.924 [http-nio-7089-exec-7] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 16:19:44.179 [http-nio-7089-exec-1] c.y.s.c.FinancialProductsController - 修改理财产品错误: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'inves_term' in 'class com.yys.szcp.entity.DbFinancialProducts'
+[ERROR] 16:20:14.042 [http-nio-7089-exec-5] c.y.s.c.FinancialProductsController - 修改理财产品错误: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'inves_term' in 'class com.yys.szcp.entity.DbFinancialProducts'
+[ERROR] 16:20:33.484 [http-nio-7089-exec-7] c.y.s.c.FinancialProductsController - 修改理财产品错误: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'inves_term' in 'class com.yys.szcp.entity.DbFinancialProducts'
+[ERROR] 16:46:38.526 [http-nio-7089-exec-1] c.y.s.controller.BankCardController - 修改银行卡错误: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'cardCode' not found. Available parameters are [id, bankCardCardCode, param1, param2]
+[ERROR] 16:46:53.088 [http-nio-7089-exec-4] c.y.s.controller.BankCardController - 修改银行卡错误: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'cardCode' not found. Available parameters are [id, bankCardCardCode, param1, param2]
+[ERROR] 16:48:36.863 [http-nio-7089-exec-6] c.y.s.controller.BankCardController - 修改银行卡错误: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'cardCode' not found. Available parameters are [id, bankCardCardCode, param1, param2]
+[ERROR] 16:50:18.367 [http-nio-7089-exec-1] c.y.s.controller.BankCardController - 修改银行卡错误: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     dbbc.id!=?', expect IDENTIFIER, actual IDENTIFIER pos 597, line 14, column 18, token IDENTIFIER dbbc : select  dbbc.id,
+                dbbc.card_code        as cardCode,
+                dbbc.user_id          as userId,
+                adau.admin_fullname          as userName,
+                dbbc.balance          as balance,
+                dbbc.pay_password     as payPassword,
+                dbbc.card_type        as cardType,
+                dbbc.card_time        as cardTime,
+                dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id=dbbc.user_id
+        where dbbc.card_code = ?
+         
+            dbbc.id!=?
+### The error may exist in file [E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes\mapper\DbBankCardMapper.xml]
+### The error may involve com.yys.szcp.mapper.DbBankCardMapper.findBankCardByCardCode
+### The error occurred while executing a query
+### SQL: select  dbbc.id,                 dbbc.card_code        as cardCode,                 dbbc.user_id          as userId,                 adau.admin_fullname          as userName,                 dbbc.balance          as balance,                 dbbc.pay_password     as payPassword,                 dbbc.card_type        as cardType,                 dbbc.card_time        as cardTime,                 dbbc.last_active_time as lastActiveTime         from db_bank_card dbbc                  left join db_admin_user adau on adau.id=dbbc.user_id         where dbbc.card_code = ?                       dbbc.id!=?
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     dbbc.id!=?', expect IDENTIFIER, actual IDENTIFIER pos 597, line 14, column 18, token IDENTIFIER dbbc : select  dbbc.id,
+                dbbc.card_code        as cardCode,
+                dbbc.user_id          as userId,
+                adau.admin_fullname          as userName,
+                dbbc.balance          as balance,
+                dbbc.pay_password     as payPassword,
+                dbbc.card_type        as cardType,
+                dbbc.card_time        as cardTime,
+                dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id=dbbc.user_id
+        where dbbc.card_code = ?
+         
+            dbbc.id!=?
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'     dbbc.id!=?', expect IDENTIFIER, actual IDENTIFIER pos 597, line 14, column 18, token IDENTIFIER dbbc : select  dbbc.id,
+                dbbc.card_code        as cardCode,
+                dbbc.user_id          as userId,
+                adau.admin_fullname          as userName,
+                dbbc.balance          as balance,
+                dbbc.pay_password     as payPassword,
+                dbbc.card_type        as cardType,
+                dbbc.card_time        as cardTime,
+                dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id=dbbc.user_id
+        where dbbc.card_code = ?
+         
+            dbbc.id!=?; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'     dbbc.id!=?', expect IDENTIFIER, actual IDENTIFIER pos 597, line 14, column 18, token IDENTIFIER dbbc : select  dbbc.id,
+                dbbc.card_code        as cardCode,
+                dbbc.user_id          as userId,
+                adau.admin_fullname          as userName,
+                dbbc.balance          as balance,
+                dbbc.pay_password     as payPassword,
+                dbbc.card_type        as cardType,
+                dbbc.card_time        as cardTime,
+                dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id=dbbc.user_id
+        where dbbc.card_code = ?
+         
+            dbbc.id!=?
+[ERROR] 17:26:59.014 [http-nio-7089-exec-7] c.y.s.c.BankRecordController - 添加银行卡记录错误: null
+[ERROR] 17:29:34.871 [http-nio-7089-exec-4] c.y.s.c.BankRecordController - 添加银行卡记录错误: null
+[ERROR] 17:31:39.687 [http-nio-7089-exec-9] c.y.s.c.BankRecordController - 添加银行卡记录错误: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named 'cardCode' in 'class com.yys.szcp.entity.DbBankRecord'
+[ERROR] 17:50:51.647 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
+[ERROR] 17:53:35.575 [http-nio-7089-exec-9] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
+[ERROR] 17:56:34.515 [http-nio-7089-exec-2] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]

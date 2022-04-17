@@ -7,11 +7,10 @@ import com.yys.szcp.config.jwt.JwtUtils;
 import com.yys.szcp.constant.ExceptionConstant;
 import com.yys.szcp.entity.DbAdminUser;
 import com.yys.szcp.entity.DbMenu;
-import com.yys.szcp.entity.DbOrgan;
+
 import com.yys.szcp.entityVo.MenuTreeUtil;
 import com.yys.szcp.service.DbAdminUserService;
 import com.yys.szcp.service.DbMenuService;
-import com.yys.szcp.service.DbOrganService;
 import com.yys.szcp.utils.MD5;
 import com.yys.szcp.utils.ResultUtil;
 import com.yys.szcp.utils.StringISNULLUtil;
@@ -39,8 +38,7 @@ public class AdminController {
     private JwtEntity jwtEntity;
     @Autowired
     private DbMenuService menuService;
-    @Autowired
-    private DbOrganService organService;
+
 
     /**
      * 管理员登陆
@@ -123,23 +121,7 @@ public class AdminController {
             adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("username")));
             adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("fullname")));
             adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("phone")));
-
-            //-----特殊处理开始--------
-            DbAdminUser adminUser2 = (DbAdminUser) request.getAttribute("adminUser");
-            DbOrgan organ2 = organService.findOrganById(adminUser2.getOrganId());
-            //运营员特殊处理 level 等于2 表示运营部
-            if (organ2 != null && organ2.getLevel() == 2) {
-                //查询父级下面的所有机构
-                List<DbOrgan> organChildList = organService.findOrganByParentId(organ2.getParentId());
-                for (DbOrgan organ3 : organChildList) {
-                    if (organ3.getLevel() == 3) {
-                        adminUserMy.setOrganId(organ3.getId());
-                    }
-                }
-            } else {
-                adminUserMy.setOrganId(StringISNULLUtil.mapToInteger(adminUser1.get("organId")));
-            }
-            //-----特殊处理结束--------
+            adminUserMy.setAddress(StringISNULLUtil.mapToString(adminUser1.get("address")));
 
             adminUserMy.setRoleId(StringISNULLUtil.mapToInteger(adminUser1.get("roleId")));
 
@@ -175,37 +157,7 @@ public class AdminController {
             Map map = new HashMap();
             map.put("page", (Integer.valueOf(search.get("page").toString()) - 1) * 10);
             map.put("limit", search.get("limit"));
-            Integer allOrgan = Integer.valueOf(search.get("allOrgan").toString());
-            Integer organId = null;
-            //运营员特殊处理
-            if (adminUser.getLevel() == 2) {
-                DbOrgan organ2 = organService.findOrganById(adminUser.getOrganId());
-                //运营员特殊处理 level 等于2 表示运营部
-                //查询父级下面的所有机构
-                List<DbOrgan> organChildList = organService.findOrganByParentId(organ2.getParentId());
-                for (DbOrgan organ3 : organChildList) {
-                    if (organ3.getLevel() == 3) {
-                        organId = organ3.getId();
-                    }
-                }
-            } else {
-                organId = Integer.valueOf(search.get("organId").toString());
-            }
 
-
-            //查询单个机构的用户
-            if (allOrgan == 1) {
-                List<Integer> ids = new ArrayList<>();
-                ids.add(organId);
-                map.put("ids", ids);
-
-                //查询机构下的所有用户
-            } else if (allOrgan == 0) {
-                List<Integer> ids = new ArrayList<>();
-                ids.add(organId);
-                ids.addAll(getOrganId(organId));
-                map.put("ids", ids);
-            }
             resultUtil.setData(adminService.findAdminUserListByOrganId(map));
             resultUtil.setCount(adminService.findAdminUserListByOrganIdCount(map));
             resultUtil.setMsg("查询成功!");
@@ -236,9 +188,9 @@ public class AdminController {
             adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("username")));
             adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("fullname")));
             adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("phone")));
-            adminUserMy.setOrganId(StringISNULLUtil.mapToInteger(adminUser1.get("organId")));
             adminUserMy.setRoleId(StringISNULLUtil.mapToInteger(adminUser1.get("roleId")));
             adminUserMy.setId(StringISNULLUtil.mapToInteger(adminUser1.get("id")));
+            adminUserMy.setAddress(StringISNULLUtil.mapToString(adminUser1.get("address")));
 
 
             //验证名称是否重复
@@ -377,17 +329,5 @@ public class AdminController {
     }
 
 
-    private List<Integer> getOrganId(Integer organId) throws Exception {
-        List<Integer> ids = new ArrayList<>();
-        //查询下级
-        List<DbOrgan> organChildList = organService.findOrganByParentId(organId);
-        if (organChildList != null && organChildList.size() > 0) {
-            //封装数据
-            for (DbOrgan organ : organChildList) {
-                ids.add(organ.getId());
-                ids.addAll(getOrganId(organ.getId()));
-            }
-        }
-        return ids;
-    }
+
 }

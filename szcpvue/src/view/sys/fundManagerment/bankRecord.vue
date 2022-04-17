@@ -35,22 +35,30 @@
           <Form ref="formValidateBankRecordAdd" :model="formValidateBankRecordAdd" :rules="ruleValidateBankRecordAdd"
             :label-width="120">
             <FormItem label="银行卡号" prop="bankCode">
-              <Input v-model.trim="formValidateBankRecordAdd.bankCode" placeholder="请输入银行卡号"></Input>
+              <Select v-model="formValidateBankRecordAdd.bankCode" placeholder="请选择" clearable>
+                <Option
+                  v-for="item in bankCodeData"
+                  :value="item.cardCode+''"
+                  :key="item.cardCode+''"
+                >{{ item.cardCode }}</Option>
+              </Select>
+
+              <!--              <Input v-model.trim="formValidateBankRecordAdd.bankCode" placeholder="请输入银行卡号"></Input>-->
             </FormItem>
             <FormItem label="流转金额" prop="flowMoney">
               <Input v-model.trim="formValidateBankRecordAdd.flowMoney" placeholder="请输入流转金额"></Input>
             </FormItem>
             <FormItem label="流水类型" prop="type">
               <Select v-model="formValidateBankRecordAdd.type" placeholder="请选择" clearable>
-                <Option value="0" key="0">支出</Option>
+<!--                <Option value="0" key="0">支出</Option>-->
                 <Option value="1" key="1">收入</Option>
               </Select>
             </FormItem>
             <FormItem label="流水来源" prop="type">
               <Select v-model="formValidateBankRecordAdd.source" placeholder="请选择" clearable>
                 <Option value="0" key="0">存取款</Option>
-                <Option value="1" key="1">贷款</Option>
-                <Option value="2" key="2">购买理财产品</Option>
+<!--                <Option value="1" key="1">贷款</Option>-->
+<!--                <Option value="2" key="2">购买理财产品</Option>-->
               </Select>
             </FormItem>
           </Form>
@@ -65,22 +73,32 @@
           <Form ref="formValidateBankRecordEdit" :model="formValidateBankRecordEdit" :rules="ruleValidateBankRecordEdit"
             :label-width="120">
             <FormItem label="银行卡号" prop="bankCode">
-              <Input v-model.trim="formValidateBankRecordEdit.bankCode" placeholder="请输入银行卡号"></Input>
+              <Select v-model="formValidateBankRecordEdit.bankCode" placeholder="请选择" clearable>
+                <Option
+                  v-for="item in bankCodeData"
+                  :value="item.cardCode+''"
+                  :key="item.cardCode+''"
+                >{{ item.cardCode }}</Option>
+              </Select>
+
+
+
+<!--              <Input v-model.trim="formValidateBankRecordEdit.bankCode" placeholder="请输入银行卡号"></Input>-->
             </FormItem>
             <FormItem label="流转金额" prop="flowMoney">
               <Input v-model.trim="formValidateBankRecordEdit.flowMoney" placeholder="请输入流转金额"></Input>
             </FormItem>
             <FormItem label="流水类型" prop="type">
               <Select v-model="formValidateBankRecordEdit.type" placeholder="请选择" clearable>
-                <Option value="0" key="0">支出</Option>
+<!--                <Option value="0" key="0">支出</Option>-->
                 <Option value="1" key="1">收入</Option>
               </Select>
             </FormItem>
             <FormItem label="流水来源" prop="type">
               <Select v-model="formValidateBankRecordEdit.source" placeholder="请选择" clearable>
                 <Option value="0" key="0">存取款</Option>
-                <Option value="1" key="1">贷款</Option>
-                <Option value="2" key="2">购买理财产品</Option>
+<!--                <Option value="1" key="1">贷款</Option>-->
+<!--                <Option value="2" key="2">购买理财产品</Option>-->
               </Select>
             </FormItem>
           </Form>
@@ -131,6 +149,7 @@
         typeSearch: "", //类型
         //对话框
 
+        bankCodeData:[],
         loading: true, //表格加载转圈
         loadingModel: false, //表单提交按钮转圈
 
@@ -146,12 +165,6 @@
         ruleValidateBankRecordAdd: {
           bankCode: [
             { required: true, message: "请输入银行卡号", trigger: "blur" },
-            {
-              type: "string",
-              max: 100,
-              message: "银行卡号最长为30个字",
-              trigger: "blur"
-            }
           ],
           flowMoney: [
             { required: true, message: "请输入流转金额", trigger: "blur" },
@@ -224,7 +237,7 @@
                 return h("div", { style: {} }, "支出");
               } else if (params.row.type == 1) {
                 return h("div", { style: {} }, "收入");
-              } 
+              }
             }
           },
           {
@@ -238,7 +251,7 @@
                 return h("div", { style: {} }, "贷款");
               }else if (params.row.source == 2) {
                 return h("div", { style: {} }, "购买理财产品");
-              }  
+              }
             }
           },
           {
@@ -248,28 +261,28 @@
             minWidth: 150,
             render: (h, params) => {
               return h("div", [
-                (() => {
-                  if (this.buttonVerifAuthention("sys:bankRecord:updateBankRecord")) {
-                    return h(
-                      "Button",
-                      {
-                        props: {
-                          type: "primary",
-                          size: "small"
-                        },
-                        style: {
-                          marginRight: "5px"
-                        },
-                        on: {
-                          click: () => {
-                            this.editBankRecordButton(params);
-                          }
-                        }
-                      },
-                      "编辑"
-                    );
-                  }
-                })(),
+                // (() => {
+                //   if (this.buttonVerifAuthention("sys:bankRecord:updateBankRecord")) {
+                //     return h(
+                //       "Button",
+                //       {
+                //         props: {
+                //           type: "primary",
+                //           size: "small"
+                //         },
+                //         style: {
+                //           marginRight: "5px"
+                //         },
+                //         on: {
+                //           click: () => {
+                //             this.editBankRecordButton(params);
+                //           }
+                //         }
+                //       },
+                //       "编辑"
+                //     );
+                //   }
+                // })(),
                 (() => {
                   if (this.buttonVerifAuthention("sys:bankRecord:deleteBankRecord")) {
                     return h(
@@ -303,7 +316,7 @@
         addUrl:"/sys/bankRecord/addBankRecord",        //添加银行卡流水编号记录
         updateUrl:"/sys/bankRecord/updateBankRecord",     //更新银行卡流水编号记录
         deleUrl:"/sys/bankRecord/deleteBankRecord",     //删除银行卡流水编号记录
-        FindAllList:"",     //查询所有银行卡流水编号记录列表
+        findAllList:"/sys/bankCard/findBankCardAllList",     //查询所有银行卡流水编号记录列表
         findIdUrl:"",     //查询银行卡流水编号记录
       };
     },
@@ -359,10 +372,23 @@
       //点击添加子菜单按钮
       addBankRecordButton(scope) {
         this.formValidateBankRecordAdd = {
-          bankCode: "",
-          payPassword: "",
-          cardType: ""
+          bankCode: "", //银行卡号
+          flowMoney:"", //流转金额
+          type: "",     //类型（0，支出；1，收入）
+          source: ""    //来源（0，存取款；1，贷款；2，购买理财产品）
         };
+
+        let searchPream = {xyfkey:"searchPream",xyfval:{},xyfurl:this.findAllList}
+        //发送请求
+        this.ajaxPost({searchPream}).then(res => {
+          this.bankCodeData=res.data;
+        }).catch((e) => {
+          this.loading = false;
+        });
+
+
+
+
         this.modalBankRecordAdd = true;
       },
       //添加主菜单提交
@@ -377,7 +403,7 @@
             //console.log(this.formValidate);
             let bankRecord = this.formValidateBankRecordAdd;
             this.loadingModel = true; //启动提交按钮转圈
-            
+
             let searchPream = {xyfkey:"bankRecord",xyfval:bankRecord,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
@@ -385,9 +411,10 @@
               this.modalBankRecordAdd = false; //关闭弹窗
               //情况表单数据
               this.formValidateBankRecordAdd = {
-                bankCode: "",
-                payPassword: "",
-                cardType: ""
+                bankCode: "", //银行卡号
+                flowMoney:"", //流转金额
+                type: "",     //类型（0，支出；1，收入）
+                source: ""    //来源（0，存取款；1，贷款；2，购买理财产品）
               };
               //刷新菜单页面
               this.queryList();
@@ -395,7 +422,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            }); 
+            });
 
           } else {
             this.$Message.error("验证失败!");
@@ -420,7 +447,7 @@
             }).catch((e) => {
               console.log(e);
               this.$Message.error("操作失败了!");
-            });  
+            });
 
           },
           onCancel: () => {
@@ -469,7 +496,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            });     
+            });
 
           } else {
             this.$Message.error("Fail!");

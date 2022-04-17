@@ -48,12 +48,19 @@ public class BankCardController {
             //封装数据
             Map bankCard1 =(Map) JSONUtils.parse(bankCard);
             DbBankCard bankCardMy=new DbBankCard();
-
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
             bankCardMy.setCardCode(StringISNULLUtil.mapToString(bankCard1.get("cardCode")));
-            bankCardMy.setUserId(StringISNULLUtil.mapToInteger(bankCard1.get("userId")));
+            bankCardMy.setUserId(adminUser.getId());
             bankCardMy.setBalance(StringISNULLUtil.mapToDouble(bankCard1.get("balance")));
             bankCardMy.setPayPassword(StringISNULLUtil.mapToString(bankCard1.get("payPassword")));
             bankCardMy.setCardType(StringISNULLUtil.mapToInteger(bankCard1.get("cardType")));
+
+
+            DbBankCard bankCard2  = bankCardService.findBankCardByCardCode(bankCardMy.getCardCode(),bankCardMy.getId());
+
+            if(bankCard2!=null){
+                return ResultUtil.error("银行卡号重复!");
+            }
 
             bankCardService.addBankCard(bankCardMy);
             return ResultUtil.success("添加成功!");
@@ -101,11 +108,15 @@ public class BankCardController {
             DbBankCard bankCardMy=new DbBankCard();
             bankCardMy.setId(StringISNULLUtil.mapToInteger(bankCard1.get("id").toString()));
             bankCardMy.setCardCode(StringISNULLUtil.mapToString(bankCard1.get("cardCode")));
-            bankCardMy.setUserId(StringISNULLUtil.mapToInteger(bankCard1.get("userId")));
-            bankCardMy.setBalance(StringISNULLUtil.mapToDouble(bankCard1.get("balance")));
             bankCardMy.setPayPassword(StringISNULLUtil.mapToString(bankCard1.get("payPassword")));
             bankCardMy.setCardType(StringISNULLUtil.mapToInteger(bankCard1.get("cardType")));
 
+
+            DbBankCard bankCard2  = bankCardService.findBankCardByCardCode(bankCardMy.getCardCode(),bankCardMy.getId());
+
+            if(bankCard2!=null){
+                return ResultUtil.error("银行卡号重复!");
+            }
 
             bankCardService.updateBankCard(bankCardMy);
             return ResultUtil.success("修改成功!");
@@ -158,6 +169,8 @@ public class BankCardController {
             Map map = new HashMap();
             map.put("page", (StringISNULLUtil.mapToInteger(searchPreamMy.get("page").toString()) - 1) * 10);
             map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
+            map.put("searchCardCode", StringISNULLUtil.mapToString(searchPreamMy.get("searchCardCode")));
+            map.put("searchCardType", StringISNULLUtil.mapToString(searchPreamMy.get("searchCardType")));
 
             resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
             resultUtil.setMsg("查询成功!");
@@ -182,9 +195,6 @@ public class BankCardController {
             Map searchPreamMy =(Map) JSONUtils.parse(searchPream);
             DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
             Map map = new HashMap();
-            map.put("userId",StringISNULLUtil.mapToInteger(searchPreamMy.get("userId")));
-            map.put("cardType", StringISNULLUtil.mapToInteger(searchPreamMy.get("cardType")));
-
             List<Map> bankCardList=bankCardService.findBankCardAllList(map);
             return ResultUtil.success(bankCardList);
         } catch (Exception e) {

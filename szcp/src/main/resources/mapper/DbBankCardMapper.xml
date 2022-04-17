@@ -5,21 +5,33 @@
 
     <!--添加银行卡-->
     <insert id="addBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
-        insert into db_bank_card (card_code,user_id,balance,pay_password,card_type,card_time,last_active_time)
-        values (#{cardCode}, #{userId},0, #{payPassword}, #{cardType},  now(),now());
+        insert into db_bank_card (card_code, user_id, balance, pay_password, card_type, card_time, last_active_time)
+        values (#{cardCode}, #{userId}, 0, #{payPassword}, #{cardType}, now(), now());
     </insert>
 
     <!--分页查询银行卡列表-->
     <select id="findBankCardList" resultType="java.util.Map" parameterType="java.util.Map">
-        select id,
-               card_code        as cardCode,
-               user_id          as userId,
-               balance          as balance,
-               pay_password     as payPassword,
-               card_type        as cardType,
-               card_time        as cardTime,
-               last_active_time as lastActiveTime
-        from db_bank_card
+        select dbbc.id,
+        dbbc.card_code as cardCode,
+        dbbc.user_id as userId,
+        adau.admin_fullname as userName,
+        dbbc.balance as balance,
+        dbbc.pay_password as payPassword,
+        dbbc.card_type as cardType,
+        dbbc.card_time as cardTime,
+        dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+        left join db_admin_user adau on adau.id=dbbc.user_id
+
+        where 1=1
+        <if test="searchCardCode!=null and searchCardCode !=''">
+            and (dbbc.card_code LIKE concat(concat('%',#{searchCardCode}),'%'))
+        </if>
+        <if test="searchCardType!=null and searchCardType !=''">
+            and dbbc.card_type =#{searchCardType}
+        </if>
+
+
         order by card_time DESC
         limit #{page} , #{limit};
     </select>
@@ -31,16 +43,38 @@
 
     <!--通过银行卡id 获取银行卡-->
     <select id="findBankCardById" resultType="com.yys.szcp.entity.DbBankCard" parameterType="java.lang.Integer">
-        select  id,
-                card_code        as cardCode,
-                user_id          as userId,
-                balance          as balance,
-                pay_password     as payPassword,
-                card_type        as cardType,
-                card_time        as cardTime,
-                last_active_time as lastActiveTime
-        from db_bank_card
+        select dbbc.id,
+               dbbc.card_code        as cardCode,
+               dbbc.user_id          as userId,
+               adau.admin_fullname   as userName,
+               dbbc.balance          as balance,
+               dbbc.pay_password     as payPassword,
+               dbbc.card_type        as cardType,
+               dbbc.card_time        as cardTime,
+               dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id = dbbc.user_id
         where id = #{loanId}
+    </select>
+
+
+    <!--通过银行卡id 获取银行卡-->
+    <select id="findBankCardByCardCode" resultType="com.yys.szcp.entity.DbBankCard">
+        select dbbc.id,
+        dbbc.card_code as cardCode,
+        dbbc.user_id as userId,
+        adau.admin_fullname as userName,
+        dbbc.balance as balance,
+        dbbc.pay_password as payPassword,
+        dbbc.card_type as cardType,
+        dbbc.card_time as cardTime,
+        dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+        left join db_admin_user adau on adau.id=dbbc.user_id
+        where dbbc.card_code = #{cardCode}
+        <if test="id!=null and id!=''">
+            and dbbc.id!=#{id}
+        </if>
     </select>
 
 
@@ -48,13 +82,19 @@
     <update id="updateBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
         update db_bank_card
         set card_code        = #{cardCode}
-          , user_id          = #{userId}
-          , balance          = #{balance}
           , pay_password     = #{payPassword}
           , card_type        = #{cardType}
           , last_active_time = now()
         where id = #{id}
     </update>
+
+    <update id="updateBankCardByCardCode" parameterType="com.yys.szcp.entity.DbBankRecord">
+        update db_bank_card
+        set balance          = #{flowMoney}
+          , last_active_time = now()
+        where card_code = #{bankCode}
+    </update>
+
 
     <delete id="deleteBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
         delete
@@ -64,17 +104,17 @@
 
     <!--查询银行卡列表-->
     <select id="findBankCardAllList" resultType="java.util.Map" parameterType="java.util.Map">
-        select id,
-               card_code        as cardCode,
-               user_id          as userId,
-               balance          as balance,
-               pay_password     as payPassword,
-               card_type        as cardType,
-               card_time        as cardTime,
-               last_active_time as lastActiveTime
-        from db_bank_card
-        where user_id = #{userId}
-          and card_type = #{cardType}
+        select dbbc.id,
+               dbbc.card_code        as cardCode,
+               dbbc.user_id          as userId,
+               adau.admin_fullname   as userName,
+               dbbc.balance          as balance,
+               dbbc.pay_password     as payPassword,
+               dbbc.card_type        as cardType,
+               dbbc.card_time        as cardTime,
+               dbbc.last_active_time as lastActiveTime
+        from db_bank_card dbbc
+                 left join db_admin_user adau on adau.id = dbbc.user_id
         order by card_time DESC;
     </select>
 

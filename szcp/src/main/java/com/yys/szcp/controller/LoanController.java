@@ -46,7 +46,9 @@ public class LoanController {
             //封装数据
             Map loan1 =(Map) JSONUtils.parse(loan);
             DbLoan loanMy=new DbLoan();
-            loanMy.setLoanUserId(StringISNULLUtil.mapToInteger(loan1.get("loanUserId")));
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
+
+            loanMy.setLoanUserId(adminUser.getId());
             loanMy.setAmoune(StringISNULLUtil.mapToDouble(loan1.get("amoune")));
             loanMy.setTerm(StringISNULLUtil.mapToInteger(loan1.get("term")));
             loanMy.setLoanStatus(0);

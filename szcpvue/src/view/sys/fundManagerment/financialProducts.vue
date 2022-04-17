@@ -30,17 +30,17 @@
         <Modal v-model="modalFinancialProductsAdd" title="添加理财产品" :mask-closable="false">
 
           <Form ref="formValidateFinancialProductsAdd" :model="formValidateFinancialProductsAdd" :rules="ruleValidateFinancialProductsAdd"
-            :label-width="120">
+            :label-width="140">
             <FormItem label="理财产品名称" prop="name">
               <Input v-model.trim="formValidateFinancialProductsAdd.name" placeholder="请输入理财产品名称"></Input>
             </FormItem>
-            <FormItem label="七日年化收益率" prop="annualIncome">
+            <FormItem label="七日年化收益率(%)" prop="annualIncome">
               <Input v-model.trim="formValidateFinancialProductsAdd.annualIncome" placeholder="请输入七日年化收益率"></Input>
             </FormItem>
-            <FormItem label="每万元收益" prop="preIncome">
+            <FormItem label="每万元收益(元)" prop="preIncome">
               <Input v-model.trim="formValidateFinancialProductsAdd.preIncome" placeholder="请输入每万元收益"></Input>
             </FormItem>
-            <FormItem label="投资期限" prop="invesTerm">
+            <FormItem label="投资期限(年)" prop="invesTerm">
               <Input v-model.trim="formValidateFinancialProductsAdd.invesTerm" placeholder="请输入投资期限"></Input>
             </FormItem>
             <FormItem label="起投金额" prop="invesMoney">
@@ -396,7 +396,7 @@
             //console.log(this.formValidate);
             let financialProducts = this.formValidateFinancialProductsAdd;
             this.loadingModel = true; //启动提交按钮转圈
-            
+
             let searchPream = {xyfkey:"financialProducts",xyfval:financialProducts,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
@@ -414,7 +414,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            }); 
+            });
 
           } else {
             this.$Message.error("验证失败!");
@@ -439,7 +439,7 @@
             }).catch((e) => {
               console.log(e);
               this.$Message.error("操作失败了!");
-            });  
+            });
 
           },
           onCancel: () => {
@@ -489,7 +489,7 @@
               console.log(e);
               this.$Message.error("操作失败了!");
               this.loadingModel = false; //关闭提交按钮转圈
-            });     
+            });
 
           } else {
             this.$Message.error("Fail!");
