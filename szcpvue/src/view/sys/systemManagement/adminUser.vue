@@ -45,28 +45,13 @@
                   <FormItem label="年龄" prop="age">
                     <Input v-model="formValidateAdd.age" placeholder="请填写年龄"></Input>
                   </FormItem>
-                  <FormItem label="学历" prop="education">
-                    <Input v-model="formValidateAdd.education" placeholder="请填写学历"></Input>
+                  <FormItem label="身份证号" prop="idcard">
+                    <Input v-model="formValidateAdd.idcard" placeholder="请填写身份证号"></Input>
                   </FormItem>
-                  <FormItem label="学校" prop="school">
-                    <Input v-model="formValidateAdd.school" placeholder="请填写学校"></Input>
-                  </FormItem>
-                  <FormItem label="工作类型" prop="subject">
-                    <!-- <Input v-model="formValidateAdd.subject" placeholder="请填工作类型"></Input> -->
-                    <Select v-model="formValidateAdd.subject">
-                      <Option v-for="(item, index) in jobStyle" :key="index" v-text="item.label"
-                              :value="item.value+''">{{item.label}}
-                      </Option>
-                    </Select>
+                  <FormItem label="地址" prop="address">
+                    <Input v-model="formValidateAdd.address" placeholder="请填写地址"></Input>
                   </FormItem>
 
-<!--                  <FormItem label="角色" prop="roleId">-->
-<!--                    <Select v-model="formValidateAdd.roleId">-->
-<!--                      <Option v-for="(item, index) in roleAllList" :key="index" v-text="item.roleName"-->
-<!--                              :value="item.id+''">{{item.roleName}}-->
-<!--                      </Option>-->
-<!--                    </Select>-->
-<!--                  </FormItem>-->
                 </Form>
                 <div slot="footer">
                   <Button type="text" size="large" @click="modalAddAdminUser=false">取消</Button>
@@ -144,10 +129,8 @@
           adminFullname: '', //用户姓名（真名）
           adminPhone: '', //手机号
           age:"", //年龄
-          education:"", // 学历
-          school:"", //学校
-          subject:"",// 工作类型
-          roleId:"3", //角色
+          idcard:"",
+          address:"",
           superiorUserId: this.$store.state.user.userId,
         },
 
@@ -307,11 +290,12 @@
       addClick() {
         //发送请求
         this.modelType = "add";
-        this.modelTitle = "添加",//弹窗标题
-        this.getRoleAllList().then(res => {
-          this.roleAllList = res.data;
-          this.modalAddAdminUser = true;
-        })
+        this.modelTitle = "添加";//弹窗标题
+        this.modalAddAdminUser = true;
+        // this.getRoleAllList().then(res => {
+        //   this.roleAllList = res.data;
+        //   this.modalAddAdminUser = true;
+        // })
       },
       //编辑按钮
       editModClick(params) {
@@ -319,11 +303,8 @@
         this.modelType = "edit";
         this.modelTitle = "编辑";//弹窗标题
         this.formValidateAdd=params.row;
-
-        this.getRoleAllList().then(res => {
-          this.roleAllList = res.data;
-          this.modalAddAdminUser = true;
-        })
+        this.modalAddAdminUser = true;
+        
       },
       //添加用户表单提交
       addAdminUserClick() {
@@ -341,16 +322,8 @@
         }
       },
       addModRules(){
-        // adminName: '', //用户账号
-        // adminFullname: '', //用户姓名（真名）
-        // adminPhone: '', //手机号
-        // age:"", //年龄
-        // education:"", // 学历
-        // school:"", //学校
-        // subject:"",// 工作类型
-        // roleId:"" //角色
-        let _msg = "";
 
+        let _msg = "";
         if(!this.formValidateAdd.adminFullname){
           _msg = "请填写用户姓名"
           this.$Message.error(_msg);
@@ -366,13 +339,13 @@
           this.$Message.error(_msg);
           return _msg;
         }
-        if(!this.formValidateAdd.education){
-          _msg = "请填写学历"
+        if(!this.formValidateAdd.idcard){
+          _msg = "身份证号"
           this.$Message.error(_msg);
           return _msg;
         }
-        if(!this.formValidateAdd.school){
-          _msg = "请填写学校"
+        if(!this.formValidateAdd.address){
+          _msg = "请填写地址"
           this.$Message.error(_msg);
           return _msg;
         }

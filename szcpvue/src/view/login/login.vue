@@ -5,10 +5,10 @@
   <template>
     <div class="login">
       <div class="login-con">
-        <Card icon="log-in" title="Valve公司实习招聘系统" :bordered="false">
+        <Card icon="log-in" title="银行帐目管理系统" :bordered="false">
           <div class="form-con">
             <login-form @on-success-valid="handleSubmit" @on-success-register="handleRegisterPage"></login-form>
-            <p class="login-tip" style="color: green">Valve公司实习招聘系统</p>
+            <p class="login-tip" style="color: green">银行帐目管理系统</p>
           </div>
         </Card>
       </div>

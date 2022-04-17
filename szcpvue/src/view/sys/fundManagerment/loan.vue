@@ -2,17 +2,16 @@
   <div>
     <div style="min-width:1000px">
       <Card shadow>
-        贷款
-        <!--添加理财产品-->
-        <Button v-if="buttonVerifAuthention('sys:financialProducts:addFinancialProducts')" type="primary" icon="md-add"
-          @click="addFinancialProductsButton" style="margin-bottom: 10px;">添加理财产品</Button>
+        <!--添加贷款-->
+        <Button v-if="buttonVerifAuthention('sys:loan:addLoan')" type="primary" icon="md-add"
+          @click="addLoanButton" style="margin-bottom: 10px;">添加贷款</Button>
         <Row>
           <!-- <Col span="3" style="margin-right: 10px;">
-          <Input v-model="titleSearch" placeholder="理财产品名称" clearable></Input>
+          <Input v-model="titleSearch" placeholder="贷款名称" clearable></Input>
           </Col>
           <Col span="3" style="margin-right: 10px;">
           <Select v-model="typeSearch" placeholder="类型" clearable>
-            <Option value="1" key="1">理财产品</Option>
+            <Option value="1" key="1">贷款</Option>
             <Option value="2" key="2">基金版块</Option>
             <Option value="3" key="3">基金公司</Option>
             <Option value="4" key="4">购买等级</Option>
@@ -27,58 +26,40 @@
         </Table>
         <Page :total="totalPage" show-total :styles="stylePage" @on-change="changePage" />
 
-        <!--添加理财产品弹出框-->
-        <Modal v-model="modalFinancialProductsAdd" title="添加理财产品" :mask-closable="false">
+        <!--添加贷款弹出框-->
+        <Modal v-model="modalLoanAdd" title="添加贷款" :mask-closable="false">
 
-          <Form ref="formValidateFinancialProductsAdd" :model="formValidateFinancialProductsAdd" :rules="ruleValidateFinancialProductsAdd"
+          <Form ref="formValidateLoanAdd" :model="formValidateLoanAdd" :rules="ruleValidateLoanAdd"
             :label-width="120">
-            <FormItem label="理财产品名称" prop="name">
-              <Input v-model.trim="formValidateFinancialProductsAdd.name" placeholder="请输入理财产品名称"></Input>
+
+            <FormItem label="借贷金额" prop="amoune">
+              <Input v-model.trim="formValidateLoanAdd.amoune" placeholder="请输入借贷金额"></Input>
             </FormItem>
-            <FormItem label="七日年化收益率" prop="annualIncome">
-              <Input v-model.trim="formValidateFinancialProductsAdd.annualIncome" placeholder="请输入七日年化收益率"></Input>
-            </FormItem>
-            <FormItem label="每万元收益" prop="preIncome">
-              <Input v-model.trim="formValidateFinancialProductsAdd.preIncome" placeholder="请输入每万元收益"></Input>
-            </FormItem>
-            <FormItem label="投资期限" prop="invesTerm">
-              <Input v-model.trim="formValidateFinancialProductsAdd.invesTerm" placeholder="请输入投资期限"></Input>
-            </FormItem>
-            <FormItem label="起投金额" prop="invesMoney">
-              <Input v-model.trim="formValidateFinancialProductsAdd.invesMoney" placeholder="请输入起投金额"></Input>
+            <FormItem label="借贷期限（年）" prop="term">
+              <Input v-model.trim="formValidateLoanAdd.term" placeholder="请输入借贷期限（年）"></Input>
             </FormItem>
 
           </Form>
           <div slot="footer">
-            <Button type="text" size="large" @click="modalFinancialProductsAdd=false">取消</Button>
-            <Button type="primary" size="large" @click="addFinancialProductsClick" :loading="loadingModel">确定</Button>
+            <Button type="text" size="large" @click="modalLoanAdd=false">取消</Button>
+            <Button type="primary" size="large" @click="addLoanClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
 
         <!--编辑菜单弹出框-->
-        <Modal v-model="modalFinancialProductsEdit" title="编辑理财产品" :mask-closable="false">
-          <Form ref="formValidateFinancialProductsEdit" :model="formValidateFinancialProductsEdit" :rules="ruleValidateFinancialProductsEdit"
+        <Modal v-model="modalLoanEdit" title="编辑贷款" :mask-closable="false">
+          <Form ref="formValidateLoanEdit" :model="formValidateLoanEdit" :rules="ruleValidateLoanEdit"
             :label-width="120">
-            <FormItem label="理财产品名称" prop="name">
-              <Input v-model.trim="formValidateFinancialProductsEdit.name" placeholder="请输入理财产品名称"></Input>
+            <FormItem label="借贷金额" prop="amoune">
+              <Input v-model.trim="formValidateLoanEdit.amoune" placeholder="请输入借贷金额"></Input>
             </FormItem>
-            <FormItem label="七日年化收益率" prop="annualIncome">
-              <Input v-model.trim="formValidateFinancialProductsEdit.annualIncome" placeholder="请输入七日年化收益率"></Input>
-            </FormItem>
-            <FormItem label="每万元收益" prop="preIncome">
-              <Input v-model.trim="formValidateFinancialProductsEdit.preIncome" placeholder="请输入每万元收益"></Input>
-            </FormItem>
-            <FormItem label="投资期限" prop="invesTerm">
-              <Input v-model.trim="formValidateFinancialProductsEdit.invesTerm" placeholder="请输入投资期限"></Input>
-            </FormItem>
-            <FormItem label="起投金额" prop="invesMoney">
-              <Input v-model.trim="formValidateFinancialProductsEdit.invesMoney" placeholder="请输入起投金额"></Input>
+            <FormItem label="借贷期限（年）" prop="term">
+              <Input v-model.trim="formValidateLoanEdit.term" placeholder="请输入借贷期限（年）"></Input>
             </FormItem>
           </Form>
-
           <div slot="footer">
-            <Button type="text" size="large" @click="modalFinancialProductsEdit=false">取消</Button>
-            <Button type="primary" size="large" @click="editFinancialProductsClick" :loading="loadingModel">确定</Button>
+            <Button type="text" size="large" @click="modalLoanEdit=false">取消</Button>
+            <Button type="primary" size="large" @click="editLoanClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
       </Card>
@@ -93,7 +74,6 @@
     name: "tree_table_page",
     data() {
       const isInteger = (rule, value, callback) => {
-        //console.log(value);
         if (value == null || value == "") {
           callback();
         } else {
@@ -118,149 +98,107 @@
         fetchNum: 10,
         totalPage: 0,
 
-        titleSearch: "", //理财产品名称
+        titleSearch: "", //贷款名称
         typeSearch: "", //类型
         //对话框
 
         loading: true, //表格加载转圈
         loadingModel: false, //表单提交按钮转圈
 
-        modalFinancialProductsAdd: false,
+        modalLoanAdd: false,
         //添加表单
-        formValidateFinancialProductsAdd: {
-          name: "", //理财产品名称
-          annualIncome:"", //七日年化收益率
-          preIncome: "",   //每万元收益
-          invesTerm: "",   //投资期限
-          invesMoney: ""   //起投金额
+        formValidateLoanAdd: {
+          amoune:"" ,//借贷金额
+          term:"" ,//借贷期限（年）
         },
         //表单验证
-        ruleValidateFinancialProductsAdd: {
-          name: [
-            { required: true, message: "请输入理财产品名称", trigger: "blur" },
-            {
-              type: "string",
-              max: 100,
-              message: "理财产品名称最长为30个字",
-              trigger: "blur"
-            }
-          ],
-          annualIncome: [
-            { required: true, message: "请输入七日年化收益率", trigger: "blur" },
+        ruleValidateLoanAdd: {
+          amoune: [
+            { required: true, message: "请输入借贷金额", trigger: "blur" },
             {
               type: "string",
               max: 20,
-              message: "七日年化收益率最长为20个字",
+              message: "借贷金额最长为20个字",
               trigger: "blur"
             }
           ],
-          preIncome: [
-            { required: true, message: "请输入每万元收益", trigger: "blur" },
+          term: [
+            { required: true, message: "请输入借贷期限（年）", trigger: "blur" },
             {
               type: "string",
               max: 20,
-              message: "每万元收益最长为20个字",
+              message: "借贷期限（年）最长为20个字",
               trigger: "blur"
             }
           ],
-          invesTerm: [
-            { required: true, message: "请输入投资期限", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "投资期限最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesMoney: [
-            { required: true, message: "请输入起投金额", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "起投金额最长为20个字",
-              trigger: "blur"
-            }
-          ],
-
         },
 
-        modalFinancialProductsEdit: false,
+        modalLoanEdit: false,
         //修改表单
-        formValidateFinancialProductsEdit: {
-          name: "", //理财产品名称
-          annualIncome:"", //七日年化收益率
-          preIncome: "",   //每万元收益
-          invesTerm: "",   //投资期限
-          invesMoney: ""   //起投金额
+        formValidateLoanEdit: {
+          amoune:"" ,//借贷金额
+          term:"" ,//借贷期限（年）
         },
 
         //表单验证
-        ruleValidateFinancialProductsEdit: {
-          name: [
-            { required: true, message: "请输入理财产品名称", trigger: "blur" },
-            {
-              type: "string",
-              max: 100,
-              message: "理财产品名称最长为30个字",
-              trigger: "blur"
-            }
-          ],
-          annualIncome: [
-            { required: true, message: "请输入七日年化收益率", trigger: "blur" },
+        ruleValidateLoanEdit: {
+          amoune: [
+            { required: true, message: "请输入借贷金额", trigger: "blur" },
             {
               type: "string",
               max: 20,
-              message: "七日年化收益率最长为20个字",
+              message: "借贷金额最长为20个字",
               trigger: "blur"
             }
           ],
-          preIncome: [
-            { required: true, message: "请输入每万元收益", trigger: "blur" },
+          term: [
+            { required: true, message: "请输入借贷期限（年）", trigger: "blur" },
             {
               type: "string",
               max: 20,
-              message: "每万元收益最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesTerm: [
-            { required: true, message: "请输入投资期限", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "投资期限最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesMoney: [
-            { required: true, message: "请输入起投金额", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "起投金额最长为20个字",
+              message: "借贷期限（年）最长为20个字",
               trigger: "blur"
             }
           ],
         },
         //表格列
         columns: [
-          // {
-          //   type: "index2",
-          //   width: 70,
-          //   title: "序号",
-          //   align: "center",
-          //   render: (h, params) => {
-          //     return h(
-          //       "span",
-          //       params.index + (this.currentPage - 1) * this.fetchNum + 1
-          //     );
-          //   }
-          // },
-          { title: "理财产品名称", align: "center", key: "name"},
-          { title: "七日年化收益率", align: "center", key: "annualIncome"},
-          { title: "每万元收益", align: "center", key: "preIncome"},
-          { title: "投资期限", align: "center", key: "invesTerm"},
-          { title: "起投金额", align: "center", key: "invesMoney"},
+
+          { title: "借贷人（客户）", align: "center", key: "idloanidName"},
+          { title: "审核人（员工）", align: "center", key: "idexamineidName"},
+          { title: "借贷时间", align: "center", key: "loanTime"},
+          { title: "借贷金额", align: "center", key: "amoune"},
+          { title: "借贷期限", align: "center", key: "term"},  
+          {
+            title: "申请状态",
+            align: "center",
+            key: "applyStatus",
+            render: (h, params) => {
+              if (params.row.applyStatus == 0) {
+                return h("div", { style: {} }, "未审核");
+              } else if (params.row.applyStatus == 1) {
+                return h("div", { style: {} }, "审核未通过");
+              } else if (params.row.applyStatus == 2) {
+                return h("div", { style: {} }, "审核通过");
+              } 
+            }
+          },
+          {
+            title: "借贷状态",
+            align: "center",
+            key: "loanStatus",
+            render: (h, params) => {
+              if (params.row.loanStatus == 0) {
+                return h("div", { style: {} }, "未逾期");
+              } else if (params.row.loanStatus == 1) {
+                return h("div", { style: {} }, "逾期");
+              } else if (params.row.loanStatus == 2) {
+                return h("div", { style: {} }, "已还清");
+              } 
+            }
+          },
+
+
           {
             title: "操作",
             key: "handle",
@@ -269,7 +207,7 @@
             render: (h, params) => {
               return h("div", [
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:updateFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:loan:updateLoan")) {
                     return h(
                       "Button",
                       {
@@ -282,7 +220,7 @@
                         },
                         on: {
                           click: () => {
-                            this.editFinancialProductsButton(params);
+                            this.editLoanButton(params);
                           }
                         }
                       },
@@ -291,7 +229,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:deleteFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:loan:deleteLoan")) {
                     return h(
                       "Button",
                       {
@@ -304,7 +242,7 @@
                         },
                         on: {
                           click: () => {
-                            this.deleteFinancialProductsButton(params);
+                            this.deleteLoanButton(params);
                           }
                         }
                       },
@@ -316,15 +254,20 @@
             }
           }
         ],
-
+   
         //表格数据
         tableData: [],
-        findList:"/sys/financialProducts/findFinancialProductsList",     //分页查询理财产品记录列表
-        addUrl:"/sys/financialProducts/addFinancialProducts",        //添加理财产品记录
-        updateUrl:"/sys/financialProducts/updateFinancialProducts",     //更新理财产品记录
-        deleUrl:"/sys/financialProducts/deleteFinancialProducts",     //删除理财产品记录
-        FindAllList:"",     //查询所有理财产品记录列表
-        findIdUrl:"",     //查询理财产品记录
+        findList:"/sys/loan/findLoanList",     //分页查询贷款记录列表
+        addUrl:"/sys/loan/addLoan",        //添加贷款记录
+        updateUrl:"/sys/loan/updateLoan",     //更新贷款记录
+        deleUrl:"/sys/loan/deleteLoan",     //删除贷款记录
+        FindAllList:"",     //查询所有贷款记录列表
+        findIdUrl:"",     //查询贷款记录
+        xyfAddkey:"loan",
+        xyfdelkey:"loanId",
+        xyfListkey:"searchPream",
+        xyfUpkey:"loan",
+
       };
     },
     created() {
@@ -346,21 +289,12 @@
       //获取页面菜单列表
       queryList() {
         this.loading = true;
-        // let searchPream = {
-        //   page: this.currentPage,
-        //   limit: this.fetchNum,
-        // };
-        // //发送请求
-        // this.getFinancialProductsList({ searchPream }).then(res => {
-        //   this.tableData = res.data;
-        //   this.totalPage = res.count;
-        //   this.loading = false;
-        // });
         let _searchPream = {
           page: this.currentPage,
           limit: this.fetchNum
         }
-        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
+
+        let searchPream = {xyfkey:this.xyfListkey,xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
         this.ajaxPost({searchPream}).then(res => {
           this.tableData = res.data;
@@ -377,17 +311,16 @@
         this.queryList();
       },
       //点击添加子菜单按钮
-      addFinancialProductsButton(scope) {
-        this.formValidateFinancialProductsAdd = {
-          bankCode: "",
-          payPassword: "",
-          cardType: ""
+      addLoanButton(scope) {
+        this.formValidateLoanAdd = {
+          amoune:"" ,//借贷金额
+          term:"" ,//借贷期限（年）
         };
-        this.modalFinancialProductsAdd = true;
+        this.modalLoanAdd = true;
       },
       //添加主菜单提交
-      addFinancialProductsClick() {
-        this.handleSubmitAdd("formValidateFinancialProductsAdd");
+      addLoanClick() {
+        this.handleSubmitAdd("formValidateLoanAdd");
       },
       //表单验证提交
       handleSubmitAdd(name) {
@@ -395,19 +328,18 @@
           if (valid) {
             //表单提交
             //console.log(this.formValidate);
-            let financialProducts = this.formValidateFinancialProductsAdd;
+            let loan = this.formValidateLoanAdd;
             this.loadingModel = true; //启动提交按钮转圈
-            
-            let searchPream = {xyfkey:"financialProducts",xyfval:financialProducts,xyfurl:this.addUrl}
+
+            let searchPream = {xyfkey:this.xyfAddkey,xyfval:loan,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
-              this.modalFinancialProductsAdd = false; //关闭弹窗
+              this.modalLoanAdd = false; //关闭弹窗
               //情况表单数据
-              this.formValidateFinancialProductsAdd = {
-                bankCode: "",
-                payPassword: "",
-                cardType: ""
+              this.formValidateLoanAdd = {
+                amoune:"" ,//借贷金额
+                term:"" ,//借贷期限（年）
               };
               //刷新菜单页面
               this.queryList();
@@ -424,14 +356,13 @@
       },
 
       //删除文章菜单
-      deleteFinancialProductsButton(scope) {
+      deleteLoanButton(scope) {
         this.$Modal.confirm({
           title: "删除",
           content: "<p>你确认要删除此条信息吗!</p>",
           onOk: () => {
-            let financialProductsId = scope.row.id;
-
-            let searchPream = {xyfkey:"financialProductsId",xyfval:financialProductsId,xyfurl:this.deleUrl}
+            let loanId = scope.row.id;
+            let searchPream = {xyfkey:this.xyfdelkey,xyfval:loanId,xyfurl:this.deleUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.$Message.info(res.msg);
@@ -450,40 +381,33 @@
       },
 
       //编辑
-      editFinancialProductsButton(scope) {
-        
-        this.formValidateFinancialProductsEdit.id = scope.row.id;
-        this.formValidateFinancialProductsEdit.annualIncome = scope.row.annualIncome;
-        this.formValidateFinancialProductsEdit.name = scope.row.name + "";
-        this.formValidateFinancialProductsEdit.preIncome = scope.row.preIncome + "";
-        this.formValidateFinancialProductsEdit.invesTerm = scope.row.invesTerm+ "";
-        this.formValidateFinancialProductsEdit.invesMoney = scope.row.invesMoney+ "";
-        this.modalFinancialProductsEdit = true;
+      editLoanButton(scope) {
+        this.formValidateLoanEdit.id = scope.row.id;
+        this.formValidateLoanEdit.amoune = scope.row.amoune+ "";
+        this.formValidateLoanEdit.term = scope.row.term+ "";
+        this.modalLoanEdit = true;
       },
 
       //编辑菜单提交
-      editFinancialProductsClick() {
-        this.handleSubmitEdit("formValidateFinancialProductsEdit");
+      editLoanClick() {
+        this.handleSubmitEdit("formValidateLoanEdit");
       },
       //表单验证提交
       handleSubmitEdit(name) {
         this.$refs[name].validate(valid => {
           if (valid) {
             //表单提交
-            let financialProducts = this.formValidateFinancialProductsEdit;
+            let loan = this.formValidateLoanEdit;
             this.loadingModel = true; //启动提交按钮转圈
-
-            let searchPream = {xyfkey:"financialProducts",xyfval:financialProducts,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:this.xyfUpkey,xyfval:loan,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
-              this.modalFinancialProductsEdit = false; //关闭弹窗
+              this.modalLoanEdit = false; //关闭弹窗
               //情况表单数据
-              this.formValidateFinancialProductsEdit = {
-                id: "",
-                bankCode: "",
-                payPassword: "",
-                cardType: ""
+              this.formValidateLoanEdit = {
+                amoune:"" ,//借贷金额
+                term:"" ,//借贷期限（年）
               };
               //刷新菜单页面
               this.queryList();
