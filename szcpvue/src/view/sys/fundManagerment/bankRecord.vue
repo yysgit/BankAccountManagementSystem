@@ -38,7 +38,7 @@
               <Input v-model.trim="formValidateBankRecordAdd.bankCode" placeholder="请输入银行卡号"></Input>
             </FormItem>
             <FormItem label="流转金额" prop="flowMoney">
-              <Input type="password" v-model.trim="formValidateBankRecordAdd.flowMoney" placeholder="请输入流转金额"></Input>
+              <Input v-model.trim="formValidateBankRecordAdd.flowMoney" placeholder="请输入流转金额"></Input>
             </FormItem>
             <FormItem label="流水类型" prop="type">
               <Select v-model="formValidateBankRecordAdd.type" placeholder="请选择" clearable>
@@ -50,7 +50,7 @@
               <Select v-model="formValidateBankRecordAdd.source" placeholder="请选择" clearable>
                 <Option value="0" key="0">存取款</Option>
                 <Option value="1" key="1">贷款</Option>
-                <Option value="1" key="1">购买理财产品</Option>
+                <Option value="2" key="2">购买理财产品</Option>
               </Select>
             </FormItem>
           </Form>
@@ -68,7 +68,7 @@
               <Input v-model.trim="formValidateBankRecordEdit.bankCode" placeholder="请输入银行卡号"></Input>
             </FormItem>
             <FormItem label="流转金额" prop="flowMoney">
-              <Input type="password" v-model.trim="formValidateBankRecordEdit.flowMoney" placeholder="请输入流转金额"></Input>
+              <Input v-model.trim="formValidateBankRecordEdit.flowMoney" placeholder="请输入流转金额"></Input>
             </FormItem>
             <FormItem label="流水类型" prop="type">
               <Select v-model="formValidateBankRecordEdit.type" placeholder="请选择" clearable>
@@ -80,7 +80,7 @@
               <Select v-model="formValidateBankRecordEdit.source" placeholder="请选择" clearable>
                 <Option value="0" key="0">存取款</Option>
                 <Option value="1" key="1">贷款</Option>
-                <Option value="1" key="1">购买理财产品</Option>
+                <Option value="2" key="2">购买理财产品</Option>
               </Select>
             </FormItem>
           </Form>
@@ -201,36 +201,46 @@
         },
         //表格列
         columns: [
+          // {
+          //   type: "index2",
+          //   width: 70,
+          //   title: "序号",
+          //   align: "center",
+          //   render: (h, params) => {
+          //     return h(
+          //       "span",
+          //       params.index + (this.currentPage - 1) * this.fetchNum + 1
+          //     );
+          //   }
+          // },
+          { title: "银行卡号", align: "center", key: "bankCode"},
+          { title: "周转金额", align: "center", key: "flowMoney"},
           {
-            type: "index2",
-            width: 70,
-            title: "序号",
+            title: "类型",
             align: "center",
+            key: "type",
             render: (h, params) => {
-              return h(
-                "span",
-                params.index + (this.currentPage - 1) * this.fetchNum + 1
-              );
+              if (params.row.type == 0) {
+                return h("div", { style: {} }, "支出");
+              } else if (params.row.type == 1) {
+                return h("div", { style: {} }, "收入");
+              } 
             }
           },
-          { title: "银行卡流水编号", align: "center", width: 180, key: "bankCode" },
           {
-            title: "银行卡流水编号类型",
+            title: "来源",
             align: "center",
-            width: 150,
-            key: "cardType",
+            key: "source",
             render: (h, params) => {
-              if (params.row.cardType == 0) {
-                return h("div", { style: {} }, "借记卡");
-              } else if (params.row.cardType == 1) {
-                return h("div", { style: {} }, "信用卡");
-              }
+              if (params.row.source == 0) {
+                return h("div", { style: {} }, "存取款");
+              } else if (params.row.source == 1) {
+                return h("div", { style: {} }, "贷款");
+              }else if (params.row.source == 2) {
+                return h("div", { style: {} }, "购买理财产品");
+              }  
             }
           },
-          { title: "用户", align: "center", width: 100, key: " userName" },
-          { title: "余额", align: "center", width: 150, key: "balance" },
-          { title: "办卡时间", align: "center", width: 150, key: "cardTime" },
-          { title: "上次操作时间", align: "center", width: 150, key: "lastActiveTime" },
           {
             title: "操作",
             key: "handle",
@@ -423,8 +433,9 @@
       editBankRecordButton(scope) {
         this.formValidateBankRecordEdit.id = scope.row.id;
         this.formValidateBankRecordEdit.bankCode = scope.row.bankCode + "";
-        this.formValidateBankRecordEdit.payPassword = scope.row.payPassword + "";
-        this.formValidateBankRecordEdit.cardType = scope.row.cardType+ "";
+        this.formValidateBankRecordEdit.flowMoney = scope.row.flowMoney + "";
+        this.formValidateBankRecordEdit.type = scope.row.type+ "";
+        this.formValidateBankRecordEdit.source = scope.row.source+ "";
         this.modalBankRecordEdit = true;
       },
 
@@ -440,7 +451,7 @@
             let bankRecord = this.formValidateBankRecordEdit;
             this.loadingModel = true; //启动提交按钮转圈
 
-            let searchPream = {xyfkey:"bankRecord",xyfval:bankRecord,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:"bankRecord",xyfval:bankRecord,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈

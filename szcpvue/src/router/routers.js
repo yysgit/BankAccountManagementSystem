@@ -75,16 +75,6 @@ export default [
     ]
   },
 
-
-  {
-    path: '/sys/login',
-    name: 'sys/login',
-    meta: {
-      title: 'Login - 登录',
-      hideInMenu: true
-    },
-    component: () => import('@/view/login/login.vue')
-  },
   {
     path: '/sys',
     name: '_home',
@@ -188,15 +178,7 @@ export default [
         },
         component: () => import('@/view/sys/systemManagement/organ.vue')
       },
-      {
-        path: 'bankAccountPro/client',
-        name: 'bankAccountPro/client',
-        meta: {
-          icon: 'md-people',
-          title: '理财产品'
-        },
-        component: () => import('@/view/bankAccountPro/client.vue')
-      },
+
       {
         path: 'bankAccountPro/loan',
         name: 'bankAccountPro/loan',
@@ -206,24 +188,8 @@ export default [
         },
         component: () => import('@/view/bankAccountPro/loan.vue')
       },
-      {
-        path: 'bankAccountPro/financialProducts',
-        name: 'bankAccountPro/financialProducts',
-        meta: {
-          icon: 'ios-card',
-          title: '理财产品'
-        },
-        component: () => import('@/view/bankAccountPro/financialProducts.vue')
-      },
-      {
-        path: 'sys/bankRecord',
-        name: 'sys/bankRecord',
-        meta: {
-          icon: 'ios-card',
-          title: '资金流水'
-        },
-        component: () => import('@/view/sys/fundManagerment/bankRecord.vue')
-      },
+
+ 
       {
         path: 'sys/bankCard',
         name: 'sys/bankCard',
@@ -245,14 +211,41 @@ export default [
     },
     component: Main,
     children: [
+      // {
+      //   path: 'bankAccountPro/client',
+      //   name: 'bankAccountPro/client',
+      //   meta: {
+      //     icon: 'md-people',
+      //     title: '理财产品'
+      //   },
+      //   component: () => import('@/view/bankAccountPro/client.vue')
+      // },
       {
-        path: 'bankAccountPro/client',
-        name: 'bankAccountPro/client',
+        path: 'sys/financialProducts',
+        name: 'sys/financialProducts',
         meta: {
-          icon: 'md-people',
-          title: '客户信息'
+          icon: 'ios-card',
+          title: '理财产品'
         },
-        component: () => import('@/view/bankAccountPro/client.vue')
+        component: () => import('@/view/sys/fundManagerment/financialProducts.vue')
+      },
+      {
+        path: 'sys/bankRecord',
+        name: 'sys/bankRecord',
+        meta: {
+          icon: 'ios-card',
+          title: '资金流水'
+        },
+        component: () => import('@/view/sys/fundManagerment/bankRecord.vue')
+      },
+      {
+        path: 'sys/loan',
+        name: 'sys/loan',
+        meta: {
+          icon: 'ios-card',
+          title: '资金流水'
+        },
+        component: () => import('@/view/sys/fundManagerment/loan.vue')
       },
 
       
