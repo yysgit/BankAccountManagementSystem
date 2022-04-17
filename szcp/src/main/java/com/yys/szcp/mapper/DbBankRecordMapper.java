@@ -17,6 +17,7 @@ public interface DbBankRecordMapper {
      */
     int addBankRecord(DbBankRecord bankRecord);
 
+
     /**
      * 查询银行卡记录列表
      * @param map

@@ -52,6 +52,14 @@
                     <Input v-model="formValidateAdd.address" placeholder="请填写地址"></Input>
                   </FormItem>
 
+                  <FormItem label="角色" prop="roleId">
+                    <Select v-model="formValidateAdd.roleId">
+                      <Option v-for="(item, index) in roleAllList" :key="index" v-text="item.roleName"
+                              :value="item.id+''">{{item.roleName}}
+                      </Option>
+                    </Select>
+                  </FormItem>
+
                 </Form>
                 <div slot="footer">
                   <Button type="text" size="large" @click="modalAddAdminUser=false">取消</Button>
@@ -125,13 +133,11 @@
         //添加表单
         formValidateAdd: {
           id:'',
-          adminName: '', //用户账号
           adminFullname: '', //用户姓名（真名）
           adminPhone: '', //手机号
-          age:"", //年龄
           idcard:"",
           address:"",
-          superiorUserId: this.$store.state.user.userId,
+          roleId:"",
         },
 
         //编辑表单验证
@@ -147,9 +153,12 @@
           adminPhone: [
             {required: true, message: '请输入登陆账号', trigger: 'blur'},
           ],
-          // roleId: [
-          //   {required: true, message: '请选择角色', trigger: 'blur'},
-          // ],
+          idcard: [
+            {required: true, message: '请输入身份证', trigger: 'blur'},
+          ],
+          roleId: [
+            {required: true, message: '请选择角色', trigger: 'blur'},
+          ],
         },
 
         columns: [
@@ -165,6 +174,8 @@
           {title: '用户名', align: "center", key: 'adminName'},
           {title: '姓名', align: "center", key: 'adminFullname'},
           {title: '手机', align: "center", key: 'adminPhone'},
+          {title: '身份证', align: "center", key: 'idcard'},
+          {title: '地址', align: "center", key: 'address'},
           {title: '角色', align: "center", key: 'roleName'},
           {
             title: '操作',
@@ -291,20 +302,28 @@
         //发送请求
         this.modelType = "add";
         this.modelTitle = "添加";//弹窗标题
-        this.modalAddAdminUser = true;
-        // this.getRoleAllList().then(res => {
-        //   this.roleAllList = res.data;
-        //   this.modalAddAdminUser = true;
-        // })
+        this.getRoleAllList().then(res => {
+          this.roleAllList = res.data;
+          this.modalAddAdminUser = true;
+        })
       },
       //编辑按钮
       editModClick(params) {
         //发送请求
         this.modelType = "edit";
         this.modelTitle = "编辑";//弹窗标题
-        this.formValidateAdd=params.row;
-        this.modalAddAdminUser = true;
-        
+        // this.formValidateAdd=params.row;
+        this.getRoleAllList().then(res => {
+          this.roleAllList = res.data;
+          this.formValidateAdd.id = params.row.id;
+          this.formValidateAdd.adminName = params.row.adminName;
+          this.formValidateAdd.adminFullname = params.row.adminFullname;
+          this.formValidateAdd.adminPhone = params.row.adminPhone;
+          this.formValidateAdd.address = params.row.address;
+          this.formValidateAdd.idcard = params.row.idcard;
+          this.formValidateAdd.roleId = params.row.roleId + '';
+          this.modalAddAdminUser = true;
+        })
       },
       //添加用户表单提交
       addAdminUserClick() {
@@ -315,9 +334,7 @@
           console.log(_back,3434)
           return false
         }else{
-          if(this.formValidateAdd.subject=='0'){
-            this.formValidateAdd.subject = "";
-          }
+
           this.handleSubmit('formValidateAdd');
         }
       },
@@ -334,11 +351,7 @@
           this.$Message.error(_msg);
           return _msg;
         }
-        if(!this.formValidateAdd.age){
-          _msg = "请填写年龄"
-          this.$Message.error(_msg);
-          return _msg;
-        }
+
         if(!this.formValidateAdd.idcard){
           _msg = "身份证号"
           this.$Message.error(_msg);
@@ -349,8 +362,8 @@
           this.$Message.error(_msg);
           return _msg;
         }
-        
-   
+
+
         return _msg;
       },
       //表单验证提交

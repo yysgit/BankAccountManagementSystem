@@ -44,6 +44,8 @@ public interface DbLoanMapper {
      * @return
      */
     int updateLoan(DbLoan loan);
+    int updateUserLoan(DbLoan loan);
+    int updateUserLoanRepayment(DbLoan loan);
 
     /**
      * 删除贷款

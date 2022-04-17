@@ -44,6 +44,16 @@ public class LoanServiceImpl implements DbLoanService {
     public int updateLoan(DbLoan loan) {
         return loanMapper.updateLoan(loan);
     }
+    @Override
+    public int updateUserLoan(DbLoan loan) {
+        return loanMapper.updateUserLoan(loan);
+    }
+
+    @Override
+    public int updateUserLoanRepayment(DbLoan loan) {
+        return loanMapper.updateUserLoanRepayment(loan);
+    }
+
 
     @Override
     public int deleteLoan(DbLoan loan) {

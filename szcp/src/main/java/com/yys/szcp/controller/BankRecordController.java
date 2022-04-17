@@ -166,6 +166,8 @@ public class BankRecordController {
             Map map = new HashMap();
             map.put("page", (StringISNULLUtil.mapToInteger(searchPreamMy.get("page").toString()) - 1) * 10);
             map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
+            map.put("userId", adminUser.getId());
+            map.put("roleId", adminUser.getRoleId()+"a");
 
             resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
             resultUtil.setMsg("查询成功!");

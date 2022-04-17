@@ -3,7 +3,11 @@ package com.yys.szcp.controller;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.yys.szcp.constant.ExceptionConstant;
 import com.yys.szcp.entity.DbAdminUser;
+import com.yys.szcp.entity.DbBankCard;
+import com.yys.szcp.entity.DbBankRecord;
 import com.yys.szcp.entity.DbFinancialProducts;
+import com.yys.szcp.mapper.DbBankRecordMapper;
+import com.yys.szcp.service.DbBankCardService;
 import com.yys.szcp.service.DbFinancialProductsService;
 import com.yys.szcp.utils.ResultUtil;
 import com.yys.szcp.utils.StringISNULLUtil;
@@ -28,8 +32,10 @@ public class FinancialProductsController {
 
     @Autowired
     private DbFinancialProductsService financialProductsService;
-
-
+    @Autowired
+    private DbBankCardService bankCardService;
+    @Autowired
+    private DbBankRecordMapper dbBankRecordMapper;
     /**
      * 添加理财产品
      *
@@ -60,6 +66,55 @@ public class FinancialProductsController {
             return ResultUtil.error("添加失败!");
         }
     }
+
+
+    /**
+     * 添加理财产品
+     *
+     * @param request
+     * @param financialProducts
+     * @return
+     */
+    @RequestMapping("addUserFinancialProducts")
+    @ResponseBody
+    public ResultUtil addUserFinancialProducts(HttpServletRequest request, String financialProducts) {
+
+        try {
+            //封装数据
+            Map financialProducts1 =(Map) JSONUtils.parse(financialProducts);
+              DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
+            Map mapParam=new HashMap();
+            mapParam.put("financialProductsId",StringISNULLUtil.mapToInteger(financialProducts1.get("financialProductsId")));
+            mapParam.put("userId",adminUser.getId());
+            mapParam.put("money",StringISNULLUtil.mapToDouble(financialProducts1.get("money")));
+            mapParam.put("bankCard",StringISNULLUtil.mapToString(financialProducts1.get("bankCard")));
+
+
+            DbBankRecord bankRecordMy=new DbBankRecord();
+            bankRecordMy.setBankCode(StringISNULLUtil.mapToString(financialProducts1.get("bankCard")));
+
+            DbBankCard bankCard=   bankCardService.findBankCardByCardCode(bankRecordMy.getBankCode(),null);
+            bankRecordMy.setFlowMoney(bankCard.getBalance()-StringISNULLUtil.mapToDouble(financialProducts1.get("money")));
+
+            bankCardService.updateBankCardByCardCode(bankRecordMy);
+
+            DbBankRecord dbBankRecord=new DbBankRecord();
+            dbBankRecord.setBankCode(StringISNULLUtil.mapToString(financialProducts1.get("bankCard")));
+            dbBankRecord.setType(0);
+            dbBankRecord.setFlowMoney(StringISNULLUtil.mapToDouble(financialProducts1.get("money")));
+            dbBankRecord.setSource(2);
+            dbBankRecordMapper.addBankRecord(dbBankRecord);
+
+
+            financialProductsService.addUserFinancialProducts(mapParam);
+            return ResultUtil.success("添加成功!");
+        } catch (Exception e) {
+            logger.error("添加理财产品错误: " + e.getMessage());
+            return ResultUtil.error("添加失败!");
+        }
+    }
+
+
 
 
     /**
@@ -158,6 +213,7 @@ public class FinancialProductsController {
             Map map = new HashMap();
             map.put("page", (StringISNULLUtil.mapToInteger(searchPreamMy.get("page").toString()) - 1) * 10);
             map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
+            map.put("searchName", StringISNULLUtil.mapToString(searchPreamMy.get("searchName")));
 
             resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
             resultUtil.setMsg("查询成功!");
@@ -169,6 +225,45 @@ public class FinancialProductsController {
             return ResultUtil.error("查询失败!");
         }
     }
+
+
+
+    /**
+     * 分页查询理财产品列表
+     * @param request
+     * @param searchPream
+     * @return
+     */
+    @RequestMapping("findUserFinancialProductsList")
+    @ResponseBody
+    public ResultUtil findUserFinancialProductsList(HttpServletRequest request, String searchPream) {
+        try {
+
+            //封装数据
+            Map searchPreamMy =(Map) JSONUtils.parse(searchPream);
+
+            ResultUtil resultUtil = new ResultUtil();
+
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
+            Map map = new HashMap();
+            map.put("page", (StringISNULLUtil.mapToInteger(searchPreamMy.get("page").toString()) - 1) * 10);
+            map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
+            map.put("searchName", StringISNULLUtil.mapToString(searchPreamMy.get("searchName")));
+
+            map.put("roleId", adminUser.getRoleId()+"a");
+            map.put("userId", adminUser.getId());
+
+            resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
+            resultUtil.setMsg("查询成功!");
+            resultUtil.setCount(financialProductsService.findUserFinancialProductsListCount(map));
+            resultUtil.setData(financialProductsService.findUserFinancialProductsList(map));
+            return resultUtil;
+        } catch (Exception e) {
+            logger.error("添加理财产品错误: " + e.getMessage());
+            return ResultUtil.error("查询失败!");
+        }
+    }
+
 
     /**
      * 查询所有理财产品列表

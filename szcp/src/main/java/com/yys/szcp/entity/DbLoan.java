@@ -48,7 +48,15 @@ public class DbLoan {
      * 借贷状态（0：未逾期，1：逾期，2：已还清）
      */
 	private Integer loanStatus;
+	private String cardCode;
 
+	public String getCardCode() {
+		return cardCode;
+	}
+
+	public void setCardCode(String cardCode) {
+		this.cardCode = cardCode;
+	}
 
 	public Integer getId() {
 		return id;

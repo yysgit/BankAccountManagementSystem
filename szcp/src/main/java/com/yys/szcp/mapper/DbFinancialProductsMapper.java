@@ -27,6 +27,12 @@ public interface DbFinancialProductsMapper {
     int findFinancialProductsListCount(Map map);
 
     @MapKey("id")
+    List<Map> findUserFinancialProductsList(Map map);
+    int findUserFinancialProductsListCount(Map map);
+
+
+
+    @MapKey("id")
     List<Map> findFinancialProductsAllList(Map map);
 
 
@@ -50,6 +56,8 @@ public interface DbFinancialProductsMapper {
      * @return
      */
     int deleteFinancialProducts(DbFinancialProducts financialProducts);
+
+    int addUserFinancialProducts(Map map);
 
 
 

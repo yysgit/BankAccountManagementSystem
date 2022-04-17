@@ -12,19 +12,30 @@
 
     <!--分页查询银行卡记录列表-->
     <select id="findBankRecordList" resultType="java.util.Map" parameterType="java.util.Map">
-        select id,
-               bank_code  as bankCode,
-               flow_money as flowMoney,
-               type       as type,
-               source     as source
-        from db_bank_record
+        select
+        dbbr.id,
+        dbbr.bank_code as bankCode,
+        dbbr.flow_money as flowMoney,
+        dbbr.type as type,
+        dbbr.source as source
+        from db_bank_record dbbr
+        left join db_bank_card dbbc on dbbc.card_code=dbbr.bank_code
+        where 1=1
+        <if test="roleId=='4a'">
+            and dbbc.user_id=#{userId}
+        </if>
         order by id DESC
         limit #{page} , #{limit};
     </select>
 
     <select id="findBankRecordListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
-        from db_bank_record
+        from db_bank_record dbbr
+        left join db_bank_card dbbc on dbbc.card_code=dbbr.bank_code
+        where 1=1
+        <if test="roleId=='4a'">
+            and dbbc.user_id=#{userId}
+        </if>
     </select>
 
     <!--通过银行卡记录id 获取银行卡记录-->

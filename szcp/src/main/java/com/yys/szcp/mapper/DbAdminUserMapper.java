@@ -1,6 +1,7 @@
 package com.yys.szcp.mapper;
 
 import com.yys.szcp.entity.DbAdminUser;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,6 +24,7 @@ public interface DbAdminUserMapper {
      * @param map
      * @return
      */
+    @MapKey("id")
     List<Map> findAdminUserListByOrganId(Map map);
     int findAdminUserListByOrganIdCount(Map map);
 

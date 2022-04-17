@@ -29,7 +29,15 @@ public class FinancialProductsServiceImpl implements DbFinancialProductsService 
         return financialProductsMapper.findFinancialProductsListCount(map);
     }
 
+    @Override
+    public List<Map> findUserFinancialProductsList(Map map) {
+        return financialProductsMapper.findUserFinancialProductsList(map);
+    }
 
+    @Override
+    public int findUserFinancialProductsListCount(Map map) {
+        return financialProductsMapper.findUserFinancialProductsListCount(map);
+    }
     @Override
     public List<Map> findFinancialProductsAllList(Map map) {
         return  financialProductsMapper.findFinancialProductsAllList(map);
@@ -50,5 +58,8 @@ public class FinancialProductsServiceImpl implements DbFinancialProductsService 
         return financialProductsMapper.deleteFinancialProducts(financialProducts);
     }
 
-
+    @Override
+    public int addUserFinancialProducts(Map map) {
+        return financialProductsMapper.addUserFinancialProducts(map);
+    }
 }

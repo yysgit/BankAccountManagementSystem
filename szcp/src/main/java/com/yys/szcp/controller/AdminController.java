@@ -118,10 +118,11 @@ public class AdminController {
             //封装数据
             Map adminUser1 = (Map) JSONUtils.parse(adminUser);
             DbAdminUser adminUserMy = new DbAdminUser();
-            adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("username")));
-            adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("fullname")));
-            adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("phone")));
+            adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("adminPhone")));
+            adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("adminFullname")));
+            adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("adminPhone")));
             adminUserMy.setAddress(StringISNULLUtil.mapToString(adminUser1.get("address")));
+            adminUserMy.setIdcard(StringISNULLUtil.mapToString(adminUser1.get("idcard")));
 
             adminUserMy.setRoleId(StringISNULLUtil.mapToInteger(adminUser1.get("roleId")));
 
@@ -157,6 +158,9 @@ public class AdminController {
             Map map = new HashMap();
             map.put("page", (Integer.valueOf(search.get("page").toString()) - 1) * 10);
             map.put("limit", search.get("limit"));
+            map.put("roleId", adminUser.getRoleId()+"a");
+            map.put("userId", adminUser.getId());
+
 
             resultUtil.setData(adminService.findAdminUserListByOrganId(map));
             resultUtil.setCount(adminService.findAdminUserListByOrganIdCount(map));
@@ -185,14 +189,15 @@ public class AdminController {
             //封装数据
             Map adminUser1 = (Map) JSONUtils.parse(adminUser);
             DbAdminUser adminUserMy = new DbAdminUser();
-            adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("username")));
-            adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("fullname")));
-            adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("phone")));
-            adminUserMy.setRoleId(StringISNULLUtil.mapToInteger(adminUser1.get("roleId")));
+
             adminUserMy.setId(StringISNULLUtil.mapToInteger(adminUser1.get("id")));
+            adminUserMy.setAdminName(StringISNULLUtil.mapToString(adminUser1.get("adminPhone")));
+            adminUserMy.setAdminFullname(StringISNULLUtil.mapToString(adminUser1.get("adminFullname")));
+            adminUserMy.setAdminPhone(StringISNULLUtil.mapToString(adminUser1.get("adminPhone")));
             adminUserMy.setAddress(StringISNULLUtil.mapToString(adminUser1.get("address")));
+            adminUserMy.setIdcard(StringISNULLUtil.mapToString(adminUser1.get("idcard")));
 
-
+            adminUserMy.setRoleId(StringISNULLUtil.mapToInteger(adminUser1.get("roleId")));
             //验证名称是否重复
             List<DbAdminUser> adminUserList = adminService.findAdminUserByAdminName(adminUserMy.getId(), adminUserMy.getAdminName());
             if (adminUserList != null && adminUserList.size() > 0) {

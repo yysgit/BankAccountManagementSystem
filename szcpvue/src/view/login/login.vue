@@ -1,7 +1,7 @@
 <style lang="less">
   @import './login.less';
   </style>
-  
+
   <template>
     <div class="login">
       <div class="login-con">
@@ -14,11 +14,12 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   import LoginForm from '_c/login-form'
   import {mapActions} from 'vuex'
-  
+  import {addAdminUser} from "../../api/user";
+
   export default {
     components: {
       LoginForm
@@ -27,24 +28,24 @@
       //注册that
       this.setThat();
     },
-  
-  
+
+
     methods: {
       ...mapActions([
         'handleLogin',
         'getUserInfo',
         'getVcode',
         'setThatVue',
-        'handleRegister'
+        'addAdminUser'
       ]),
-  
+
       //设置that
       setThat() {
         var that = this;
         this.setThatVue({that}).then(res => {
           // console.log("设置that:"+res);
         })
-  
+
       },
       handleSubmit({username, password, vcode}) {
         this.handleLogin({username, password, vcode}).then(res => {
@@ -68,29 +69,30 @@
        */
       handleRegisterPage(value) {
         console.log(value, "请求接口了");
-  
+
+
         let adminUser = {
-          phone: value.phone,//手机号（用户名）
-          fullname: value.reusername,//真实姓名
-          username: value.phone,//用户名
+          adminPhone: value.phone,//手机号（用户名）
+          adminFullname: value.reusername,//真实姓名
           password: value.passwdCheck,//密码
           roleId: value.roleId,//角色
+          address: value.address,//角色
+          idcard: value.idcard,//角色
         }
         console.log(adminUser);
-        this.handleRegister({adminUser}).then(res => {
+        this.addAdminUser({adminUser}).then(res => {
           // console.log("login请求:" + res);
           if (res.code == 200) {
             this.$Message.success("注册成功!")
           }
         })
       },
-  
-  
+
+
     }
   }
   </script>
-  
+
   <style>
-  
+
   </style>
-  

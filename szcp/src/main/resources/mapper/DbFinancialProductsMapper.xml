@@ -9,6 +9,52 @@
         values (#{name}, #{annualIncome}, #{preIncome}, #{invesTerm}, #{invesMoney});
     </insert>
 
+    <insert id="addUserFinancialProducts" parameterType="java.util.Map">
+        insert into db_financial_products_user (financial_products_id,user_id,money,bank_card,create_time)
+        values (#{financialProductsId}, #{userId}, #{money},#{bankCard},now());
+    </insert>
+
+
+    <!--分页查询理财产品列表-->
+    <select id="findUserFinancialProductsList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+               dbfp.name          as name,
+               dbfp.annual_income as annualIncome,
+               dbfp.pre_income    as preIncome,
+               dbfp.inves_term    as invesTerm,
+               dbfp.inves_money   as invesMoney,
+               dbau.admin_fullname as adminFullname,
+               dbfpu.bank_card as bankCard,
+               dbfpu.money as money,
+               dbfpu.create_time as createTime
+        from db_financial_products_user dbfpu
+        join db_financial_products dbfp on dbfpu.financial_products_id = dbfp.id
+        join db_admin_user dbau on dbfpu.user_id = dbau.id
+
+        where 1=1
+        <if test="roleId=='4a'">
+            and  dbfpu.user_id=#{userId}
+        </if>
+        <if test="searchName!=null and searchName!=''">
+            and (dbfp.name LIKE concat(concat('%',#{searchName}),'%'))
+        </if>
+        order by dbfpu.id DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findUserFinancialProductsListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_financial_products_user dbfpu
+        join db_financial_products dbfp on dbfpu.financial_products_id = dbfp.id
+        where 1=1
+        <if test="roleId=='4a'">
+            and user_id=#{userId}
+        </if>
+        <if test="searchName!=null and searchName!=''">
+            and (dbfp.name LIKE concat(concat('%',#{searchName}),'%'))
+        </if>
+    </select>
+
 
     <!--分页查询理财产品列表-->
     <select id="findFinancialProductsList" resultType="java.util.Map" parameterType="java.util.Map">
@@ -19,6 +65,10 @@
                inves_term    as invesTerm,
                inves_money   as invesMoney
         from db_financial_products
+        where 1=1
+        <if test="searchName!=null and searchName!=''">
+            and (name LIKE concat(concat('%',#{searchName}),'%'))
+        </if>
         order by id DESC
         limit #{page} , #{limit};
     </select>
@@ -26,6 +76,10 @@
     <select id="findFinancialProductsListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
         from db_financial_products
+        where 1=1
+        <if test="searchName!=null and searchName!=''">
+            and (name LIKE concat(concat('%',#{searchName}),'%'))
+        </if>
     </select>
 
     <!--通过理财产品id 获取理财产品-->

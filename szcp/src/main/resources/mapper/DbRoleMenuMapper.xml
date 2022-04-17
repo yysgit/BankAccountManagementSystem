@@ -4,7 +4,7 @@
 
 
     <!--删除菜单角色-->
-    <delete id="deleteRoleMenuByTRoleMenu" parameterType="com.yys.szcp.entity.DbRoleMenu">
+    <delete id="deleteRoleMenuByRoleMenu" parameterType="com.yys.szcp.entity.DbRoleMenu">
         delete
         from db_role_menu
         where menu_id = #{menuId}

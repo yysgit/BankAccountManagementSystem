@@ -187,18 +187,6 @@ public class RoleController {
             map.put("adminUserId", adminUser.getId());
             List<Map> roleList=roleService.findRoleAllList(map);
 
-            //-----特殊处理开始--------
-            //运营员特殊处理 level 等于2 表示运营部
-            if(adminUser!=null&&adminUser.getLevel()==2){
-                List<Map> myRole=new ArrayList<>();
-                for(Map map1 : roleList){
-                    if(StringISNULLUtil.mapToInteger(map1.get("id"))==5){
-                        myRole.add(map1);
-                        return ResultUtil.success(myRole);
-                    }
-                }
-            }
-            //-----特殊处理结束--------
 
             return ResultUtil.success(roleList);
         } catch (Exception e) {

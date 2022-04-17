@@ -1,0 +1,36 @@
+[INFO ] 00:00:03.739 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/login
+[INFO ] 00:00:03.740 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 输出info级别的日志.....
+[INFO ] 00:00:03.781 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 00:00:03.781 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
+[INFO ] 00:00:03.963 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 00:00:06.334 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 00:00:06.340 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/role/findRoleList
+[INFO ] 00:00:06.345 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 00:00:18.106 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByRoleId
+[INFO ] 00:00:18.106 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/menu/findMenuByRoleId
+[INFO ] 00:00:18.108 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByRoleId
+[INFO ] 00:00:24.854 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 00:00:24.854 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/bankCard/findBankCardList
+[INFO ] 00:00:24.856 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 00:00:26.216 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankRecord/findBankRecordList
+[INFO ] 00:00:26.216 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/bankRecord/findBankRecordList
+[INFO ] 00:00:26.218 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankRecord/findBankRecordList
+[INFO ] 00:00:28.665 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findFinancialProductsList
+[INFO ] 00:00:28.665 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/financialProducts/findFinancialProductsList
+[INFO ] 00:00:28.667 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findFinancialProductsList
+[INFO ] 00:00:30.705 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/loan/findLoanList
+[INFO ] 00:00:30.705 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/loan/findLoanList
+[INFO ] 00:00:30.707 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/loan/findLoanList
+[INFO ] 00:00:36.051 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 00:00:36.051 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 00:00:36.054 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 00:00:38.768 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByMyRoleId
+[INFO ] 00:00:38.768 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/menu/findMenuByMyRoleId
+[INFO ] 00:00:38.769 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByMyRoleId
+[INFO ] 00:00:39.483 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 00:00:39.483 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 00:00:39.486 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 00:00:40.554 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 00:00:50.751 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 00:00:50.752 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 00:00:50.790 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

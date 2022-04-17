@@ -216,7 +216,7 @@ public class MenuController {
             }
 
             //删除菜单角色
-             menuService.deleteRoleMenuByTRoleId(myRoleId);
+             menuService.deleteRoleMenuByRoleId(myRoleId);
             //添加菜单角色
             String[] idList=idArray.split(",");
 

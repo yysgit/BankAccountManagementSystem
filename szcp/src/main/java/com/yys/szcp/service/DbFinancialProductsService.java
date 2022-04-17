@@ -14,6 +14,8 @@ public interface DbFinancialProductsService {
      * @return
      */
     int addFinancialProducts(DbFinancialProducts financialProducts);
+    int addUserFinancialProducts(Map map);
+
 
     /**
      * 查询理财产品列表
@@ -22,6 +24,10 @@ public interface DbFinancialProductsService {
      */
     List<Map> findFinancialProductsList(Map map);
     int findFinancialProductsListCount(Map map);
+
+
+    List<Map> findUserFinancialProductsList(Map map);
+    int findUserFinancialProductsListCount(Map map);
 
     List<Map> findFinancialProductsAllList(Map map);
 

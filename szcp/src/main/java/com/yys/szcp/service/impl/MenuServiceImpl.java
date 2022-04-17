@@ -59,7 +59,7 @@ public class MenuServiceImpl implements DbMenuService {
     }
 
     @Override
-    public int deleteRoleMenuByTRoleId(Integer roleId) {
-        return roleMenuMapper.deleteRoleMenuByTRoleId(roleId);
+    public int deleteRoleMenuByRoleId(Integer roleId) {
+        return roleMenuMapper.deleteRoleMenuByRoleId(roleId);
     }
 }

@@ -13,7 +13,7 @@ public interface DbRoleMenuMapper {
      * @param roleMenu
      * @return
      */
-    int deleteRoleMenuByTRoleMenu(DbRoleMenu roleMenu);
+    int deleteRoleMenuByRoleMenu(DbRoleMenu roleMenu);
 
     /**
      * 添加菜单角色
@@ -27,5 +27,5 @@ public interface DbRoleMenuMapper {
      * @param roleId
      * @return
      */
-    int deleteRoleMenuByTRoleId(Integer roleId);
+    int deleteRoleMenuByRoleId(Integer roleId);
 }

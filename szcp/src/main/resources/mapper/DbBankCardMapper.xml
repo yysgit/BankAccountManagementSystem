@@ -30,7 +30,9 @@
         <if test="searchCardType!=null and searchCardType !=''">
             and dbbc.card_type =#{searchCardType}
         </if>
-
+        <if test="roleId=='4a'">
+            and dbbc.user_id=#{userId}
+        </if>
 
         order by card_time DESC
         limit #{page} , #{limit};
@@ -38,7 +40,17 @@
 
     <select id="findBankCardListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
-        from db_bank_card
+        from db_bank_card dbbc
+        where 1=1
+        <if test="searchCardCode!=null and searchCardCode !=''">
+            and (dbbc.card_code LIKE concat(concat('%',#{searchCardCode}),'%'))
+        </if>
+        <if test="searchCardType!=null and searchCardType !=''">
+            and dbbc.card_type =#{searchCardType}
+        </if>
+        <if test="roleId=='4a'">
+            and dbbc.user_id=#{userId}
+        </if>
     </select>
 
     <!--通过银行卡id 获取银行卡-->
@@ -105,16 +117,22 @@
     <!--查询银行卡列表-->
     <select id="findBankCardAllList" resultType="java.util.Map" parameterType="java.util.Map">
         select dbbc.id,
-               dbbc.card_code        as cardCode,
-               dbbc.user_id          as userId,
-               adau.admin_fullname   as userName,
-               dbbc.balance          as balance,
-               dbbc.pay_password     as payPassword,
-               dbbc.card_type        as cardType,
-               dbbc.card_time        as cardTime,
-               dbbc.last_active_time as lastActiveTime
+        dbbc.card_code as cardCode,
+        dbbc.user_id as userId,
+        adau.admin_fullname as userName,
+        dbbc.balance as balance,
+        dbbc.pay_password as payPassword,
+        dbbc.card_type as cardType,
+        dbbc.card_time as cardTime,
+        dbbc.last_active_time as lastActiveTime
         from db_bank_card dbbc
-                 left join db_admin_user adau on adau.id = dbbc.user_id
+        left join db_admin_user adau on adau.id = dbbc.user_id
+        where 1=1
+        <if test="roleId=='4a'">
+            and dbbc.user_id=#{userId}
+        </if>
+
+
         order by card_time DESC;
     </select>
 

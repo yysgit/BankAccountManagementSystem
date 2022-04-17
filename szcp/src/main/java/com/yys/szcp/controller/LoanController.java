@@ -3,7 +3,11 @@ package com.yys.szcp.controller;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.yys.szcp.constant.ExceptionConstant;
 import com.yys.szcp.entity.DbAdminUser;
+import com.yys.szcp.entity.DbBankCard;
+import com.yys.szcp.entity.DbBankRecord;
 import com.yys.szcp.entity.DbLoan;
+import com.yys.szcp.service.DbBankCardService;
+import com.yys.szcp.service.DbBankRecordService;
 import com.yys.szcp.service.DbLoanService;
 import com.yys.szcp.utils.ResultUtil;
 import com.yys.szcp.utils.StringISNULLUtil;
@@ -29,6 +33,10 @@ public class LoanController {
 
     @Autowired
     private DbLoanService loanService;
+    @Autowired
+    private DbBankRecordService bankRecordService;
+    @Autowired
+    private DbBankCardService bankCardService;
 
 
     /**
@@ -51,6 +59,7 @@ public class LoanController {
             loanMy.setLoanUserId(adminUser.getId());
             loanMy.setAmoune(StringISNULLUtil.mapToDouble(loan1.get("amoune")));
             loanMy.setTerm(StringISNULLUtil.mapToInteger(loan1.get("term")));
+            loanMy.setCardCode(StringISNULLUtil.mapToString(loan1.get("cardCode")));
             loanMy.setLoanStatus(0);
             loanMy.setApplyStatus(0);
 
@@ -94,18 +103,14 @@ public class LoanController {
     @ResponseBody
     public ResultUtil updateLoan(HttpServletRequest request, String  loan) {
         try {
-
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
             //封装数据
             Map loan1 =(Map) JSONUtils.parse(loan);
             DbLoan loanMy=new DbLoan();
             loanMy.setId(StringISNULLUtil.mapToInteger(loan1.get("id").toString()));
-            loanMy.setLoanUserId(StringISNULLUtil.mapToInteger(loan1.get("loanUserId")));
-            loanMy.setExamineUserId(StringISNULLUtil.mapToInteger(loan1.get("examineUserId")));
+            loanMy.setLoanUserId(adminUser.getId());
             loanMy.setAmoune(StringISNULLUtil.mapToDouble(loan1.get("amoune")));
             loanMy.setTerm(StringISNULLUtil.mapToInteger(loan1.get("term")));
-            loanMy.setLoanStatus(StringISNULLUtil.mapToInteger(loan1.get("loanStatus")));
-            loanMy.setApplyStatus(StringISNULLUtil.mapToInteger(loan1.get("applyStatus")));
-
             loanService.updateLoan(loanMy);
             return ResultUtil.success("修改成功!");
         } catch (Exception e) {
@@ -113,6 +118,99 @@ public class LoanController {
             return ResultUtil.error("修改失败!");
         }
     }
+
+
+    /**
+     * 更新贷款
+     *
+     * @param request
+     * @param loan
+     * @return
+     */
+    @RequestMapping("updateUserLoan")
+    @ResponseBody
+    public ResultUtil updateUserLoan(HttpServletRequest request, String  loan) {
+        try {
+
+            //封装数据
+            Map loan1 =(Map) JSONUtils.parse(loan);
+            DbLoan loanMy=new DbLoan();
+            loanMy.setId(StringISNULLUtil.mapToInteger(loan1.get("id").toString()));
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
+            loanMy.setExamineUserId(adminUser.getId());
+            loanMy.setApplyStatus(StringISNULLUtil.mapToInteger(loan1.get("applyStatus")));
+
+
+            if(loanMy.getApplyStatus()==2){
+
+
+            DbBankRecord bankRecordMy=new DbBankRecord();
+
+            bankRecordMy.setBankCode(StringISNULLUtil.mapToString(loan1.get("cardCode")));
+            bankRecordMy.setFlowMoney(StringISNULLUtil.mapToDouble(loan1.get("amoune")));
+            bankRecordMy.setType(1);
+            bankRecordMy.setSource(1);
+
+
+            bankRecordService.addBankRecord(bankRecordMy);
+            DbBankCard bankCard=   bankCardService.findBankCardByCardCode(bankRecordMy.getBankCode(),null);
+            bankRecordMy.setFlowMoney(bankCard.getBalance()+bankRecordMy.getFlowMoney());
+
+            bankCardService.updateBankCardByCardCode(bankRecordMy);
+            }
+
+
+            loanService.updateUserLoan(loanMy);
+            return ResultUtil.success("修改成功!");
+        } catch (Exception e) {
+            logger.error("修改贷款错误: " + e.getMessage());
+            return ResultUtil.error("修改失败!");
+        }
+    }
+
+
+    /**
+     * 更新贷款
+     *
+     * @param request
+     * @param loan
+     * @return
+     */
+    @RequestMapping("updateUserLoanRepayment")
+    @ResponseBody
+    public ResultUtil updateUserLoanRepayment(HttpServletRequest request, String  loan) {
+        try {
+
+            //封装数据
+            Map loan1 =(Map) JSONUtils.parse(loan);
+            DbLoan loanMy=new DbLoan();
+            loanMy.setId(StringISNULLUtil.mapToInteger(loan1.get("id").toString()));
+            loanMy.setLoanStatus(StringISNULLUtil.mapToInteger(loan1.get("loanStatus")));
+
+            if(loanMy.getLoanStatus()==2) {
+                DbBankRecord bankRecordMy = new DbBankRecord();
+
+                bankRecordMy.setBankCode(StringISNULLUtil.mapToString(loan1.get("cardCode")));
+                bankRecordMy.setFlowMoney(StringISNULLUtil.mapToDouble(loan1.get("amoune")));
+                bankRecordMy.setType(0);
+                bankRecordMy.setSource(1);
+
+
+                bankRecordService.addBankRecord(bankRecordMy);
+                DbBankCard bankCard = bankCardService.findBankCardByCardCode(bankRecordMy.getBankCode(), null);
+                bankRecordMy.setFlowMoney(bankCard.getBalance() - bankRecordMy.getFlowMoney());
+
+                bankCardService.updateBankCardByCardCode(bankRecordMy);
+            }
+
+            loanService.updateUserLoanRepayment(loanMy);
+            return ResultUtil.success("修改成功!");
+        } catch (Exception e) {
+            logger.error("修改贷款错误: " + e.getMessage());
+            return ResultUtil.error("修改失败!");
+        }
+    }
+
 
     /**
      * 删除贷款
@@ -157,6 +255,8 @@ public class LoanController {
             Map map = new HashMap();
             map.put("page", (StringISNULLUtil.mapToInteger(searchPreamMy.get("page").toString()) - 1) * 10);
             map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
+            map.put("userId", adminUser.getId());
+            map.put("roleId", adminUser.getRoleId()+"a");
 
             resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
             resultUtil.setMsg("查询成功!");

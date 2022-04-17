@@ -65,8 +65,16 @@ public class DbAdminUser{
 	private Integer level;
 
 	private String address ;
+	private String idcard ;
 	private Integer credit;
 
+	public String getIdcard() {
+		return idcard;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
 
 	public String getAddress() {
 		return address;

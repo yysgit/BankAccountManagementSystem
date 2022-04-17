@@ -5,8 +5,8 @@
 
     <!--添加管理员用户-->
     <insert id="addAdminUser" parameterType="com.yys.szcp.entity.DbAdminUser">
-    insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address)
-    values (#{adminName}, #{adminPassword},#{adminFullname},#{adminPhone},#{roleId},now(),now(),#{address});
+    insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address,idcard)
+    values (#{adminName}, #{adminPassword},#{adminFullname},#{adminPhone},#{roleId},now(),now(),#{address},#{idcard});
   </insert>
 
     <!--查询管理员用户列表-->
@@ -20,17 +20,24 @@
         dbau.create_time AS createTime,
         dbau.update_time AS updateTime,
         dbr.role_name AS roleName,
+        dbau.idcard AS idcard,
         dbau.address AS address,
         dbau.credit AS credit
         from db_admin_user dbau
         left join db_role dbr on dbr.id=dbau.role_id
         where  dbau.delete_status=0
+        <if test="roleId=='4a'">
+           and dbau.id=#{userId}
+        </if>
         order by dbau.update_time DESC limit #{page} , #{limit};
     </select>
     <select id="findAdminUserListByOrganIdCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
         from db_admin_user
         where  delete_status=0
+        <if test="roleId=='4a'">
+            and id=#{userId}
+        </if>
     </select>
 
 
@@ -55,6 +62,7 @@
       dbau.update_time AS updateTime,
       dbr.role_name AS roleName,
       dbau.address AS address,
+      dbau.idcard AS idcard,
       dbau.credit AS credit
     from db_admin_user dbau
     left join db_role dbr on dbr.id=dbau.role_id
@@ -72,6 +80,7 @@
       dbau.create_time AS createTime,
       dbau.update_time AS updateTime,
       dbau.address AS address,
+      dbau.idcard AS idcard,
       dbau.credit AS credit
     from db_admin_user dbau
     where dbau.id=#{adminUserId}
@@ -90,6 +99,7 @@
        dbau.create_time AS createTime,
        dbau.update_time AS updateTime,
        dbau.address AS address,
+       dbau.idcard AS idcard,
        dbau.credit AS credit
     from db_admin_user dbau
     where dbau.admin_name=#{adminName} and dbau.admin_password=#{adminPassword} and dbau.delete_status=0;
@@ -105,6 +115,7 @@
             ,admin_phone = #{adminPhone}
             ,role_id = #{roleId}
             ,address = #{address}
+            ,idcard = #{idcard}
             ,credit = #{credit}
         where id = #{id}
     </update>
@@ -130,13 +141,14 @@
         dbau.create_time AS createTime,
         dbau.update_time AS updateTime,
         dbau.address AS address,
+        dbau.idcard AS idcard,
         dbau.credit AS credit
         from db_admin_user dbau
         <if test="adminUserId==null or adminUserId==0">
-            where dbau.admin_name=#{adminName};
+            where dbau.admin_name=#{username};
         </if>
         <if test="adminUserId!=null and adminUserId!=0">
-            where dbau.id!=#{adminUserId} and dbau.admin_name=#{adminName};
+            where dbau.id!=#{adminUserId} and dbau.admin_name=#{username};
         </if>
 
     </select>

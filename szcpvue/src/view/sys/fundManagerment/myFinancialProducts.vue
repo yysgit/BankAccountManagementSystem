@@ -4,6 +4,9 @@
       <Card shadow>
         <!--添加理财产品-->
         <Row>
+          <Col span="3" style="margin-right: 10px;">
+            <Input v-model="searchName" placeholder="理财产品名称" clearable></Input>
+          </Col>
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
@@ -29,8 +32,8 @@
         stylePage: {
           marginTop: "20px"
         },
-     
-  
+
+        searchName:'',
         currentPage: 1,
         fetchNum: 10,
         totalPage: 0,
@@ -38,23 +41,27 @@
         loadingModel: false, //表单提交按钮转圈
         //表格列
         columns: [
-          // {
-          //   type: "index2",
-          //   width: 70,
-          //   title: "序号",
-          //   align: "center",
-          //   render: (h, params) => {
-          //     return h(
-          //       "span",
-          //       params.index + (this.currentPage - 1) * this.fetchNum + 1
-          //     );
-          //   }
-          // },
+          {
+            type: "index2",
+            width: 70,
+            title: "序号",
+            align: "center",
+            render: (h, params) => {
+              return h(
+                "span",
+                params.index + (this.currentPage - 1) * this.fetchNum + 1
+              );
+            }
+          },
+          { title: "用户", align: "center", key: "adminFullname"},
+          { title: "用户理财金额", align: "center", key: "money"},
+          { title: "银行卡", align: "center", key: "bankCard"},
           { title: "理财产品名称", align: "center", key: "name"},
           { title: "七日年化收益率", align: "center", key: "annualIncome"},
           { title: "每万元收益", align: "center", key: "preIncome"},
           { title: "投资期限", align: "center", key: "invesTerm"},
           { title: "起投金额", align: "center", key: "invesMoney"},
+
         ],
 
         //表格数据
@@ -88,9 +95,10 @@
         this.loading = true;
         let _searchPream = {
           page: this.currentPage,
-          limit: this.fetchNum
+          limit: this.fetchNum,
+          searchName:this.searchName,
         }
-        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
+        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:"sys/financialProducts/findUserFinancialProductsList"}
         //发送请求
         this.ajaxPost({searchPream}).then(res => {
           this.tableData = res.data;
@@ -106,8 +114,8 @@
         this.currentPage = 1;
         this.queryList();
       },
-    
-    
+
+
     }
   };
 </script>

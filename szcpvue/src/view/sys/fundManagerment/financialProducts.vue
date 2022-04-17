@@ -6,17 +6,17 @@
         <Button v-if="buttonVerifAuthention('sys:financialProducts:addFinancialProducts')" type="primary" icon="md-add"
           @click="addFinancialProductsButton" style="margin-bottom: 10px;">添加理财产品</Button>
         <Row>
-          <!-- <Col span="3" style="margin-right: 10px;">
-          <Input v-model="titleSearch" placeholder="理财产品名称" clearable></Input>
-          </Col>
           <Col span="3" style="margin-right: 10px;">
-          <Select v-model="typeSearch" placeholder="类型" clearable>
-            <Option value="1" key="1">理财产品</Option>
-            <Option value="2" key="2">基金版块</Option>
-            <Option value="3" key="3">基金公司</Option>
-            <Option value="4" key="4">购买等级</Option>
-          </Select>
-          </Col> -->
+          <Input v-model="searchName" placeholder="理财产品名称" clearable></Input>
+          </Col>
+          <!--  <Col span="3" style="margin-right: 10px;">
+           <Select v-model="typeSearch" placeholder="类型" clearable>
+             <Option value="1" key="1">理财产品</Option>
+             <Option value="2" key="2">基金版块</Option>
+             <Option value="3" key="3">基金公司</Option>
+             <Option value="4" key="4">购买等级</Option>
+           </Select>
+           </Col> -->
           <Col span="2" style="margin-right: 10px;">
           <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
@@ -84,14 +84,14 @@
         <!--添加一个理财产品的申请-->
         <Modal v-model="applyModal" title="申请" :mask-closable="false">
 
-          <Form ref="applyModal" :model="applyModalForm" :rules="applyModalRule"
+          <Form ref="applyModal12" :model="applyModalForm" :rules="applyModalRule"
             :label-width="140">
-            <FormItem label="银行卡号" prop="bankCode">
-              <Select v-model="applyModalForm.bankCode" placeholder="请选择" clearable>
+            <FormItem label="银行卡号" prop="bankCard">
+              <Select v-model="applyModalForm.bankCard" placeholder="请选择" clearable>
                 <Option
                   v-for="item in selBankCodeAll"
-                  :value="item.id+''"
-                  :key="item.id+''"
+                  :value="item.cardCode+''"
+                  :key="item.cardCode+''"
                 >{{ item.cardCode}}</Option>
               </Select>
             </FormItem>
@@ -101,7 +101,7 @@
           </Form>
           <div slot="footer">
             <Button type="text" size="large" @click="applyModal=false">取消</Button>
-            <Button type="primary" size="large" @click="applyModalClick('applyModal')" :loading="loadingModel">确定</Button>
+            <Button type="primary" size="large" @click="addFinancialProductsApplyClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
       </Card>
@@ -137,16 +137,16 @@
         stylePage: {
           marginTop: "20px"
         },
- 
+
         selBankCodeAll:[],//可供选择的银行卡
         applyModal:false, //申请弹窗
         applyModalForm:{
-          bankCode:"",
+          bankCard:"",
           money:"",
         },
         applyModalRule: {
-          bankCode: [
-            { required: true, message: "请选择银行卡", trigger: "change" },
+          bankCard: [
+            { required: true, message: "请选择银行卡", trigger: "blur" },
           ],
           money: [
             { required: true, message: "请填写理财金额", trigger: "blur" },
@@ -157,7 +157,7 @@
         fetchNum: 10,
         totalPage: 0,
 
-        titleSearch: "", //理财产品名称
+        searchName: "", //理财产品名称
         typeSearch: "", //类型
         //对话框
 
@@ -352,7 +352,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:deleteFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:financialProducts:addUserFinancialProducts")) {
                     return h(
                       "Button",
                       {
@@ -419,7 +419,8 @@
         // });
         let _searchPream = {
           page: this.currentPage,
-          limit: this.fetchNum
+          limit: this.fetchNum,
+          searchName: this.searchName
         }
         let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
@@ -468,7 +469,7 @@
               this.modalFinancialProductsAdd = false; //关闭弹窗
               //情况表单数据
               this.formValidateFinancialProductsAdd = {
-                bankCode: "",
+                bankCard: "",
                 payPassword: "",
                 cardType: ""
               };
@@ -543,7 +544,7 @@
               //情况表单数据
               this.formValidateFinancialProductsEdit = {
                 id: "",
-                bankCode: "",
+                bankCard: "",
                 payPassword: "",
                 cardType: ""
               };
@@ -563,7 +564,7 @@
       // 添加一理财产品的申请 关联到银行卡
       applyProducts(data){
         this.applyModalForm = {
-          bankCode : "",
+          bankCard : "",
           money : ""
         };
         this.nowApplyData = data.row;
@@ -578,67 +579,73 @@
           this.selBankCodeAll = res.data
         })
       },
+      addFinancialProductsApplyClick(){
+        this.applyModalClick("applyModal12");
+      },
+
+
       // 申请功能提交
       applyModalClick(name){
-        this.$refs[name].validate(valid => {
-          if (valid) {
-            //表单提交
-            //1 银行卡余额必须大于要投资的钱
-            //2 起投金额必须小于投资的钱
-            let _onMoney = ""; //银行卡剩余的钱
+        console.log(name,22)
+        let _onMoney = ""; //银行卡剩余的钱
 
-            for (let i = 0; i < this.selBankCodeAll.length; i++) {
-              const element = this.selBankCodeAll[i];
-              if(element.id==this.applyModalForm.bankCode){
-                _onMoney = element.balance
-              }
-            }
-            console.log(this.applyModalForm.money)
-            console.log(_onMoney,"剩余的钱")
-            console.log(this.nowApplyData.invesMoney,"起投金额")
-            if(_onMoney<this.applyModalForm.money){
-              this.$Message.error("银行卡余额不足!");
-              return;
-            }
-
-            if(this.applyModalForm.money<this.nowApplyData.invesMoney){
-              this.$Message.error(`低于最低投资金额${this.nowApplyData.invesMoney}!`);
-              return;
-            }
-
-            let _obj = {
-              bankCode:"",
-              money:this.applyModalForm.money,
-              produceId:this.this.nowApplyData.id
-            }
-
-            console.log(_obj);
-           
-
-            let searchPream = {xyfkey:"financialProducts",xyfval:_obj,xyfurl:"xxxxxx"}
-            // //发送请求
-            // this.ajaxPost({searchPream}).then(res => {
-            //   this.loadingModel = false; //关闭提交按钮转圈
-            //   this.modalFinancialProductsAdd = false; //关闭弹窗
-            //   //情况表单数据
-            //   this.formValidateFinancialProductsAdd = {
-            //     bankCode: "",
-            //     payPassword: "",
-            //     cardType: ""
-            //   };
-            //   //刷新菜单页面
-            //   this.queryList();
-            // }).catch((e) => {
-            //   console.log(e);
-            //   this.$Message.error("操作失败了!");
-            //   this.loadingModel = false; //关闭提交按钮转圈
-            // });
-
-          } else {
-            this.$Message.error("验证失败!");
+        for (let i = 0; i < this.selBankCodeAll.length; i++) {
+          const element = this.selBankCodeAll[i];
+          if(element.cardCode==this.applyModalForm.bankCard){
+            _onMoney = element.balance
           }
+        }
+        console.log(this.applyModalForm.money)
+        console.log(_onMoney,"剩余的钱")
+        console.log(this.nowApplyData.invesMoney,"起投金额")
+        if(_onMoney<this.applyModalForm.money){
+          this.$Message.error("银行卡余额不足!");
+          return;
+        }
+
+        if(this.applyModalForm.money<this.nowApplyData.invesMoney){
+          this.$Message.error(`低于最低投资金额${this.nowApplyData.invesMoney}!`);
+          return;
+        }
+
+        let _obj = {
+          bankCard:this.applyModalForm.bankCard,
+          money:this.applyModalForm.money,
+          financialProductsId:this.nowApplyData.id
+        }
+
+        console.log(_obj);
+
+
+        let searchPream = {xyfkey:"financialProducts",xyfval:_obj,xyfurl:"sys/financialProducts/addUserFinancialProducts"}
+        //发送请求
+        this.ajaxPost({searchPream}).then(res => {
+          this.loadingModel = false; //关闭提交按钮转圈
+          this.applyModal = false; //关闭弹窗
+          //情况表单数据
+          this.applyModalForm = {
+            money: "",
+          };
+          //刷新菜单页面
+          this.queryList();
+        }).catch((e) => {
+          console.log(e);
+          this.$Message.error("操作失败了!");
+          this.loadingModel = false; //关闭提交按钮转圈
         });
-      },      
+        // this.$refs[name].validate(valid => {
+        //   if (valid) {
+        //     //表单提交
+        //     //1 银行卡余额必须大于要投资的钱
+        //     //2 起投金额必须小于投资的钱
+        //
+        //
+        //
+        //   } else {
+        //     this.$Message.error("验证失败!");
+        //   }
+        // });
+      },
     }
   };
 </script>

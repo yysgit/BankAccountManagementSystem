@@ -38,6 +38,8 @@ public interface DbLoanService {
      * @return
      */
     int updateLoan(DbLoan loan);
+    int updateUserLoan(DbLoan loan);
+    int updateUserLoanRepayment(DbLoan loan);
     int deleteLoan(DbLoan loan);
 
 

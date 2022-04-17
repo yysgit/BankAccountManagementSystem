@@ -71,3 +71,95 @@
 [ERROR] 17:50:51.647 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
 [ERROR] 17:53:35.575 [http-nio-7089-exec-9] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
 [ERROR] 17:56:34.515 [http-nio-7089-exec-2] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
+[ERROR] 19:38:14.632 [http-nio-7089-exec-2] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 19:38:18.977 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 19:38:21.829 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 19:40:56.511 [http-nio-7089-exec-7] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 19:41:01.187 [http-nio-7089-exec-8] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 21:01:47.626 [http-nio-7089-exec-1] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 21:08:29.538 [http-nio-7089-exec-3] c.y.s.c.FinancialProductsController - 添加理财产品错误: null
+[ERROR] 21:09:03.701 [http-nio-7089-exec-6] c.y.s.c.FinancialProductsController - 添加理财产品错误: null
+[ERROR] 21:10:00.279 [http-nio-7089-exec-9] c.y.s.c.FinancialProductsController - 添加理财产品错误: null
+[ERROR] 21:15:59.755 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 22:08:15.151 [http-nio-7089-exec-9] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 22:15:21.746 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 22:33:42.734 [http-nio-7089-exec-4] c.yys.szcp.controller.LoanController - 添加贷款错误: For input string: "2141241234234"
+[ERROR] 22:34:02.686 [http-nio-7089-exec-8] c.yys.szcp.controller.LoanController - 添加贷款错误: For input string: "2141241234234"
+[ERROR] 22:40:06.544 [http-nio-7089-exec-4] c.yys.szcp.controller.MenuController - 添加错误: Invalid bound statement (not found): com.yys.szcp.mapper.DbRoleMenuMapper.deleteRoleMenuByTRoleId
+[ERROR] 22:42:32.974 [http-nio-7089-exec-10] c.yys.szcp.controller.MenuController - 添加错误: Invalid bound statement (not found): com.yys.szcp.mapper.DbRoleMenuMapper.deleteRoleMenuByTRoleId
+[ERROR] 22:47:53.041 [http-nio-7089-exec-8] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
+[ERROR] 22:47:53.053 [http-nio-7089-exec-6] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:47:53.053 [http-nio-7089-exec-7] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:47:53.053 [http-nio-7089-exec-5] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:47:58.186 [http-nio-7089-exec-3] c.yys.szcp.controller.RoleController - 添加角色错误: null
+[ERROR] 22:48:41.854 [http-nio-7089-exec-5] c.yys.szcp.controller.RoleController - 添加角色错误: null
+[ERROR] 22:49:46.364 [http-nio-7089-exec-8] c.yys.szcp.controller.RoleController - 添加角色错误: null
+[ERROR] 22:50:34.026 [http-nio-7089-exec-7] c.yys.szcp.controller.RoleController - 添加角色错误: null
+[ERROR] 22:53:17.923 [http-nio-7089-exec-6] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:53:27.106 [http-nio-7089-exec-4] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:53:35.235 [http-nio-7089-exec-1] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:53:53.042 [http-nio-7089-exec-8] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:54:31.765 [http-nio-7089-exec-5] com.yys.szcp.config.jwt.JwtUtils - ===== token过期 =====
+[ERROR] 22:57:12.629 [http-nio-7089-exec-5] c.y.szcp.controller.AdminController - 添加管理用户错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'adminName' not found. Available parameters are [adminUserId, param1, username, param2]
+[ERROR] 22:57:12.724 [http-nio-7089-exec-7] c.y.szcp.controller.AdminController - 查询管理用户列表错误: org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.DataSourceClosedException: dataSource already closed at Sun Apr 17 22:57:12 CST 2022
+### The error may exist in file [E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes\mapper\DbAdminUserMapper.xml]
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.findAdminUserListByOrganIdCount
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.DataSourceClosedException: dataSource already closed at Sun Apr 17 22:57:12 CST 2022
+[ERROR] 23:09:06.020 [http-nio-7089-exec-10] c.y.szcp.controller.AdminController - 更新管理用户错误: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.updateAdminUser-Inline
+### The error occurred while setting parameters
+### SQL: update db_admin_user         set update_time =now()             ,admin_name = ?             ,admin_fullname = ?             ,admin_phone = ?             ,role_id = ?             ,address = ?             ,idcard = ?             ,credit = ?         where id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+; Column 'admin_name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+[ERROR] 23:09:10.715 [http-nio-7089-exec-5] c.y.szcp.controller.AdminController - 更新管理用户错误: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.updateAdminUser-Inline
+### The error occurred while setting parameters
+### SQL: update db_admin_user         set update_time =now()             ,admin_name = ?             ,admin_fullname = ?             ,admin_phone = ?             ,role_id = ?             ,address = ?             ,idcard = ?             ,credit = ?         where id = ?
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+; Column 'admin_name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+[ERROR] 23:24:04.261 [http-nio-7089-exec-1] c.y.szcp.controller.AdminController - 添加管理用户错误: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.addAdminUser-Inline
+### The error occurred while setting parameters
+### SQL: insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address,idcard)     values (?, ?,?,?,?,now(),now(),?,?);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+; Column 'admin_name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+[ERROR] 23:24:22.507 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 添加管理用户错误: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.addAdminUser-Inline
+### The error occurred while setting parameters
+### SQL: insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address,idcard)     values (?, ?,?,?,?,now(),now(),?,?);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+; Column 'admin_name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+[ERROR] 23:26:51.714 [http-nio-7089-exec-5] c.y.szcp.controller.AdminController - 添加管理用户错误: org.springframework.dao.DataIntegrityViolationException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+### The error may involve com.yys.szcp.mapper.DbAdminUserMapper.addAdminUser-Inline
+### The error occurred while setting parameters
+### SQL: insert into db_admin_user (admin_name,admin_password,admin_fullname,admin_phone,role_id,create_time,update_time,address,idcard)     values (?, ?,?,?,?,now(),now(),?,?);
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+; Column 'admin_name' cannot be null; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'admin_name' cannot be null
+[ERROR] 23:28:36.092 [http-nio-7089-exec-10] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 23:29:02.182 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 23:29:05.867 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 23:29:55.598 [http-nio-7089-exec-6] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 23:31:43.995 [http-nio-7089-exec-9] c.yys.szcp.controller.MenuController - 添加错误: Invalid bound statement (not found): com.yys.szcp.mapper.DbRoleMenuMapper.deleteRoleMenuByTRoleId
+[ERROR] 23:39:09.453 [http-nio-7089-exec-9] c.y.szcp.controller.AdminController - 输出error级别的日志.....
+[ERROR] 23:49:39.585 [http-nio-7089-exec-4] c.y.s.controller.BankCardController - 添加银行卡错误: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  dbbc.user_id=6' at line 6
+### The error may exist in file [E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes\mapper\DbBankCardMapper.xml]
+### The error may involve com.yys.szcp.mapper.DbBankCardMapper.findBankCardListCount-Inline
+### The error occurred while setting parameters
+### SQL: select count(*)         from db_bank_card                                           and  dbbc.user_id=?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  dbbc.user_id=6' at line 6
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'and  dbbc.user_id=6' at line 6
+[ERROR] 23:54:08.874 [http-nio-7089-exec-5] c.y.s.c.BankRecordController - 添加银行卡记录错误: 
+### Error updating database.  Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'flow_money' at row 1
+### The error may involve com.yys.szcp.mapper.DbBankRecordMapper.addBankRecord-Inline
+### The error occurred while setting parameters
+### SQL: insert into db_bank_record (bank_code, flow_money, type, source)         values (?, ?, ?, ?);
+### Cause: com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'flow_money' at row 1
+; Data truncation: Out of range value for column 'flow_money' at row 1; nested exception is com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'flow_money' at row 1

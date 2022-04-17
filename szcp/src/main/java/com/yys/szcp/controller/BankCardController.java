@@ -171,6 +171,8 @@ public class BankCardController {
             map.put("limit", StringISNULLUtil.mapToInteger(searchPreamMy.get("limit")));
             map.put("searchCardCode", StringISNULLUtil.mapToString(searchPreamMy.get("searchCardCode")));
             map.put("searchCardType", StringISNULLUtil.mapToString(searchPreamMy.get("searchCardType")));
+            map.put("userId", adminUser.getId());
+            map.put("roleId", adminUser.getRoleId()+"a");
 
             resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
             resultUtil.setMsg("查询成功!");
@@ -195,6 +197,10 @@ public class BankCardController {
             Map searchPreamMy =(Map) JSONUtils.parse(searchPream);
             DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
             Map map = new HashMap();
+            map.put("userId", adminUser.getId());
+            map.put("roleId", adminUser.getRoleId()+"a");
+
+
             List<Map> bankCardList=bankCardService.findBankCardAllList(map);
             return ResultUtil.success(bankCardList);
         } catch (Exception e) {

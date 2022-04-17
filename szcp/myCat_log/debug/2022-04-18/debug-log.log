@@ -1,0 +1,493 @@
+[DEBUG] 00:00:03.731 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - POST "/sys/admin/login", parameters={masked}
+[DEBUG] 00:00:03.739 [http-nio-7089-exec-3] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/admin/login
+[DEBUG] 00:00:03.739 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.AdminController#login(String, String, HttpServletRequest)
+[DEBUG] 00:00:03.740 [http-nio-7089-exec-3] c.y.szcp.controller.AdminController - 输出debug级别的日志.....
+[DEBUG] 00:00:03.746 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:03.746 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a038896] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:03.747 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:03.747 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:03.747 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserByUsernamePassword - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.admin_name=? and dbau.admin_password=? and dbau.delete_status=0; 
+[DEBUG] 00:00:03.749 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserByUsernamePassword - ==> Parameters: admin(String), def0e4568a393af9aca7bfa3d54c5147(String)
+[DEBUG] 00:00:03.765 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserByUsernamePassword - <==      Total: 1
+[DEBUG] 00:00:03.765 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20008} enter cache
+[DEBUG] 00:00:03.765 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a038896]
+[DEBUG] 00:00:03.775 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:03.775 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@58680626]
+[DEBUG] 00:00:03.775 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:03.780 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/admin/findAdminUserInfo?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4", parameters={masked}
+[DEBUG] 00:00:03.780 [http-nio-7089-exec-5] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/admin/findAdminUserInfo
+[DEBUG] 00:00:03.780 [http-nio-7089-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.AdminController#findAdminUserInfo(HttpServletRequest)
+[DEBUG] 00:00:03.836 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:03.962 [http-nio-7089-exec-6] o.s.web.servlet.DispatcherServlet - GET "/sys/admin/findAdminUserInfo?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4", parameters={masked}
+[DEBUG] 00:00:03.963 [http-nio-7089-exec-6] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/admin/findAdminUserInfo
+[DEBUG] 00:00:03.963 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.AdminController#findAdminUserInfo(HttpServletRequest)
+[DEBUG] 00:00:03.965 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:03.965 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@340e72c3] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:03.965 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:03.965 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:03.966 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:03.966 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:03.982 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:03.982 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@340e72c3]
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ef619b3] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:03.983 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:04.008 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:04.009 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ef619b3]
+[DEBUG] 00:00:04.018 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:04.018 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@74fe3273]
+[DEBUG] 00:00:04.028 [http-nio-7089-exec-6] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:06.334 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/role/findRoleList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:06.334 [http-nio-7089-exec-8] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/role/findRoleList
+[DEBUG] 00:00:06.334 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.RoleController#findRoleList(HttpServletRequest, String)
+[DEBUG] 00:00:06.341 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:06.345 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - POST "/sys/role/findRoleList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:06.345 [http-nio-7089-exec-7] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/role/findRoleList
+[DEBUG] 00:00:06.345 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.RoleController#findRoleList(HttpServletRequest, String)
+[DEBUG] 00:00:06.346 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:06.346 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4738f5bf] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:06.346 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:06.346 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:06.347 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:06.348 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:06.367 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4738f5bf]
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ea47193] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:06.368 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:06.369 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:06.391 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:06.391 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ea47193]
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37bf627] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] c.y.s.m.D.findRoleListCount - ==>  Preparing: select count(*) from db_role where delete_status=0 
+[DEBUG] 00:00:06.392 [http-nio-7089-exec-7] c.y.s.m.D.findRoleListCount - ==> Parameters: 
+[DEBUG] 00:00:06.416 [http-nio-7089-exec-7] c.y.s.m.D.findRoleListCount - <==      Total: 1
+[DEBUG] 00:00:06.416 [http-nio-7089-exec-7] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20009} enter cache
+[DEBUG] 00:00:06.416 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37bf627]
+[DEBUG] 00:00:06.417 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:06.417 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40b4c913] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:06.417 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:06.417 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:06.417 [http-nio-7089-exec-7] c.y.s.m.DbRoleMapper.findRoleList - ==>  Preparing: select id, role_name AS roleName, remark AS remark, create_time AS createTime, update_time AS updateTime from db_role where delete_status=0 order by update_time DESC limit ? , ?; 
+[DEBUG] 00:00:06.418 [http-nio-7089-exec-7] c.y.s.m.DbRoleMapper.findRoleList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:06.434 [http-nio-7089-exec-7] c.y.s.m.DbRoleMapper.findRoleList - <==      Total: 4
+[DEBUG] 00:00:06.435 [http-nio-7089-exec-7] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20010} enter cache
+[DEBUG] 00:00:06.435 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40b4c913]
+[DEBUG] 00:00:06.435 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:06.435 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@68533ffd]
+[DEBUG] 00:00:06.436 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:18.106 [http-nio-7089-exec-10] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/menu/findMenuByRoleId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&roleId=3", parameters={masked}
+[DEBUG] 00:00:18.106 [http-nio-7089-exec-10] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/menu/findMenuByRoleId
+[DEBUG] 00:00:18.106 [http-nio-7089-exec-10] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.MenuController#findRoleMenuByRoleId(HttpServletRequest, Integer)
+[DEBUG] 00:00:18.107 [http-nio-7089-exec-10] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:18.108 [http-nio-7089-exec-9] o.s.web.servlet.DispatcherServlet - POST "/sys/menu/findMenuByRoleId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&roleId=3", parameters={masked}
+[DEBUG] 00:00:18.108 [http-nio-7089-exec-9] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/menu/findMenuByRoleId
+[DEBUG] 00:00:18.108 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.MenuController#findRoleMenuByRoleId(HttpServletRequest, Integer)
+[DEBUG] 00:00:18.109 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:18.109 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5dbf64cb] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:18.110 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:18.110 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:18.110 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:18.110 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:18.127 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:18.127 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5dbf64cb]
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57470fbb] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:18.128 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:18.149 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:18.149 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57470fbb]
+[DEBUG] 00:00:18.150 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:18.150 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@726a6478] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:18.151 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:18.151 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:18.151 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:18.151 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:18.169 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@726a6478]
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d993322] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:18.170 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 3(Integer)
+[DEBUG] 00:00:18.188 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - <==      Total: 52
+[DEBUG] 00:00:18.188 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d993322]
+[DEBUG] 00:00:18.190 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:18.190 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@7df89d02]
+[DEBUG] 00:00:18.192 [http-nio-7089-exec-9] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:24.854 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/bankCard/findBankCardList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchCardType%22:%22%22,%22searchCardCode%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:24.854 [http-nio-7089-exec-1] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/bankCard/findBankCardList
+[DEBUG] 00:00:24.854 [http-nio-7089-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.BankCardController#findBankCardList(HttpServletRequest, String)
+[DEBUG] 00:00:24.854 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:24.855 [http-nio-7089-exec-2] o.s.web.servlet.DispatcherServlet - POST "/sys/bankCard/findBankCardList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchCardType%22:%22%22,%22searchCardCode%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:24.856 [http-nio-7089-exec-2] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/bankCard/findBankCardList
+[DEBUG] 00:00:24.856 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.BankCardController#findBankCardList(HttpServletRequest, String)
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21f8d695] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:24.857 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@21f8d695]
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2df8cb8e] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:24.876 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:24.895 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:24.895 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2df8cb8e]
+[DEBUG] 00:00:24.896 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:24.896 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bbcb564] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:24.896 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:24.896 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:24.896 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardListCount - ==>  Preparing: select count(*) from db_bank_card dbbc where 1=1 
+[DEBUG] 00:00:24.897 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardListCount - ==> Parameters: 
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardListCount - <==      Total: 1
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20011} enter cache
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2bbcb564]
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ab6792d] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:24.913 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:24.914 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:24.914 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardList - ==>  Preparing: select dbbc.id, dbbc.card_code as cardCode, dbbc.user_id as userId, adau.admin_fullname as userName, dbbc.balance as balance, dbbc.pay_password as payPassword, dbbc.card_type as cardType, dbbc.card_time as cardTime, dbbc.last_active_time as lastActiveTime from db_bank_card dbbc left join db_admin_user adau on adau.id=dbbc.user_id where 1=1 order by card_time DESC limit ? , ?; 
+[DEBUG] 00:00:24.914 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:24.930 [http-nio-7089-exec-2] c.y.s.m.D.findBankCardList - <==      Total: 4
+[DEBUG] 00:00:24.931 [http-nio-7089-exec-2] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20012} enter cache
+[DEBUG] 00:00:24.931 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6ab6792d]
+[DEBUG] 00:00:24.931 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:24.931 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@54f8e435]
+[DEBUG] 00:00:24.934 [http-nio-7089-exec-2] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:26.216 [http-nio-7089-exec-4] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/bankRecord/findBankRecordList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:26.216 [http-nio-7089-exec-4] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/bankRecord/findBankRecordList
+[DEBUG] 00:00:26.216 [http-nio-7089-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.BankRecordController#findBankRecordList(HttpServletRequest, String)
+[DEBUG] 00:00:26.217 [http-nio-7089-exec-4] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:26.218 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - POST "/sys/bankRecord/findBankRecordList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:26.218 [http-nio-7089-exec-3] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/bankRecord/findBankRecordList
+[DEBUG] 00:00:26.218 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.BankRecordController#findBankRecordList(HttpServletRequest, String)
+[DEBUG] 00:00:26.219 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:26.219 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5479dad6] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:26.219 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:26.219 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:26.219 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:26.220 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5479dad6]
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6efe5989] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:26.239 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:26.240 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:26.240 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:26.265 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:26.265 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6efe5989]
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@734440dd] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordListCount - ==>  Preparing: select count(*) from db_bank_record dbbr left join db_bank_card dbbc on dbbc.card_code=dbbr.bank_code where 1=1 
+[DEBUG] 00:00:26.266 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordListCount - ==> Parameters: 
+[DEBUG] 00:00:26.282 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordListCount - <==      Total: 1
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20013} enter cache
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@734440dd]
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eac48] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:26.283 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordList - ==>  Preparing: select dbbr.id, dbbr.bank_code as bankCode, dbbr.flow_money as flowMoney, dbbr.type as type, dbbr.source as source from db_bank_record dbbr left join db_bank_card dbbc on dbbc.card_code=dbbr.bank_code where 1=1 order by id DESC limit ? , ?; 
+[DEBUG] 00:00:26.284 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:26.303 [http-nio-7089-exec-3] c.y.s.m.D.findBankRecordList - <==      Total: 10
+[DEBUG] 00:00:26.303 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20014} enter cache
+[DEBUG] 00:00:26.303 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@471eac48]
+[DEBUG] 00:00:26.304 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:26.304 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@5bb1f4a0]
+[DEBUG] 00:00:26.305 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:28.664 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/financialProducts/findFinancialProductsList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchName%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:28.664 [http-nio-7089-exec-5] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/financialProducts/findFinancialProductsList
+[DEBUG] 00:00:28.665 [http-nio-7089-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.FinancialProductsController#findFinancialProductsList(HttpServletRequest, String)
+[DEBUG] 00:00:28.665 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:28.666 [http-nio-7089-exec-6] o.s.web.servlet.DispatcherServlet - POST "/sys/financialProducts/findFinancialProductsList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchName%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:28.666 [http-nio-7089-exec-6] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/financialProducts/findFinancialProductsList
+[DEBUG] 00:00:28.666 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.FinancialProductsController#findFinancialProductsList(HttpServletRequest, String)
+[DEBUG] 00:00:28.667 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:28.667 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77aaf7e5] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:28.667 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:28.667 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:28.667 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:28.668 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@77aaf7e5]
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d719dbc] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:28.684 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:28.685 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:28.685 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:28.703 [http-nio-7089-exec-6] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4d719dbc]
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57485ae5] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:28.704 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsListCount - ==>  Preparing: select count(*) from db_financial_products where 1=1 
+[DEBUG] 00:00:28.705 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsListCount - ==> Parameters: 
+[DEBUG] 00:00:28.721 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsListCount - <==      Total: 1
+[DEBUG] 00:00:28.722 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@57485ae5]
+[DEBUG] 00:00:28.722 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:28.722 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3da5d357] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:28.722 [http-nio-7089-exec-6] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:28.722 [http-nio-7089-exec-6] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:28.723 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsList - ==>  Preparing: select id, name as name, annual_income as annualIncome, pre_income as preIncome, inves_term as invesTerm, inves_money as invesMoney from db_financial_products where 1=1 order by id DESC limit ? , ?; 
+[DEBUG] 00:00:28.723 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:28.739 [http-nio-7089-exec-6] c.y.s.m.D.findFinancialProductsList - <==      Total: 1
+[DEBUG] 00:00:28.740 [http-nio-7089-exec-6] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3da5d357]
+[DEBUG] 00:00:28.740 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:28.740 [http-nio-7089-exec-6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@132afeda]
+[DEBUG] 00:00:28.741 [http-nio-7089-exec-6] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:30.705 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:30.705 [http-nio-7089-exec-8] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
+[DEBUG] 00:00:30.705 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 00:00:30.706 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:30.707 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - POST "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:30.707 [http-nio-7089-exec-7] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
+[DEBUG] 00:00:30.707 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6dc93c25] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:30.708 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6dc93c25]
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16e779e5] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:30.735 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:30.754 [http-nio-7089-exec-7] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:30.755 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16e779e5]
+[DEBUG] 00:00:30.756 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:30.756 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@433620d5] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:30.756 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:30.756 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:30.756 [http-nio-7089-exec-7] c.y.s.m.D.findLoanListCount - ==>  Preparing: select count(*) from db_loan where 1=1 
+[DEBUG] 00:00:30.757 [http-nio-7089-exec-7] c.y.s.m.D.findLoanListCount - ==> Parameters: 
+[DEBUG] 00:00:30.773 [http-nio-7089-exec-7] c.y.s.m.D.findLoanListCount - <==      Total: 1
+[DEBUG] 00:00:30.773 [http-nio-7089-exec-7] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20015} enter cache
+[DEBUG] 00:00:30.773 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@433620d5]
+[DEBUG] 00:00:30.774 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:30.774 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79111227] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:30.774 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:30.774 [http-nio-7089-exec-7] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:30.774 [http-nio-7089-exec-7] c.y.s.m.DbLoanMapper.findLoanList - ==>  Preparing: select dbl.id, dbl.loan_user_id as loanUserId, dbl.examine_user_id as examineUserId, dbl.loan_time as loanTime, dbl.amoune, dbl.card_code as cardCode, dbl.term, dbl.apply_status as applyStatus, dbl.loan_status as loanStatus, dbau.admin_fullname as userName, dbau2.admin_fullname as userNameApply from db_loan dbl left join db_admin_user dbau on dbau.id = dbl.loan_user_id left join db_admin_user dbau2 on dbau2.id = dbl.examine_user_id where 1=1 order by loan_time DESC limit ? , ?; 
+[DEBUG] 00:00:30.775 [http-nio-7089-exec-7] c.y.s.m.DbLoanMapper.findLoanList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:30.791 [http-nio-7089-exec-7] c.y.s.m.DbLoanMapper.findLoanList - <==      Total: 1
+[DEBUG] 00:00:30.792 [http-nio-7089-exec-7] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20016} enter cache
+[DEBUG] 00:00:30.792 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79111227]
+[DEBUG] 00:00:30.792 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:30.792 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@3c5e8e00]
+[DEBUG] 00:00:30.793 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:36.051 [http-nio-7089-exec-10] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/financialProducts/findUserFinancialProductsList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchName%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:36.051 [http-nio-7089-exec-10] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/financialProducts/findUserFinancialProductsList
+[DEBUG] 00:00:36.051 [http-nio-7089-exec-10] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.FinancialProductsController#findUserFinancialProductsList(HttpServletRequest, String)
+[DEBUG] 00:00:36.052 [http-nio-7089-exec-10] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:36.053 [http-nio-7089-exec-9] o.s.web.servlet.DispatcherServlet - POST "/sys/financialProducts/findUserFinancialProductsList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10,%22searchName%22:%22%22%7D", parameters={masked}
+[DEBUG] 00:00:36.053 [http-nio-7089-exec-9] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/financialProducts/findUserFinancialProductsList
+[DEBUG] 00:00:36.054 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.FinancialProductsController#findUserFinancialProductsList(HttpServletRequest, String)
+[DEBUG] 00:00:36.054 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:36.054 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64c56ef] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:36.054 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:36.055 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:36.055 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:36.055 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:36.071 [http-nio-7089-exec-9] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:36.072 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64c56ef]
+[DEBUG] 00:00:36.072 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:36.072 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4db45b54] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:36.072 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:36.072 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:36.073 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:36.073 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:36.091 [http-nio-7089-exec-9] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:36.091 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4db45b54]
+[DEBUG] 00:00:36.091 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:36.091 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65872d6e] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:36.092 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:36.092 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:36.092 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsListCount - ==>  Preparing: select count(*) from db_financial_products_user dbfpu join db_financial_products dbfp on dbfpu.financial_products_id = dbfp.id where 1=1 
+[DEBUG] 00:00:36.093 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsListCount - ==> Parameters: 
+[DEBUG] 00:00:36.111 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsListCount - <==      Total: 1
+[DEBUG] 00:00:36.111 [http-nio-7089-exec-9] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20017} enter cache
+[DEBUG] 00:00:36.111 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@65872d6e]
+[DEBUG] 00:00:36.111 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:36.111 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16b05e6] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:36.112 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:36.112 [http-nio-7089-exec-9] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:36.112 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsList - ==>  Preparing: select dbfp.name as name, dbfp.annual_income as annualIncome, dbfp.pre_income as preIncome, dbfp.inves_term as invesTerm, dbfp.inves_money as invesMoney, dbau.admin_fullname as adminFullname, dbfpu.bank_card as bankCard, dbfpu.money as money, dbfpu.create_time as createTime from db_financial_products_user dbfpu join db_financial_products dbfp on dbfpu.financial_products_id = dbfp.id join db_admin_user dbau on dbfpu.user_id = dbau.id where 1=1 order by dbfpu.id DESC limit ? , ?; 
+[DEBUG] 00:00:36.113 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:36.130 [http-nio-7089-exec-9] c.y.s.m.D.findUserFinancialProductsList - <==      Total: 7
+[DEBUG] 00:00:36.130 [http-nio-7089-exec-9] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20018} enter cache
+[DEBUG] 00:00:36.130 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@16b05e6]
+[DEBUG] 00:00:36.130 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:36.130 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@1b416812]
+[DEBUG] 00:00:36.131 [http-nio-7089-exec-9] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:38.767 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/menu/findMenuByMyRoleId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4", parameters={masked}
+[DEBUG] 00:00:38.767 [http-nio-7089-exec-1] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/menu/findMenuByMyRoleId
+[DEBUG] 00:00:38.768 [http-nio-7089-exec-1] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.MenuController#findMenuByMyRoleId(HttpServletRequest)
+[DEBUG] 00:00:38.768 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:38.769 [http-nio-7089-exec-2] o.s.web.servlet.DispatcherServlet - POST "/sys/menu/findMenuByMyRoleId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4", parameters={masked}
+[DEBUG] 00:00:38.769 [http-nio-7089-exec-2] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/menu/findMenuByMyRoleId
+[DEBUG] 00:00:38.769 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.MenuController#findMenuByMyRoleId(HttpServletRequest)
+[DEBUG] 00:00:38.770 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:38.770 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1efa78d3] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:38.771 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:38.771 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:38.771 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:38.771 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:38.786 [http-nio-7089-exec-2] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1efa78d3]
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56c0e53e] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:38.787 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:38.804 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:38.804 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56c0e53e]
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@8fbbe1d] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:38.805 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:38.822 [http-nio-7089-exec-2] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:38.822 [http-nio-7089-exec-2] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@8fbbe1d]
+[DEBUG] 00:00:38.824 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:38.824 [http-nio-7089-exec-2] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@3d07a5f6]
+[DEBUG] 00:00:38.827 [http-nio-7089-exec-2] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:39.483 [http-nio-7089-exec-4] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/admin/findAdminUserListByOrganId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:39.483 [http-nio-7089-exec-4] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/admin/findAdminUserListByOrganId
+[DEBUG] 00:00:39.483 [http-nio-7089-exec-4] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.AdminController#findAdminUserListByOrganId(HttpServletRequest, String)
+[DEBUG] 00:00:39.484 [http-nio-7089-exec-4] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:39.486 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - POST "/sys/admin/findAdminUserListByOrganId?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:39.486 [http-nio-7089-exec-3] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/admin/findAdminUserListByOrganId
+[DEBUG] 00:00:39.486 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.AdminController#findAdminUserListByOrganId(HttpServletRequest, String)
+[DEBUG] 00:00:39.487 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:39.487 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d2aae88] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:39.487 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:39.488 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:39.488 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:39.488 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:39.503 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d2aae88]
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15a4f4d] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:39.504 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@15a4f4d]
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dbc15f7] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:39.526 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:39.527 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganId - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbr.role_name AS roleName, dbau.idcard AS idcard, dbau.address AS address, dbau.credit AS credit from db_admin_user dbau left join db_role dbr on dbr.id=dbau.role_id where dbau.delete_status=0 order by dbau.update_time DESC limit ? , ?; 
+[DEBUG] 00:00:39.527 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganId - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:39.543 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganId - <==      Total: 5
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20019} enter cache
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2dbc15f7]
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a443ffc] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganIdCount - ==>  Preparing: select count(*) from db_admin_user where delete_status=0 
+[DEBUG] 00:00:39.544 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganIdCount - ==> Parameters: 
+[DEBUG] 00:00:39.559 [http-nio-7089-exec-3] c.y.s.m.D.findAdminUserListByOrganIdCount - <==      Total: 1
+[DEBUG] 00:00:39.559 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20002} exit cache
+[DEBUG] 00:00:39.560 [http-nio-7089-exec-3] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20020} enter cache
+[DEBUG] 00:00:39.560 [http-nio-7089-exec-3] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3a443ffc]
+[DEBUG] 00:00:39.560 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:39.560 [http-nio-7089-exec-3] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@77794da7]
+[DEBUG] 00:00:39.561 [http-nio-7089-exec-3] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:40.554 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - POST "/sys/role/findRoleList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
+[DEBUG] 00:00:40.554 [http-nio-7089-exec-5] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/role/findRoleList
+[DEBUG] 00:00:40.554 [http-nio-7089-exec-5] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.RoleController#findRoleList(HttpServletRequest, String)
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64852e8a] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] c.y.s.m.D.findAdminUserById - ==>  Preparing: select dbau.id, dbau.admin_name AS adminName, dbau.admin_fullname AS adminFullname, dbau.admin_phone AS adminPhone, dbau.role_id AS roleId, dbau.create_time AS createTime, dbau.update_time AS updateTime, dbau.address AS address, dbau.idcard AS idcard, dbau.credit AS credit from db_admin_user dbau where dbau.id=? 
+[DEBUG] 00:00:40.555 [http-nio-7089-exec-5] c.y.s.m.D.findAdminUserById - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:40.571 [http-nio-7089-exec-5] c.y.s.m.D.findAdminUserById - <==      Total: 1
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@64852e8a]
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2927b3ee] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] c.y.s.m.D.findMenuByRoleId - ==>  Preparing: select dbm.id, dbm.title, dbm.icon, dbm.href, dbm.perms, dbm.spread, dbm.parent_id AS parentId, dbm.sorting, dbm.create_time AS createTime, dbm.update_time AS updateTime from db_role_menu dbrm left join db_menu dbm ON dbrm.menu_id = dbm.id where dbrm.role_id = ? and dbm.delete_status=0 order by dbm.sorting desc 
+[DEBUG] 00:00:40.572 [http-nio-7089-exec-5] c.y.s.m.D.findMenuByRoleId - ==> Parameters: 2(Integer)
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] c.y.s.m.D.findMenuByRoleId - <==      Total: 89
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2927b3ee]
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1de9c6e4] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] c.y.s.m.D.findRoleListCount - ==>  Preparing: select count(*) from db_role where delete_status=0 
+[DEBUG] 00:00:40.591 [http-nio-7089-exec-5] c.y.s.m.D.findRoleListCount - ==> Parameters: 
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] c.y.s.m.D.findRoleListCount - <==      Total: 1
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1de9c6e4]
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f7f8119] was not registered for synchronization because synchronization is not active
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+[DEBUG] 00:00:40.607 [http-nio-7089-exec-5] o.m.s.t.SpringManagedTransaction - JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@133150f2] will not be managed by Spring
+[DEBUG] 00:00:40.608 [http-nio-7089-exec-5] c.y.s.m.DbRoleMapper.findRoleList - ==>  Preparing: select id, role_name AS roleName, remark AS remark, create_time AS createTime, update_time AS updateTime from db_role where delete_status=0 order by update_time DESC limit ? , ?; 
+[DEBUG] 00:00:40.608 [http-nio-7089-exec-5] c.y.s.m.DbRoleMapper.findRoleList - ==> Parameters: 0(Integer), 10(Integer)
+[DEBUG] 00:00:40.626 [http-nio-7089-exec-5] c.y.s.m.DbRoleMapper.findRoleList - <==      Total: 4
+[DEBUG] 00:00:40.626 [http-nio-7089-exec-5] org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3f7f8119]
+[DEBUG] 00:00:40.626 [http-nio-7089-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+[DEBUG] 00:00:40.626 [http-nio-7089-exec-5] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [com.yys.szcp.utils.ResultUtil@164578c4]
+[DEBUG] 00:00:40.627 [http-nio-7089-exec-5] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[DEBUG] 00:00:50.749 [SpringContextShutdownHook] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3bd418e4, started on Sun Apr 17 23:59:32 CST 2022
+[DEBUG] 00:00:50.749 [SpringContextShutdownHook] o.s.c.e.PropertySourcesPropertyResolver - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+[DEBUG] 00:00:50.750 [SpringContextShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+[DEBUG] 00:00:50.751 [SpringContextShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'documentationPluginsBootstrapper' completed its stop procedure
+[DEBUG] 00:00:50.751 [SpringContextShutdownHook] o.s.d.r.l.RedisMessageListenerContainer - Stopped RedisMessageListenerContainer
+[DEBUG] 00:00:50.751 [SpringContextShutdownHook] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+[DEBUG] 00:00:50.752 [SpringContextShutdownHook] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+[DEBUG] 00:00:50.755 [SpringContextShutdownHook] io.lettuce.core.RedisClient - Initiate shutdown (100, 100, MILLISECONDS)
+[DEBUG] 00:00:50.770 [SpringContextShutdownHook] i.l.c.r.DefaultClientResources - Initiate shutdown (0, 2, SECONDS)
+[DEBUG] 00:00:50.771 [SpringContextShutdownHook] i.l.c.r.DefaultEventLoopGroupProvider - Initiate shutdown (0, 2, SECONDS)
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20003} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20006} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20007} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20008} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20011} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20012} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20013} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20014} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20004} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20005} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20015} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20016} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20017} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20018} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20019} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20020} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20009} exit cache
+[DEBUG] 00:00:50.789 [SpringContextShutdownHook] c.a.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20010} exit cache

@@ -65,6 +65,6 @@ public interface DbMenuService {
      * @param roleId
      * @return
      */
-    int deleteRoleMenuByTRoleId(Integer roleId);
+    int deleteRoleMenuByRoleId(Integer roleId);
 
 }
