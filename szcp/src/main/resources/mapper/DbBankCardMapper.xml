@@ -6,7 +6,7 @@
     <!--添加银行卡-->
     <insert id="addBankCard" parameterType="com.yys.szcp.entity.DbBankCard">
         insert into db_bank_card (card_code,user_id,balance,pay_password,card_type,card_time,last_active_time)
-        values (#{cardCode}, #{userId},#{balance}, #{payPassword}, #{cardType},  now(),now());
+        values (#{cardCode}, #{userId},0, #{payPassword}, #{cardType},  now(),now());
     </insert>
 
     <!--分页查询银行卡列表-->
