@@ -183,11 +183,11 @@ export default [
   },
   {
     path: '',
-    name: '银行系统',
+    name: '任务管理',
     meta: {
       hideInMenu: true,
       icon: 'md-ribbon',
-      title: '银行系统管理'
+      title: '任务管理'
     },
     component: Main,
     children: [
@@ -196,7 +196,7 @@ export default [
         name: 'sys/financialProducts',
         meta: {
           icon: 'ios-card',
-          title: '理财产品'
+          title: '测试用例'
         },
         component: () => import('@/view/sys/fundManagerment/financialProducts.vue')
       },
@@ -205,7 +205,7 @@ export default [
         name: 'sys/bankRecord',
         meta: {
           icon: 'ios-card',
-          title: '资金流水'
+          title: '测试缺陷'
         },
         component: () => import('@/view/sys/fundManagerment/bankRecord.vue')
       },
@@ -214,7 +214,7 @@ export default [
         name: 'sys/loan',
         meta: {
           icon: 'ios-card',
-          title: '资金流水'
+          title: '学习园地'
         },
         component: () => import('@/view/sys/fundManagerment/loan.vue')
       },
@@ -223,19 +223,19 @@ export default [
         name: 'sys/bankCard',
         meta: {
           icon: 'ios-card',
-          title: '银行卡信息'
+          title: '任务信息'
         },
         component: () => import('@/view/sys/fundManagerment/bankCard.vue')
       },
-      {
-        path: 'sys/myFinancialProducts',
-        name: 'sys/myFinancialProducts',
-        meta: {
-          icon: 'ios-card',
-          title: '我的理财'
-        },
-        component: () => import('@/view/sys/fundManagerment/myFinancialProducts.vue')
-      },
+      // {
+      //   path: 'sys/myFinancialProducts',
+      //   name: 'sys/myFinancialProducts',
+      //   meta: {
+      //     icon: 'ios-card',
+      //     title: '我的理财'
+      //   },
+      //   component: () => import('@/view/sys/fundManagerment/myFinancialProducts.vue')
+      // },
       
     ]
   },

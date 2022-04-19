@@ -2,7 +2,7 @@
   <div>
     <div style="min-width:1000px">
       <div class="welcom_text">
-        <strong>欢迎来到银行帐目管理系统</strong>
+        <strong>欢迎来到测试任务管理系统</strong>
       </div>
     </div>
   </div>

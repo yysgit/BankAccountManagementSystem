@@ -2,7 +2,7 @@ export default {
   /**
    * @description 配置显示在浏览器标签的title
    */
-  title: '银行帐目管理系统',
+  title: '测试管理系统',
   /**
    * @description token在Cookie中存储的天数，默认1天
    */
@@ -18,11 +18,11 @@ export default {
    */
   baseUrl: {
 
-   // dev: 'http://118.31.187.222:7089',
-   // pro: 'http://118.31.187.222:7089',
+   dev: 'http://118.31.187.222:7089',
+   pro: 'http://118.31.187.222:7089',
 
-    dev: 'http://localhost:7089',
-    pro: 'http://localhost:7089',
+    // dev: 'http://localhost:7089',
+    // pro: 'http://localhost:7089',
 
 
     // dev: 'https://api.blog996.com',

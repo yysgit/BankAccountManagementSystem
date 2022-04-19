@@ -4,8 +4,10 @@
       <side-menu accordion ref="sideMenu" :active-name="$route.name" :collapsed="collapsed" @on-select="turnToPage" :menu-list="menuList">
         <!-- 需要放在菜单上面的内容，如Logo，写在side-menu标签内部，如下 -->
         <div class="logo-con">
-          <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
-          <img v-show="collapsed" :src="minLogo" key="min-logo" />
+          <!-- <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
+          <img v-show="collapsed" :src="minLogo" key="min-logo" /> -->
+          <h3 v-show="!collapsed" class="logo-con-title">测试任务管理系统</h3>
+          <h3 v-show="collapsed" class="logo-con-title logo-con-logo">  <img v-show="collapsed" :src="minLogo" key="min-logo" /> </h3>
         </div>
       </side-menu>
     </Sider>
@@ -213,4 +215,13 @@ export default {
       min-width: 216px;
     }
   }
+  .logo-con-title{
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #c5c8ce;
+}
+  
 </style>

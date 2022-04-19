@@ -2,23 +2,21 @@
   <div>
     <div style="min-width:1000px">
       <Card shadow>
-        <!--添加理财产品-->
-        <Button v-if="buttonVerifAuthention('sys:financialProducts:addFinancialProducts')" type="primary" icon="md-add"
-          @click="addFinancialProductsButton" style="margin-bottom: 10px;">添加理财产品</Button>
+        <!--添加测试用例-->
+        <Button v-if="buttonVerifAuthention('sys:bankRecord:addBankRecord')" type="primary" icon="md-add"
+          @click="addBankCardButton" style="margin-bottom: 10px;">添加测试用例</Button>
         <Row>
           <Col span="3" style="margin-right: 10px;">
-          <Input v-model="searchName" placeholder="理财产品名称" clearable></Input>
+          <Input v-model="serachForm.Case_no" placeholder="测试用例编号" clearable></Input>
           </Col>
-          <!--  <Col span="3" style="margin-right: 10px;">
-           <Select v-model="typeSearch" placeholder="类型" clearable>
-             <Option value="1" key="1">理财产品</Option>
-             <Option value="2" key="2">基金版块</Option>
-             <Option value="3" key="3">基金公司</Option>
-             <Option value="4" key="4">购买等级</Option>
-           </Select>
-           </Col> -->
+          <Col span="3" style="margin-right: 10px;">
+          <Input v-model="serachForm.Application_name" placeholder="所属应用" clearable></Input>
+          </Col>
+          <Col span="3" style="margin-right: 10px;">
+          <Input v-model="serachForm.Desinger_name" placeholder="设计人" clearable></Input>
+          </Col>
           <Col span="2" style="margin-right: 10px;">
-          <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
+            <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
         </Row>
         <!--表格-->
@@ -26,84 +24,78 @@
         </Table>
         <Page :total="totalPage" show-total :styles="stylePage" @on-change="changePage" />
 
-        <!--添加理财产品弹出框-->
-        <Modal v-model="modalFinancialProductsAdd" title="添加理财产品" :mask-closable="false">
-
-          <Form ref="formValidateFinancialProductsAdd" :model="formValidateFinancialProductsAdd" :rules="ruleValidateFinancialProductsAdd"
-            :label-width="140">
-            <FormItem label="理财产品名称" prop="name">
-              <Input v-model.trim="formValidateFinancialProductsAdd.name" placeholder="请输入理财产品名称"></Input>
-            </FormItem>
-            <FormItem label="七日年化收益率(%)" prop="annualIncome">
-              <Input v-model.trim="formValidateFinancialProductsAdd.annualIncome" placeholder="请输入七日年化收益率"></Input>
-            </FormItem>
-            <FormItem label="每万元收益(元)" prop="preIncome">
-              <Input v-model.trim="formValidateFinancialProductsAdd.preIncome" placeholder="请输入每万元收益"></Input>
-            </FormItem>
-            <FormItem label="投资期限(年)" prop="invesTerm">
-              <Input v-model.trim="formValidateFinancialProductsAdd.invesTerm" placeholder="请输入投资期限"></Input>
-            </FormItem>
-            <FormItem label="起投金额" prop="invesMoney">
-              <Input v-model.trim="formValidateFinancialProductsAdd.invesMoney" placeholder="请输入起投金额"></Input>
-            </FormItem>
-
-          </Form>
-          <div slot="footer">
-            <Button type="text" size="large" @click="modalFinancialProductsAdd=false">取消</Button>
-            <Button type="primary" size="large" @click="addFinancialProductsClick" :loading="loadingModel">确定</Button>
-          </div>
-        </Modal>
-
-        <!--编辑菜单弹出框-->
-        <Modal v-model="modalFinancialProductsEdit" title="编辑理财产品" :mask-closable="false">
-          <Form ref="formValidateFinancialProductsEdit" :model="formValidateFinancialProductsEdit" :rules="ruleValidateFinancialProductsEdit"
+        <!--添加测试用例弹出框-->
+        <Modal v-model="modalBankCardAdd" :title="modelTitle" :mask-closable="false">
+          <!-- 所属应用、交易名称、测试类型、设计人、输入数据、测试步骤、预期结果。 -->
+          <Form ref="formValidateBankCardAdd" :model="addForm" :rules="addFormRule"
             :label-width="120">
-            <FormItem label="理财产品名称" prop="name">
-              <Input v-model.trim="formValidateFinancialProductsEdit.name" placeholder="请输入理财产品名称"></Input>
+            <FormItem label="所属应用名称" prop="Application_name">
+              <Input v-model.trim="addForm.Application_name" placeholder="请输入所属应用名称"></Input>
             </FormItem>
-            <FormItem label="七日年化收益率" prop="annualIncome">
-              <Input v-model.trim="formValidateFinancialProductsEdit.annualIncome" placeholder="请输入七日年化收益率"></Input>
+            <FormItem label="交易名称" prop="Transaction_name">
+              <Input v-model.trim="addForm.Transaction_name" placeholder="请输入交易名称"></Input>
             </FormItem>
-            <FormItem label="每万元收益" prop="preIncome">
-              <Input v-model.trim="formValidateFinancialProductsEdit.preIncome" placeholder="请输入每万元收益"></Input>
-            </FormItem>
-            <FormItem label="投资期限" prop="invesTerm">
-              <Input v-model.trim="formValidateFinancialProductsEdit.invesTerm" placeholder="请输入投资期限"></Input>
-            </FormItem>
-            <FormItem label="起投金额" prop="invesMoney">
-              <Input v-model.trim="formValidateFinancialProductsEdit.invesMoney" placeholder="请输入起投金额"></Input>
-            </FormItem>
-          </Form>
-
-          <div slot="footer">
-            <Button type="text" size="large" @click="modalFinancialProductsEdit=false">取消</Button>
-            <Button type="primary" size="large" @click="editFinancialProductsClick" :loading="loadingModel">确定</Button>
-          </div>
-        </Modal>
-
-        <!--添加一个理财产品的申请-->
-        <Modal v-model="applyModal" title="申请" :mask-closable="false">
-
-          <Form ref="applyModal12" :model="applyModalForm" :rules="applyModalRule"
-            :label-width="140">
-            <FormItem label="银行卡号" prop="bankCard">
-              <Select v-model="applyModalForm.bankCard" placeholder="请选择" clearable>
-                <Option
-                  v-for="item in selBankCodeAll"
-                  :value="item.cardCode+''"
-                  :key="item.cardCode+''"
-                >{{ item.cardCode}}</Option>
+            <FormItem label="测试类型" prop="Test_type">
+              <!-- <Input v-model.trim="addForm.Test_type" placeholder="请输入测试类型"></Input> -->
+              <Select v-model="addForm.Test_type" placeholder="缺陷等级" clearable>
+                <Option value="0" key="0">正常类测试</Option>
+                <Option value="1" key="1">异常类测试</Option>
+                <Option value="2" key="2">边界值测试</Option>
+                <Option value="3" key="3">其他类测试</Option>
               </Select>
             </FormItem>
-            <FormItem label="投资金额" prop="money">
-              <Input v-model.trim="applyModalForm.money" placeholder="请输入投资金额"></Input>
+            <FormItem label="设计人" prop="Desinger_name">
+              <Input v-model.trim="addForm.Desinger_name" placeholder="请输入设计人"></Input>
             </FormItem>
+            <FormItem label="输入数据" prop="Input_data">
+              <Input v-model.trim="addForm.Input_data" placeholder="请输入输入数据"></Input>
+            </FormItem>
+            <FormItem label="测试步骤" prop="Test_procedures">
+              <Input v-model.trim="addForm.Test_procedures" placeholder="请输入测试步骤"></Input>
+            </FormItem>
+            <FormItem label="预期结果" prop="Expected_result">
+              <Input v-model.trim="addForm.Expected_result" placeholder="请输入预期结果"></Input>
+            </FormItem>
+
           </Form>
           <div slot="footer">
-            <Button type="text" size="large" @click="applyModal=false">取消</Button>
-            <Button type="primary" size="large" @click="addFinancialProductsApplyClick" :loading="loadingModel">确定</Button>
+            <Button type="text" size="large" @click="modalBankCardAdd=false">取消</Button>
+            <Button type="primary" size="large" @click="addBankCardClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
+        <!--申请-->
+        <Modal v-model="implementModel" title="执行" :mask-closable="false">
+       
+          <!-- 交易名称、测试步骤、预期结果、实际结果、执行状态 -->
+          <Form ref="implementModelRef" :model="implementForm" :rules="implementFormRule"
+            :label-width="120">
+            <FormItem label="交易名称" prop="Transaction_name">
+              <Input v-model.trim="implementForm.Transaction_name" placeholder="请输入交易名称"></Input>
+            </FormItem>
+            <FormItem label="测试步骤" prop="Test_procedures">
+              <Input v-model.trim="implementForm.Test_procedures" placeholder="请输入测试步骤"></Input>
+            </FormItem>
+            <FormItem label="预期结果" prop="Expected_result">
+              <Input v-model.trim="implementForm.Expected_result" placeholder="请输入预期结果"></Input>
+            </FormItem>
+            <FormItem label="实际结果" prop="Auctual_result">
+              <Input v-model.trim="implementForm.Auctual_result" placeholder="请输入实际结果"></Input>
+            </FormItem>
+            <FormItem label="执行状态" prop="Status">
+              <Select v-model="implementForm.Status" placeholder="缺陷等级" clearable>
+                <Option value="0" key="0">未测试</Option>
+                <Option value="1" key="1">通过</Option>
+                <Option value="2" key="2">未通过</Option>
+              </Select>
+            </FormItem>
+
+          </Form>
+          <div slot="footer">
+            <Button type="text" size="large" @click="implementModel=false">取消</Button>
+            <Button type="primary" size="large" @click="implementModelClick" :loading="loadingModel">确定</Button>
+          </div>
+        </Modal>
+
       </Card>
     </div>
   </div>
@@ -137,169 +129,130 @@
         stylePage: {
           marginTop: "20px"
         },
-
-        selBankCodeAll:[],//可供选择的银行卡
-        applyModal:false, //申请弹窗
-        applyModalForm:{
-          bankCard:"",
-          money:"",
-        },
-        applyModalRule: {
-          bankCard: [
-            { required: true, message: "请选择银行卡", trigger: "blur" },
-          ],
-          money: [
-            { required: true, message: "请填写理财金额", trigger: "blur" },
-          ],
-        },
-        nowApplyData:{},//当前申请的数据
         currentPage: 1,
         fetchNum: 10,
         totalPage: 0,
 
-        searchName: "", //理财产品名称
-        typeSearch: "", //类型
-        //对话框
-
+        serachForm:{
+          Case_no:"",//用例编号
+          Application_name:"",//所属应用名称
+          Desinger_name:"",//设计人
+        },
+          // Application_name:"所属应用名称"
+          // Transaction_name:"交易名称"
+          // Test_type:"测试类型"
+          // Desinger_name:"设计人"
+          // Input_data:"输入数据"
+          // Test_procedures:"测试步骤"
+          // Expected_result:"预期结果"
+        addForm:{
+          Case_no:"",//用例编号
+          Application_name:"",//所属应用名称
+          Transaction_name:"",//交易名称
+          Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+          Desinger_name:"",//设计人
+          Input_data:"",//输入数据
+          Test_procedures:"",//测试步骤
+          Expected_result:"",//预期结果
+          Auctual_result:"",//实际结果
+          Status:""//执行状态0未测试1通过 2未通过
+          
+        },
+        //表单验证
+        addFormRule: {
+          Tank_name: [
+            { required: true, message: "请输入任务名称", trigger: "blur" },
+          ],
+          Application_name: [
+            { required: true, message: "请输入应用名称", trigger: "blur" },
+          ],
+          Testmanager_name: [
+            { required: true, message: "请输入经理姓名", trigger: "blur" },
+          ],
+          Tester_name: [
+            { required: true, message: "请输入测试人员姓名", trigger: "blur" },
+          ],
+          Commissioning_date: [
+            { required: true, message: "请选择投产日期1", trigger: "blur", pattern: /.+/},
+          ],
+          Status: [
+            { required: true, message: "请选择任务分配状态", trigger: "change" },
+          ],
+        },
+        implementFormRule: {
+          
+        },
+        // 执行
+        implementForm:{
+          Case_no:"",//用例编号
+          Application_name:"",//所属应用名称
+          Transaction_name:"",//交易名称
+          Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+          Desinger_name:"",//设计人
+          Input_data:"",//输入数据
+          Test_procedures:"",//测试步骤
+          Expected_result:"",//预期结果
+          Auctual_result:"",//实际结果
+          Status:""//执行状态0未测试1通过 2未通过
+        },
         loading: true, //表格加载转圈
         loadingModel: false, //表单提交按钮转圈
-
-        modalFinancialProductsAdd: false,
+        modelTitle:"添加",
+        modalBankCardAdd: false,
+        implementModel:false,
         //添加表单
-        formValidateFinancialProductsAdd: {
-          name: "", //理财产品名称
-          annualIncome:"", //七日年化收益率
-          preIncome: "",   //每万元收益
-          invesTerm: "",   //投资期限
-          invesMoney: ""   //起投金额
-        },
-        //表单验证
-        ruleValidateFinancialProductsAdd: {
-          name: [
-            { required: true, message: "请输入理财产品名称", trigger: "blur" },
-            {
-              type: "string",
-              max: 100,
-              message: "理财产品名称最长为30个字",
-              trigger: "blur"
-            }
-          ],
-          annualIncome: [
-            { required: true, message: "请输入七日年化收益率", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "七日年化收益率最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          preIncome: [
-            { required: true, message: "请输入每万元收益", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "每万元收益最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesTerm: [
-            { required: true, message: "请输入投资期限", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "投资期限最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesMoney: [
-            { required: true, message: "请输入起投金额", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "起投金额最长为20个字",
-              trigger: "blur"
-            }
-          ],
 
-        },
-
-        modalFinancialProductsEdit: false,
-        //修改表单
-        formValidateFinancialProductsEdit: {
-          name: "", //理财产品名称
-          annualIncome:"", //七日年化收益率
-          preIncome: "",   //每万元收益
-          invesTerm: "",   //投资期限
-          invesMoney: ""   //起投金额
-        },
-
-        //表单验证
-        ruleValidateFinancialProductsEdit: {
-          name: [
-            { required: true, message: "请输入理财产品名称", trigger: "blur" },
-            {
-              type: "string",
-              max: 100,
-              message: "理财产品名称最长为30个字",
-              trigger: "blur"
-            }
-          ],
-          annualIncome: [
-            { required: true, message: "请输入七日年化收益率", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "七日年化收益率最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          preIncome: [
-            { required: true, message: "请输入每万元收益", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "每万元收益最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesTerm: [
-            { required: true, message: "请输入投资期限", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "投资期限最长为20个字",
-              trigger: "blur"
-            }
-          ],
-          invesMoney: [
-            { required: true, message: "请输入起投金额", trigger: "blur" },
-            {
-              type: "string",
-              max: 20,
-              message: "起投金额最长为20个字",
-              trigger: "blur"
-            }
-          ],
-        },
         //表格列
         columns: [
-          // {
-          //   type: "index2",
-          //   width: 70,
-          //   title: "序号",
-          //   align: "center",
-          //   render: (h, params) => {
-          //     return h(
-          //       "span",
-          //       params.index + (this.currentPage - 1) * this.fetchNum + 1
-          //     );
-          //   }
-          // },
-          { title: "理财产品名称", align: "center", key: "name"},
-          { title: "七日年化收益率", align: "center", key: "annualIncome"},
-          { title: "每万元收益", align: "center", key: "preIncome"},
-          { title: "投资期限", align: "center", key: "invesTerm"},
-          { title: "起投金额", align: "center", key: "invesMoney"},
+          {
+            type: "index2",
+            width: 70,
+            title: "序号",
+            align: "center",
+            render: (h, params) => {
+              return h(
+                "span",
+                params.index + (this.currentPage - 1) * this.fetchNum + 1
+              );
+            }
+          },
+          { title: "用例编号", align: "center", key: "Case_no" },
+          { title: "所属应用", align: "center", key: "Application_name" },
+          {
+            title: "测试类型",
+            align: "center",
+            key: "Test_type",
+            render: (h, params) => {
+              if (params.row.Test_type == "0") {
+                return h("div", { style: {} }, "正常类测试");
+              } else if (params.row.Test_type == "1") {
+                return h("div", { style: {} }, "异常类测试");
+              } else if (params.row.Test_type == "2") {
+                return h("div", { style: {} }, "边界值测试");
+              } else if (params.row.Test_type == "3") {
+                return h("div", { style: {} }, "其他类测试");
+              }
+            }
+          },
+          { title: "设计人", align: "center", key: "Desinger_name" },
+          { title: "输入数据", align: "center", key: "Input_data" },
+          { title: "测试步骤", align: "center", key: "Test_procedures" },
+          { title: "预期结果", align: "center", key: "Expected_result" },
+          { title: "实际结果", align: "center", key: "Auctual_result" },
+          {
+            title: "执行状态",
+            align: "center",
+            key: "Status",
+            render: (h, params) => {
+              if (params.row.Status == "0") {
+                return h("div", { style: {} }, "未测试");
+              } else if (params.row.Status == "1") {
+                return h("div", { style: {} }, "通过");
+              } else if (params.row.Status == "2") {
+                return h("div", { style: {} }, "未通过");
+              }
+            }
+          },
           {
             title: "操作",
             key: "handle",
@@ -321,7 +274,7 @@
                         },
                         on: {
                           click: () => {
-                            this.editFinancialProductsButton(params);
+                            this.editBankCardButton(params);
                           }
                         }
                       },
@@ -365,11 +318,11 @@
                         },
                         on: {
                           click: () => {
-                            this.applyProducts(params);
+                            this.implementButton(params);
                           }
                         }
                       },
-                      "申请"
+                      "执行"
                     );
                   }
                 })()
@@ -380,12 +333,11 @@
 
         //表格数据
         tableData: [],
-        findList:"/sys/financialProducts/findFinancialProductsList",     //分页查询理财产品记录列表
-        addUrl:"/sys/financialProducts/addFinancialProducts",        //添加理财产品记录
-        updateUrl:"/sys/financialProducts/updateFinancialProducts",     //更新理财产品记录
-        deleUrl:"/sys/financialProducts/deleteFinancialProducts",     //删除理财产品记录
-        FindAllList:"",     //查询所有理财产品记录列表
-        findIdUrl:"",     //查询理财产品记录
+        findList:"/sys/bankCard/findBankCardList",     //分页查询任务记录列表
+        addUrl:"/sys/bankCard/addBankCard",        //添加测试用例记录
+        updateUrl:"/sys/bankCard/updateBankCard",     //更新任务记录
+        deleUrl:"/sys/bankCard/deleteBankCard",     //删除任务记录
+
       };
     },
     created() {
@@ -407,20 +359,12 @@
       //获取页面菜单列表
       queryList() {
         this.loading = true;
-        // let searchPream = {
-        //   page: this.currentPage,
-        //   limit: this.fetchNum,
-        // };
-        // //发送请求
-        // this.getFinancialProductsList({ searchPream }).then(res => {
-        //   this.tableData = res.data;
-        //   this.totalPage = res.count;
-        //   this.loading = false;
-        // });
         let _searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
-          searchName: this.searchName
+          Case_no:this.serachForm.Case_no,
+          Application_name:this.serachForm.Application_name,
+          Desinger_name:this.serachForm.Desinger_name,
         }
         let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
@@ -438,20 +382,35 @@
         this.currentPage = 1;
         this.queryList();
       },
+      // 清空
+      addFormRush(){
+        this.addForm.id = "";
+        this.addForm.Tank_name = "";//任务名称
+        this.addForm.Application_name = "";//所属应用名称
+        this.addForm.Testmanager_name = "";//测试经理姓名
+        this.addForm.Tester_name = "";//测试人员姓名
+        this.addForm.Commissioning_date = "";//投产日期 yy-mm-dd
+        this.addForm.Status = "";//任务分配状态 0待分配 已分配
+      },
       //点击添加子菜单按钮
-      addFinancialProductsButton(scope) {
-        this.formValidateFinancialProductsAdd = {
-          name: "", //理财产品名称
-          annualIncome:"", //七日年化收益率
-          preIncome: "",   //每万元收益
-          invesTerm: "",   //投资期限
-          invesMoney: ""   //起投金额
-        };
-        this.modalFinancialProductsAdd = true;
+      addBankCardButton(scope) {
+        this.addFormRush();
+        this.modalBankCardAdd = true;
+        this.modelType="add";
+        this.modelTitle="添加";
       },
       //添加主菜单提交
-      addFinancialProductsClick() {
-        this.handleSubmitAdd("formValidateFinancialProductsAdd");
+      addBankCardClick() {
+        if(this.modelType=="add"){
+          this.handleSubmitAdd("formValidateBankCardAdd");
+        }
+        if(this.modelType=="eidt"){
+          this.handleSubmitEdit("formValidateBankCardEdit");
+        }  
+      },
+      //申请提交
+      implementModelClick() {
+        this.implementModel = true;
       },
       //表单验证提交
       handleSubmitAdd(name) {
@@ -459,20 +418,16 @@
           if (valid) {
             //表单提交
             //console.log(this.formValidate);
-            let financialProducts = this.formValidateFinancialProductsAdd;
+            let bankCard = this.formValidateBankCardAdd;
             this.loadingModel = true; //启动提交按钮转圈
 
-            let searchPream = {xyfkey:"financialProducts",xyfval:financialProducts,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
-              this.modalFinancialProductsAdd = false; //关闭弹窗
+              this.modalBankCardAdd = false; //关闭弹窗
               //情况表单数据
-              this.formValidateFinancialProductsAdd = {
-                bankCard: "",
-                payPassword: "",
-                cardType: ""
-              };
+              this.addFormRush();
               //刷新菜单页面
               this.queryList();
             }).catch((e) => {
@@ -488,14 +443,13 @@
       },
 
       //删除文章菜单
-      deleteFinancialProductsButton(scope) {
+      deleteBankCardButton(scope) {
         this.$Modal.confirm({
           title: "删除",
           content: "<p>你确认要删除此条信息吗!</p>",
           onOk: () => {
-            let financialProductsId = scope.row.id;
-
-            let searchPream = {xyfkey:"financialProductsId",xyfval:financialProductsId,xyfurl:this.deleUrl}
+            let bankCardId = scope.row.id;
+            let searchPream = {xyfkey:"bankCardId",xyfval:bankCardId,xyfurl:this.deleUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.$Message.info(res.msg);
@@ -514,40 +468,47 @@
       },
 
       //编辑
-      editFinancialProductsButton(scope) {
-        this.formValidateFinancialProductsEdit.id = scope.row.id;
-        this.formValidateFinancialProductsEdit.annualIncome = scope.row.annualIncome + "";
-        this.formValidateFinancialProductsEdit.name = scope.row.name + "";
-        this.formValidateFinancialProductsEdit.preIncome = scope.row.preIncome + "";
-        this.formValidateFinancialProductsEdit.invesTerm = scope.row.invesTerm+ "";
-        this.formValidateFinancialProductsEdit.invesMoney = scope.row.invesMoney+ "";
-        this.modalFinancialProductsEdit = true;
+      editBankCardButton(scope) {
+        this.modelType="edit";
+        this.modelTitle="编辑";
+          // Application_name:"所属应用名称"
+          // Transaction_name:"交易名称"
+          // Test_type:"测试类型"
+          // Desinger_name:"设计人"
+          // Input_data:"输入数据"
+          // Test_procedures:"测试步骤"
+          // Expected_result:"预期结果"
+        this.addForm.id = scope.row.id;
+        this.addForm.Application_name = scope.row.Application_name;
+        this.addForm.Transaction_name = scope.row.Transaction_name + "";
+        this.addForm.Test_type = scope.row.Test_type + "";
+        this.addForm.Desinger_name = scope.row.Desinger_name+ "";
+        this.addForm.Input_data = scope.row.Input_data+ "";
+        this.addForm.Test_procedures = scope.row.Test_procedures+ "";
+        this.addForm.Expected_result = scope.row.Expected_result+ "";
+        this.modalBankCardAdd = true;
       },
 
-      //编辑菜单提交
-      editFinancialProductsClick() {
-        this.handleSubmitEdit("formValidateFinancialProductsEdit");
+      // 执行
+      implementButton(scope){
+        this.implementModel = true;  
       },
+
+
       //表单验证提交
       handleSubmitEdit(name) {
         this.$refs[name].validate(valid => {
           if (valid) {
             //表单提交
-            let financialProducts = this.formValidateFinancialProductsEdit;
+            let bankCard = this.formValidateBankCardEdit;
             this.loadingModel = true; //启动提交按钮转圈
-
-            let searchPream = {xyfkey:"financialProducts",xyfval:financialProducts,xyfurl:this.updateUrl}
+  
+            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
-              this.modalFinancialProductsEdit = false; //关闭弹窗
               //情况表单数据
-              this.formValidateFinancialProductsEdit = {
-                id: "",
-                bankCard: "",
-                payPassword: "",
-                cardType: ""
-              };
+              this.addFormRush();
               //刷新菜单页面
               this.queryList();
             }).catch((e) => {
@@ -560,92 +521,7 @@
             this.$Message.error("Fail!");
           }
         });
-      },
-      // 添加一理财产品的申请 关联到银行卡
-      applyProducts(data){
-        this.applyModalForm = {
-          bankCard : "",
-          money : ""
-        };
-        this.nowApplyData = data.row;
-        this.applyModal = true;
-        let _searchPream = {
-          page: 1,
-          limit: 10000,
-        }
-        let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:"/sys/bankCard/findBankCardList"}
-        //发送请求
-        this.ajaxPost({searchPream}).then(res => {
-          this.selBankCodeAll = res.data
-        })
-      },
-      addFinancialProductsApplyClick(){
-        this.applyModalClick("applyModal12");
-      },
-
-
-      // 申请功能提交
-      applyModalClick(name){
-        console.log(name,22)
-        let _onMoney = ""; //银行卡剩余的钱
-
-        for (let i = 0; i < this.selBankCodeAll.length; i++) {
-          const element = this.selBankCodeAll[i];
-          if(element.cardCode==this.applyModalForm.bankCard){
-            _onMoney = element.balance
-          }
-        }
-        console.log(this.applyModalForm.money)
-        console.log(_onMoney,"剩余的钱")
-        console.log(this.nowApplyData.invesMoney,"起投金额")
-        if(_onMoney<this.applyModalForm.money){
-          this.$Message.error("银行卡余额不足!");
-          return;
-        }
-
-        if(this.applyModalForm.money<this.nowApplyData.invesMoney){
-          this.$Message.error(`低于最低投资金额${this.nowApplyData.invesMoney}!`);
-          return;
-        }
-
-        let _obj = {
-          bankCard:this.applyModalForm.bankCard,
-          money:this.applyModalForm.money,
-          financialProductsId:this.nowApplyData.id
-        }
-
-        console.log(_obj);
-
-
-        let searchPream = {xyfkey:"financialProducts",xyfval:_obj,xyfurl:"sys/financialProducts/addUserFinancialProducts"}
-        //发送请求
-        this.ajaxPost({searchPream}).then(res => {
-          this.loadingModel = false; //关闭提交按钮转圈
-          this.applyModal = false; //关闭弹窗
-          //情况表单数据
-          this.applyModalForm = {
-            money: "",
-          };
-          //刷新菜单页面
-          this.queryList();
-        }).catch((e) => {
-          console.log(e);
-          this.$Message.error("操作失败了!");
-          this.loadingModel = false; //关闭提交按钮转圈
-        });
-        // this.$refs[name].validate(valid => {
-        //   if (valid) {
-        //     //表单提交
-        //     //1 银行卡余额必须大于要投资的钱
-        //     //2 起投金额必须小于投资的钱
-        //
-        //
-        //
-        //   } else {
-        //     this.$Message.error("验证失败!");
-        //   }
-        // });
-      },
+      }
     }
   };
 </script>

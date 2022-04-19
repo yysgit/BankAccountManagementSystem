@@ -2,10 +2,10 @@
   <div>
     <div style="min-width:1000px">
       <Card shadow>
-        <!--添加贷款-->
-        <Button v-if="buttonVerifAuthention('sys:loan:addLoan')" type="primary" icon="md-add"
-                @click="addLoanButton" style="margin-bottom: 10px;">添加贷款
-        </Button>
+        <!--添加学习问题-->
+        <!-- <Button v-if="buttonVerifAuthention('sys:loan:addLoan')" type="primary" icon="md-add"
+                @click="addLoanButton" style="margin-bottom: 10px;">添加学习问题
+        </Button> -->
         <Row>
           <!-- <Col span="3" style="margin-right: 10px;">
           <Input v-model="titleSearch" placeholder="贷款名称" clearable></Input>
@@ -27,8 +27,8 @@
         </Table>
         <Page :total="totalPage" show-total :styles="stylePage" @on-change="changePage"/>
 
-        <!--添加贷款弹出框-->
-        <Modal v-model="modalLoanAdd" title="添加贷款" :mask-closable="false">
+        <!--添加学习问题弹出框-->
+        <Modal v-model="modalLoanAdd" title="添加学习问题" :mask-closable="false">
 
           <Form ref="formValidateLoanAdd" :model="formValidateLoanAdd" :rules="ruleValidateLoanAdd"
                 :label-width="120">
@@ -223,42 +223,21 @@ export default {
       },
       //表格列
       columns: [
-
-        {title: "借贷人（客户）", align: "center", key: "userName"},
-        {title: "银行卡号", align: "center", key: "cardCode"},
-        {title: "借贷时间", align: "center", key: "loanTime"},
-        {title: "借贷金额", align: "center", key: "amoune"},
-        {title: "借贷期限", align: "center", key: "term"},
         {
-          title: "借贷状态",
+          type: "index2",
+          width: 70,
+          title: "序号",
           align: "center",
-          key: "loanStatus",
           render: (h, params) => {
-            if (params.row.loanStatus == 0) {
-              return h("div", {style: {}}, "未逾期");
-            } else if (params.row.loanStatus == 1) {
-              return h("div", {style: {}}, "逾期");
-            } else if (params.row.loanStatus == 2) {
-              return h("div", {style: {}}, "已还清");
-            }
+            return h(
+              "span",
+              params.index + (this.currentPage - 1) * this.fetchNum + 1
+            );
           }
         },
-        {title: "审核人（员工）", align: "center", key: "userNameApply"},
-        {
-          title: "申请状态",
-          align: "center",
-          key: "applyStatus",
-          render: (h, params) => {
-            if (params.row.applyStatus == 0) {
-              return h("div", {style: {}}, "未审核");
-            } else if (params.row.applyStatus == 1) {
-              return h("div", {style: {}}, "审核未通过");
-            } else if (params.row.applyStatus == 2) {
-              return h("div", {style: {}}, "审核通过");
-            }
-          }
-        },
-
+        {title: "测试方法", align: "center", key: "userName"},
+ 
+        {title: "评论内容", align: "center", key: "userNameApply"},
 
         {
           title: "操作",
@@ -285,76 +264,13 @@ export default {
                         }
                       }
                     },
-                    "编辑"
+                    "评论"
                   );
                 }
               })(),
-              (() => {
-                if (this.buttonVerifAuthention("sys:loan:deleteLoan")) {
-                  return h(
-                    "Button",
-                    {
-                      props: {
-                        type: "error",
-                        size: "small"
-                      },
-                      style: {
-                        marginRight: "5px"
-                      },
-                      on: {
-                        click: () => {
-                          this.deleteLoanButton(params);
-                        }
-                      }
-                    },
-                    "删除"
-                  );
-                }
-              })(),
-              (() => {
-                if (this.buttonVerifAuthention("sys:loan:updateUserLoan")) {
-                  return h(
-                    "Button",
-                    {
-                      props: {
-                        type: "primary",
-                        size: "small"
-                      },
-                      style: {
-                        marginRight: "5px"
-                      },
-                      on: {
-                        click: () => {
-                          this.checkLoan(params);
-                        }
-                      }
-                    },
-                    "审核"
-                  );
-                }
-              })(),
-              (() => {
-                if (this.buttonVerifAuthention("sys:loan:updateUserLoan")) {
-                  return h(
-                    "Button",
-                    {
-                      props: {
-                        type: "primary",
-                        size: "small"
-                      },
-                      style: {
-                        marginRight: "5px"
-                      },
-                      on: {
-                        click: () => {
-                          this.checkLoanRepayment(params);
-                        }
-                      }
-                    },
-                    "还款"
-                  );
-                }
-              })()
+              
+        
+           
             ]);
           }
         }
@@ -363,7 +279,7 @@ export default {
       //表格数据
       tableData: [],
       findList: "/sys/loan/findLoanList",     //分页查询贷款记录列表
-      addUrl: "/sys/loan/addLoan",        //添加贷款记录
+      addUrl: "/sys/loan/addLoan",        //添加学习问题记录
       updateUrl: "/sys/loan/updateLoan",     //更新贷款记录
       deleUrl: "/sys/loan/deleteLoan",     //删除贷款记录
       FindAllList: "",     //查询所有贷款记录列表
