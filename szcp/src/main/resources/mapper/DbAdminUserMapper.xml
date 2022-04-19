@@ -29,6 +29,26 @@
         <if test="roleId=='4a'">
            and dbau.id=#{userId}
         </if>
+
+
+        <if test="adminPhoneSearch!=null and adminPhoneSearch !=''">
+            and (dbau.admin_phone LIKE concat(concat('%',#{adminPhoneSearch}),'%'))
+        </if>
+
+        <if test="adminFullnameSearch!=null and adminFullnameSearch !=''">
+            and (dbau.admin_fullname LIKE concat(concat('%',#{adminFullnameSearch}),'%'))
+        </if>
+
+        <if test="addressSearch!=null and addressSearch !=''">
+            and (dbau.address LIKE concat(concat('%',#{addressSearch}),'%'))
+        </if>
+
+        <if test="idcardSearch!=null and idcardSearch !=''">
+            and (dbau.idcard LIKE concat(concat('%',#{idcardSearch}),'%'))
+        </if>
+
+
+
         order by dbau.update_time DESC limit #{page} , #{limit};
     </select>
     <select id="findAdminUserListByOrganIdCount" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -37,6 +57,22 @@
         where  delete_status=0
         <if test="roleId=='4a'">
             and id=#{userId}
+        </if>
+
+        <if test="adminPhoneSearch!=null and adminPhoneSearch !=''">
+            and (admin_phone LIKE concat(concat('%',#{adminPhoneSearch}),'%'))
+        </if>
+
+        <if test="adminFullnameSearch!=null and adminFullnameSearch !=''">
+            and (admin_fullname LIKE concat(concat('%',#{adminFullnameSearch}),'%'))
+        </if>
+
+        <if test="addressSearch!=null and addressSearch !=''">
+            and (address LIKE concat(concat('%',#{addressSearch}),'%'))
+        </if>
+
+        <if test="idcardSearch!=null and idcardSearch !=''">
+            and (idcard LIKE concat(concat('%',#{idcardSearch}),'%'))
         </if>
     </select>
 

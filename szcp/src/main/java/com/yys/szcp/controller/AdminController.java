@@ -160,6 +160,10 @@ public class AdminController {
             map.put("limit", search.get("limit"));
             map.put("roleId", adminUser.getRoleId()+"a");
             map.put("userId", adminUser.getId());
+            map.put("adminPhoneSearch", StringISNULLUtil.mapToString(search.get("adminPhoneSearch")));
+            map.put("adminFullnameSearch", StringISNULLUtil.mapToString(search.get("adminFullnameSearch")));
+            map.put("addressSearch",StringISNULLUtil.mapToString(search.get("addressSearch")));
+            map.put("idcardSearch", StringISNULLUtil.mapToString(search.get("idcardSearch")));
 
 
             resultUtil.setData(adminService.findAdminUserListByOrganId(map));

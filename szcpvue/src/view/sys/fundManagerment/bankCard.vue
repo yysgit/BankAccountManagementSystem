@@ -128,8 +128,8 @@
             { required: true, message: "请输入银行卡编号", trigger: "blur" },
             {
               type: "string",
-              max: 100,
-              message: "银行卡编号最长为100个字",
+              max: 10,
+              message: "银行卡编号为大于16个字的整数",
               trigger: "blur"
             }
           ],
@@ -160,8 +160,8 @@
             { required: true, message: "请输入银行卡编号", trigger: "blur" },
             {
               type: "string",
-              max: 100,
-              message: "银行卡编号最长为100个字",
+              max: 10,
+              message: "银行卡编号为大于16个字的整数",
               trigger: "blur"
             }
           ],

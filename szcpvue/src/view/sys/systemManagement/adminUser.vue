@@ -9,16 +9,33 @@
                       style="margin-bottom: 10px;margin-right: 10px;">添加用户
               </Button>
 
-<!--              <Button v-if="buttonVerifAuthention('sys:admin:addAdminUser')" type="primary" icon="md-add"-->
-<!--                      @click="editModClick"-->
-<!--                      style="margin-bottom: 10px;margin-right: 10px;">编辑-->
-<!--              </Button>-->
 
-              <!--显示全部用户-->
-              <!-- <Button v-if="buttonVerifAuthention('sys:role:allList') && level!=2" type="primary"
-                      @click="queryAdminUserAllClick"
-                      style="margin-bottom: 10px;margin-right: 10px;">显示全部用户
-              </Button> -->
+          <!-- 查询 -->
+          <Row>
+
+            <Col span="3" style="margin-right: 10px;">
+              <Input v-model="adminPhoneSearch" placeholder="手机号" clearable></Input>
+            </Col>
+            <Col span="3" style="margin-right: 10px;">
+              <Input v-model="adminFullnameSearch" placeholder="姓名" clearable></Input>
+            </Col>
+            <Col span="3" style="margin-right: 10px;">
+              <Input v-model="addressSearch" placeholder="地址" clearable></Input>
+            </Col>
+            <Col span="3" style="margin-right: 10px;">
+              <Input v-model="idcardSearch" placeholder="身份证号" clearable></Input>
+            </Col>
+
+            <Col span="2" style="margin-right: 10px;">
+              <Button
+                type="primary"
+                icon="md-search"
+                @click="searchQuery"
+                style="margin-bottom: 10px;"
+              >查询</Button>
+            </Col>
+          </Row>
+
               <!--菜单表格-->
               <Table ref="tables"  stripe border :loading="loading" :data="tableData" :columns="columns">
               </Table>
@@ -121,6 +138,10 @@
         fetchNum: 10,
         totalPage: 0,
         roleAllList:[],
+        adminPhoneSearch:'',
+        adminFullnameSearch:'',
+        addressSearch:'',
+        idcardSearch:'',
 
 
         level: this.$store.state.user.userLevel,
@@ -276,7 +297,11 @@
         this.currentPage = page
         this.queryList()
       },
-
+      //查询
+      searchQuery() {
+        this.currentPage = 1;
+        this.queryList();
+      },
       //获取页面菜单列表
       queryList() {
         this.loading = true;
@@ -284,6 +309,10 @@
         let searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
+          adminPhoneSearch:this.adminPhoneSearch,
+          adminFullnameSearch:this.adminFullnameSearch,
+          addressSearch:this.addressSearch,
+          idcardSearch:this.idcardSearch,
         }
         //发送请求
         this.getAdminUserList({searchPream}).then(res => {

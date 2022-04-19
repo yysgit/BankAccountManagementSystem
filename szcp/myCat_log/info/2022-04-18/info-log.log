@@ -34,3 +34,217 @@
 [INFO ] 00:00:50.751 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
 [INFO ] 00:00:50.752 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
 [INFO ] 00:00:50.790 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 19:49:26.705 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 38548 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 19:49:26.707 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 19:49:28.631 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 19:49:28.637 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 19:49:28.692 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+[INFO ] 19:49:29.287 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 19:49:29.698 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 19:49:29.711 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 19:49:29.711 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 19:49:29.712 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 19:49:29.867 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 19:49:29.867 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3020 ms
+[INFO ] 19:49:29.962 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 19:49:29.967 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 19:49:31.094 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 19:49:31.632 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 19:49:32.051 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 19:49:32.349 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 19:49:32.404 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 19:49:32.443 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 19:49:32.490 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 19:49:32.933 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7089"]
+[INFO ] 19:49:32.963 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 7089 (http) with context path ''
+[INFO ] 19:49:32.966 [main] com.yys.szcp.SzcpApplication - Started SzcpApplication in 6.839 seconds (JVM running for 8.724)
+[INFO ] 19:49:38.593 [http-nio-7089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 19:49:38.593 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 19:49:38.601 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+[INFO ] 19:49:38.622 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 19:49:38.625 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
+[INFO ] 19:49:38.694 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 19:49:39.342 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - ===== token解析异常 =====
+[INFO ] 19:50:14.990 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/login
+[INFO ] 19:50:14.990 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/login
+[INFO ] 19:50:14.993 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/login
+[INFO ] 19:50:15.013 [http-nio-7089-exec-4] c.y.szcp.controller.AdminController - 输出info级别的日志.....
+[INFO ] 19:50:15.240 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 19:50:15.240 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
+[INFO ] 19:50:15.242 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 19:50:19.665 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:50:19.665 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:50:19.668 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:51:28.689 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:54:33.210 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:55:23.683 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:55:57.481 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:56:18.891 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:56:18.891 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 19:56:18.894 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:11:38.670 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:10.378 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:10.378 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:10.380 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:10.381 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - ===== token解析异常 =====
+[INFO ] 20:37:11.490 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/login
+[INFO ] 20:37:11.490 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/login
+[INFO ] 20:37:11.493 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/login
+[INFO ] 20:37:11.493 [http-nio-7089-exec-5] c.y.szcp.controller.AdminController - 输出info级别的日志.....
+[INFO ] 20:37:13.533 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:13.533 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:13.535 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
+[INFO ] 20:37:16.330 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:16.330 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:16.332 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:19.017 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:20.424 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:27.353 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:39.011 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:40.378 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:47.712 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:47.712 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:37:47.714 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 20:41:21.991 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 20:41:21.992 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 20:41:22.027 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 20:41:26.618 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 39660 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 20:41:26.619 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 20:41:27.496 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 20:41:27.498 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 20:41:27.522 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+[INFO ] 20:41:27.824 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 20:41:28.080 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 20:41:28.088 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 20:41:28.088 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 20:41:28.089 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 20:41:28.187 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 20:41:28.187 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1480 ms
+[INFO ] 20:41:28.252 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 20:41:28.255 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 20:41:29.196 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 20:41:29.645 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 20:41:29.944 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 20:41:30.167 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 20:41:30.203 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 20:41:30.236 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 20:41:30.271 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 20:41:30.572 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7089"]
+[INFO ] 20:41:30.593 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 7089 (http) with context path ''
+[INFO ] 20:41:30.595 [main] com.yys.szcp.SzcpApplication - Started SzcpApplication in 4.398 seconds (JVM running for 5.951)
+[INFO ] 21:05:36.079 [http-nio-7089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 21:05:36.080 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 21:05:36.086 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+[INFO ] 21:05:36.102 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:05:36.105 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:05:36.165 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:41:08.519 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:41:09.484 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:43:07.108 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 21:43:07.108 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/bankCard/findBankCardList
+[INFO ] 21:43:07.110 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 21:43:07.471 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankRecord/findBankRecordList
+[INFO ] 21:43:07.471 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/bankRecord/findBankRecordList
+[INFO ] 21:43:07.474 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankRecord/findBankRecordList
+[INFO ] 21:43:08.078 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findFinancialProductsList
+[INFO ] 21:43:08.078 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/financialProducts/findFinancialProductsList
+[INFO ] 21:43:08.080 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findFinancialProductsList
+[INFO ] 21:43:08.578 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 21:43:08.578 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 21:43:08.580 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/financialProducts/findUserFinancialProductsList
+[INFO ] 21:43:09.046 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 21:43:09.046 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/role/findRoleList
+[INFO ] 21:43:09.049 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 21:43:09.503 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/loan/findLoanList
+[INFO ] 21:43:09.503 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/loan/findLoanList
+[INFO ] 21:43:09.506 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/loan/findLoanList
+[INFO ] 21:43:10.022 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByMyRoleId
+[INFO ] 21:43:10.022 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/menu/findMenuByMyRoleId
+[INFO ] 21:43:10.024 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/menu/findMenuByMyRoleId
+[INFO ] 21:43:11.413 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/role/findRoleList
+[INFO ] 21:43:12.025 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:43:12.025 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:43:12.027 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:43:24.272 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 21:43:24.273 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 21:43:24.300 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 21:43:27.356 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 28120 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 21:43:27.357 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 21:43:28.115 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 21:43:28.117 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 21:43:28.140 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+[INFO ] 21:43:28.411 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 21:43:28.653 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 21:43:28.660 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:43:28.661 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 21:43:28.661 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 21:43:28.755 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 21:43:28.755 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1331 ms
+[INFO ] 21:43:28.816 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 21:43:28.818 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 21:43:29.866 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 21:43:30.270 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 21:43:30.551 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 21:43:30.751 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 21:43:30.784 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 21:43:30.815 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 21:43:30.845 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 21:43:31.126 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:43:31.145 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 7089 (http) with context path ''
+[INFO ] 21:43:31.147 [main] com.yys.szcp.SzcpApplication - Started SzcpApplication in 4.11 seconds (JVM running for 5.493)
+[INFO ] 21:44:46.207 [http-nio-7089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 21:44:46.207 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 21:44:46.212 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+[INFO ] 21:44:46.226 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:44:46.228 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:44:46.281 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:45:32.015 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 21:45:32.017 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 21:45:32.045 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+[INFO ] 21:45:35.252 [main] com.yys.szcp.SzcpApplication - Starting SzcpApplication on LAPTOP-T7DEB7H8 with PID 34700 (E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp\target\classes started by yangys in E:\MyGithubProject\pingtai\BankAccountManagementSystem\szcp)
+[INFO ] 21:45:35.253 [main] com.yys.szcp.SzcpApplication - The following profiles are active: dev
+[INFO ] 21:45:36.030 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+[INFO ] 21:45:36.032 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[INFO ] 21:45:36.059 [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12ms. Found 0 Redis repository interfaces.
+[INFO ] 21:45:36.358 [main] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[INFO ] 21:45:36.604 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 7089 (http)
+[INFO ] 21:45:36.612 [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:45:36.613 [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+[INFO ] 21:45:36.613 [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.30]
+[INFO ] 21:45:36.706 [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO ] 21:45:36.707 [main] o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1387 ms
+[INFO ] 21:45:36.776 [main] o.s.b.web.servlet.RegistrationBean - Servlet statViewServlet was not registered (possibly already registered?)
+[INFO ] 21:45:36.778 [main] o.s.b.web.servlet.RegistrationBean - Filter webStatFilter was not registered (possibly already registered?)
+[INFO ] 21:45:37.770 [main] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+[INFO ] 21:45:38.192 [main] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[INFO ] 21:45:38.492 [main] o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+[INFO ] 21:45:38.711 [main] o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+[INFO ] 21:45:38.747 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[INFO ] 21:45:38.776 [main] s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[INFO ] 21:45:38.806 [main] s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[INFO ] 21:45:39.103 [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7089"]
+[INFO ] 21:45:39.124 [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 7089 (http) with context path ''
+[INFO ] 21:45:39.126 [main] com.yys.szcp.SzcpApplication - Started SzcpApplication in 4.22 seconds (JVM running for 5.784)
+[INFO ] 21:47:28.945 [http-nio-7089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[INFO ] 21:47:28.945 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 21:47:28.952 [http-nio-7089-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+[INFO ] 21:47:28.968 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:47:28.971 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:47:29.023 [http-nio-7089-exec-2] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:47:54.470 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:47:54.470 [http-nio-7089-exec-3] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:47:54.472 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:02.868 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:08.796 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:08.796 [http-nio-7089-exec-6] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:08.798 [http-nio-7089-exec-7] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:11.141 [http-nio-7089-exec-8] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:17.108 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:17.108 [http-nio-7089-exec-9] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:17.109 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserListByOrganId
+[INFO ] 21:48:23.225 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 21:49:43.909 [http-nio-7089-exec-4] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 21:50:41.485 [http-nio-7089-exec-5] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/bankCard/findBankCardList
+[INFO ] 22:15:50.760 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 22:15:50.761 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 22:15:50.791 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
