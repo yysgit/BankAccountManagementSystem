@@ -5,45 +5,46 @@
 
     <!--添加任务-->
     <insert id="addTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
-        insert into db_test_case (name, apply, manager_user_id, commissioning_time, create_time)
-        values (#{name}, #{apply}, #{managerUserId}, #{commissioningTime}, now());
+        insert into db_test_case (case_no, transaction_name, test_type, desinger_name,
+                                  status,input_data,test_procedures,expected_result,
+                                  auctual_result,create_time)
+        values (#{caseNo}, #{transactionName}, #{testType}, #{desingerName},0,
+                #{inputData}, #{testProcedures}, #{expectedResult},#{auctualResult}, now());
     </insert>
 
     <!--分页查询任务列表-->
     <select id="findTestCaseList" resultType="java.util.Map" parameterType="java.util.Map">
         select
         dbl.id,
-        dbl.name as name,
-        dbl.apply as apply,
-        dbl.test_user_id as testUserId,
-        dbl.manager_user_id as managerUserId,
-        dbl.create_time as creatTime,
-        dbl.commissioning_time as commissioningTime,
-        dbl.state as state,
-        dbau.admin_fullname as testUserName,
-        dbau2.admin_fullname as managerUserName
+        dbl.case_no as caseNo,
+        dbl.transaction_name as transactionName,
+        dbl.test_type as testType,
+        dbl.desinger_name as desingerName,
+        dbl.status as status,
+        dbl.input_data as inputData,
+        dbl.test_procedures as testProcedures,
+        dbl.expected_result as expectedResult,
+        dbl.auctual_result as auctualResult,
+        dbl.create_time as createTime,
+        dt.apply,
+        dbau.admin_fullname as adminFullname
         from db_test_case dbl
-        left join db_admin_user dbau on dbau.id = dbl.test_user_id
-        left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+        left join db_task dt on dbl.task_id = dt.id
+        left join db_admin_user dbau on dbau.id = dt.test_user_id
 
         where 1=1
         <if test="roleId=='3a'">
-            and dbl.test_user_id=#{userId}
+            and dt.test_user_id=#{userId}
         </if>
-        <if test="nameSearch!=null and nameSearch!=''">
-            and (dbl.name LIKE concat(concat("%",#{nameSearch}),"%"))
+        <if test="caseNoSearch!=null and caseNoSearch!=''">
+            and (dbl.case_no LIKE concat(concat("%",#{caseNoSearch}),"%"))
         </if>
         <if test="applySearch!=null and applySearch!=''">
-            and (dbl.apply LIKE concat(concat("%",#{applySearch}),"%"))
+            and (dt.apply LIKE concat(concat("%",#{applySearch}),"%"))
         </if>
-        <if test="testUserNameSearch!=null and testUserNameSearch!=''">
-            and (dbau.admin_fullname LIKE concat(concat("%",#{testUserNameSearch}),"%"))
+        <if test="desingerNameSearch!=null and desingerNameSearch!=''">
+            and (dbl.desinger_name LIKE concat(concat("%",#{desingerNameSearch}),"%"))
         </if>
-
-        <if test="managerUserNameSearch!=null and managerUserNameSearch!=''">
-            and (dbau2.admin_fullname LIKE concat(concat("%",#{managerUserNameSearch}),"%"))
-        </if>
-
 
         order by dbl.create_time DESC
         limit #{page} , #{limit};
@@ -51,43 +52,45 @@
 
     <select id="findTestCaseListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
         select count(*)
+
         from db_test_case dbl
-        left join db_admin_user dbau on dbau.id = dbl.test_user_id
-        left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+        left join db_task dt on dbl.task_id = dt.id
+        left join db_admin_user dbau on dbau.id = dt.test_user_id
+
         where 1=1
         <if test="roleId=='3a'">
-            and test_user_id=#{userId}
+            and dt.test_user_id=#{userId}
         </if>
-        <if test="nameSearch!=null and nameSearch!=''">
-            and (dbl.name LIKE concat(concat("%",#{nameSearch}),"%"))
+        <if test="caseNoSearch!=null and caseNoSearch!=''">
+            and (dbl.case_no LIKE concat(concat("%",#{caseNoSearch}),"%"))
         </if>
         <if test="applySearch!=null and applySearch!=''">
-            and (dbl.apply LIKE concat(concat("%",#{applySearch}),"%"))
+            and (dt.apply LIKE concat(concat("%",#{applySearch}),"%"))
         </if>
-        <if test="testUserNameSearch!=null and testUserNameSearch!=''">
-            and (dbau.admin_fullname LIKE concat(concat("%",#{testUserNameSearch}),"%"))
-        </if>
-
-        <if test="managerUserNameSearch!=null and managerUserNameSearch!=''">
-            and (dbau2.admin_fullname LIKE concat(concat("%",#{managerUserNameSearch}),"%"))
+        <if test="desingerNameSearch!=null and desingerNameSearch!=''">
+            and (dbl.desinger_name LIKE concat(concat("%",#{desingerNameSearch}),"%"))
         </if>
     </select>
 
     <!--通过任务id 获取任务-->
     <select id="findTestCaseById" resultType="com.yys.szcp.entity.DbTestCase" parameterType="java.lang.Integer">
-        select dbl.id,
-               dbl.name as name,
-               dbl.apply as apply,
-               dbl.test_user_id as testUserId,
-               dbl.manager_user_id as managerUserId,
-               dbl.create_time as creatTime,
-               dbl.commissioning_time as commissioningTime,
-               dbl.state as state,
-               dbau.admin_fullname as testUserName,
-               dbau2.admin_fullname as managerUserName
+        select
+            dbl.id,
+            dbl.case_no as caseNo,
+            dbl.transaction_name as transactionName,
+            dbl.test_type as testType,
+            dbl.desinger_name as desingerName,
+            dbl.status as status,
+            dbl.input_data as inputData,
+            dbl.test_procedures as testProcedures,
+            dbl.expected_result as expectedResult,
+            dbl.auctual_result as auctualResult,
+            dbl.create_time as createTime,
+            dt.apply,
+            dbau.admin_fullname as adminFullname
         from db_test_case dbl
-                 left join db_admin_user dbau on dbau.id = dbl.test_user_id
-                 left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+                 left join db_task dt on dbl.task_id = dt.id
+                 left join db_admin_user dbau on dbau.id = dt.test_user_id
         where id = #{testCaseId}
     </select>
 
@@ -95,18 +98,16 @@
     <!--更新任务-->
     <update id="updateTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
         update db_test_case
-        set name              = #{name}
-          , apply             =#{apply}
-          , commissioning_time=#{commissioningTime}
-        where id = #{id}
-    </update>
+        set case_no              = #{caseNo}
+          , transaction_name             =#{transactionName}
+          , test_type             =#{testType}
+          , desinger_name             =#{desingerName}
+          , status             =#{status}
+          , input_data             =#{inputData}
+          , test_procedures             =#{testProcedures}
+          , expected_result             =#{expectedResult}
+          , auctual_result             =#{auctualResult}
 
-
-    <!--更新任务-->
-    <update id="updateUserTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
-        update db_test_case
-        set test_user_id = #{testUserId}
-          , state=1
         where id = #{id}
     </update>
 
@@ -119,19 +120,23 @@
 
     <!--查询任务列表-->
     <select id="findTestCaseAllList" resultType="java.util.Map" parameterType="java.util.Map">
-        select dbl.id,
-               dbl.name as name,
-               dbl.apply as apply,
-               dbl.test_user_id as testUserId,
-               dbl.manager_user_id as managerUserId,
-               dbl.create_time as creatTime,
-               dbl.commissioning_time as commissioningTime,
-               dbl.state as state,
-               dbau.admin_fullname as testUserName,
-               dbau2.admin_fullname as managerUserName
+        select
+            dbl.id,
+            dbl.case_no as caseNo,
+            dbl.transaction_name as transactionName,
+            dbl.test_type as testType,
+            dbl.desinger_name as desingerName,
+            dbl.status as status,
+            dbl.input_data as inputData,
+            dbl.test_procedures as testProcedures,
+            dbl.expected_result as expectedResult,
+            dbl.auctual_result as auctualResult,
+            dbl.create_time as createTime,
+            dt.apply,
+            dbau.admin_fullname as adminFullname
         from db_test_case dbl
-                 left join db_admin_user dbau on dbau.id = dbl.test_user_id
-                 left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+                 left join db_task dt on dbl.task_id = dt.id
+                 left join db_admin_user dbau on dbau.id = dt.test_user_id
         order by dbl.create_time DESC;
     </select>
 

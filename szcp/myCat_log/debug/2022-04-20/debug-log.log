@@ -10825,3 +10825,13 @@
 [DEBUG] 12:23:14.689 [main] org.apache.velocity - ResourceManager : found /templates/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
 [DEBUG] 12:23:14.689 [main] c.b.m.generator.AutoGenerator - 模板:/templates/controller.java.vm;  文件:E://\com\yys\szcp\web\DbMenuController.java
 [DEBUG] 12:23:14.766 [main] c.b.m.generator.AutoGenerator - ==========================文件生成完成！！！==========================
+[DEBUG] 22:51:57.170 [SpringContextShutdownHook] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@47a5b70d, started on Wed Apr 20 00:59:45 CST 2022
+[DEBUG] 22:51:57.170 [SpringContextShutdownHook] o.s.c.e.PropertySourcesPropertyResolver - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+[DEBUG] 22:51:57.173 [SpringContextShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+[DEBUG] 22:51:57.174 [SpringContextShutdownHook] o.s.c.s.DefaultLifecycleProcessor - Bean 'documentationPluginsBootstrapper' completed its stop procedure
+[DEBUG] 22:51:57.174 [SpringContextShutdownHook] o.s.d.r.l.RedisMessageListenerContainer - Stopped RedisMessageListenerContainer
+[DEBUG] 22:51:57.174 [SpringContextShutdownHook] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+[DEBUG] 22:51:57.175 [SpringContextShutdownHook] o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+[DEBUG] 22:51:57.185 [SpringContextShutdownHook] io.lettuce.core.RedisClient - Initiate shutdown (100, 100, MILLISECONDS)
+[DEBUG] 22:51:57.196 [SpringContextShutdownHook] i.l.c.r.DefaultClientResources - Initiate shutdown (0, 2, SECONDS)
+[DEBUG] 22:51:57.197 [SpringContextShutdownHook] i.l.c.r.DefaultEventLoopGroupProvider - Initiate shutdown (0, 2, SECONDS)

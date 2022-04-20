@@ -266,3 +266,6 @@
 [INFO ] 11:32:51.046 [http-nio-7089-exec-10] c.yys.szcp.config.jwt.JwtInterceptor - ===== 用户未登录, 请先登录:/sys/admin/findAdminUserInfo
 [INFO ] 11:32:55.169 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - 访问路径:/sys/admin/findAdminUserInfo
 [INFO ] 11:32:55.169 [http-nio-7089-exec-1] c.yys.szcp.config.jwt.JwtInterceptor - ===== token格式异常 =====
+[INFO ] 22:51:57.174 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+[INFO ] 22:51:57.175 [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO ] 22:51:57.210 [SpringContextShutdownHook] c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

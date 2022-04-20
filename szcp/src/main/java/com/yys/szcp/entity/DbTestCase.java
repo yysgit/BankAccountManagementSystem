@@ -70,7 +70,16 @@ public class DbTestCase {
      */
 
 	private Date createTime;
+	private Integer taskId;
 
+
+	public Integer getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(Integer taskId) {
+		this.taskId = taskId;
+	}
 
 	public Integer getId() {
 		return id;
