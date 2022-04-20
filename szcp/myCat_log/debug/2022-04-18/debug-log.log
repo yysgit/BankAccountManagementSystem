@@ -258,11 +258,11 @@
 [DEBUG] 00:00:28.741 [http-nio-7089-exec-6] o.s.web.servlet.DispatcherServlet - Completed 200 OK
 [DEBUG] 00:00:30.705 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
 [DEBUG] 00:00:30.705 [http-nio-7089-exec-8] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
-[DEBUG] 00:00:30.705 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 00:00:30.705 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.TaskController#findLoanList(HttpServletRequest, String)
 [DEBUG] 00:00:30.706 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - Completed 200 OK
 [DEBUG] 00:00:30.707 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - POST "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjExMjAzLCJleHAiOjE2NTAyMTg0MDMsIm5iZiI6MTY1MDIxMTIwM30.XoeFjiDcREUBthV7JA6iGrj_QAPmJugCf8MgPQgQbz4&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
 [DEBUG] 00:00:30.707 [http-nio-7089-exec-7] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
-[DEBUG] 00:00:30.707 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 00:00:30.707 [http-nio-7089-exec-7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.TaskController#findLoanList(HttpServletRequest, String)
 [DEBUG] 00:00:30.708 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
 [DEBUG] 00:00:30.708 [http-nio-7089-exec-7] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6dc93c25] was not registered for synchronization because synchronization is not active
 [DEBUG] 00:00:30.708 [http-nio-7089-exec-7] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
@@ -652,7 +652,7 @@
 [DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbBankRecordMapper'.
 [DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbFinancialProductsMapper' and 'com.yys.szcp.mapper.DbFinancialProductsMapper' mapperInterface
 [DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbFinancialProductsMapper'.
-[DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbLoanMapper' mapperInterface
+[DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbTaskMapper' mapperInterface
 [DEBUG] 19:49:28.462 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLoanMapper'.
 [DEBUG] 19:49:28.463 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLogMapper' and 'com.yys.szcp.mapper.DbLogMapper' mapperInterface
 [DEBUG] 19:49:28.463 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLogMapper'.
@@ -784,7 +784,7 @@
 [DEBUG] 19:49:31.121 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankCard matches criteria [is assignable to Object]
 [DEBUG] 19:49:31.121 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankRecord matches criteria [is assignable to Object]
 [DEBUG] 19:49:31.121 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbFinancialProducts matches criteria [is assignable to Object]
-[DEBUG] 19:49:31.122 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLoan matches criteria [is assignable to Object]
+[DEBUG] 19:49:31.122 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbTask matches criteria [is assignable to Object]
 [DEBUG] 19:49:31.122 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLog matches criteria [is assignable to Object]
 [DEBUG] 19:49:31.122 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbMenu matches criteria [is assignable to Object]
 [DEBUG] 19:49:31.123 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbRole matches criteria [is assignable to Object]
@@ -3861,7 +3861,7 @@
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbBankRecordMapper'.
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbFinancialProductsMapper' and 'com.yys.szcp.mapper.DbFinancialProductsMapper' mapperInterface
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbFinancialProductsMapper'.
-[DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbLoanMapper' mapperInterface
+[DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbTaskMapper' mapperInterface
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLoanMapper'.
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLogMapper' and 'com.yys.szcp.mapper.DbLogMapper' mapperInterface
 [DEBUG] 20:41:27.456 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLogMapper'.
@@ -3993,7 +3993,7 @@
 [DEBUG] 20:41:29.220 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankCard matches criteria [is assignable to Object]
 [DEBUG] 20:41:29.220 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankRecord matches criteria [is assignable to Object]
 [DEBUG] 20:41:29.221 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbFinancialProducts matches criteria [is assignable to Object]
-[DEBUG] 20:41:29.221 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLoan matches criteria [is assignable to Object]
+[DEBUG] 20:41:29.221 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbTask matches criteria [is assignable to Object]
 [DEBUG] 20:41:29.221 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLog matches criteria [is assignable to Object]
 [DEBUG] 20:41:29.222 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbMenu matches criteria [is assignable to Object]
 [DEBUG] 20:41:29.222 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbRole matches criteria [is assignable to Object]
@@ -6578,11 +6578,11 @@
 [DEBUG] 21:43:09.108 [http-nio-7089-exec-7] o.s.web.servlet.DispatcherServlet - Completed 200 OK
 [DEBUG] 21:43:09.503 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - OPTIONS "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjg1NDMzLCJleHAiOjE2NTAyOTI2MzMsIm5iZiI6MTY1MDI4NTQzM30.BXJzGw05JCKo_d44uc-peSbJunZ2atOLuegzj8dENFM&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
 [DEBUG] 21:43:09.503 [http-nio-7089-exec-8] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
-[DEBUG] 21:43:09.503 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 21:43:09.503 [http-nio-7089-exec-8] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.TaskController#findLoanList(HttpServletRequest, String)
 [DEBUG] 21:43:09.504 [http-nio-7089-exec-8] o.s.web.servlet.DispatcherServlet - Completed 200 OK
 [DEBUG] 21:43:09.506 [http-nio-7089-exec-9] o.s.web.servlet.DispatcherServlet - POST "/sys/loan/findLoanList?token=Bearer+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaXNzIjoieXlzIiwiaWF0IjoxNjUwMjg1NDMzLCJleHAiOjE2NTAyOTI2MzMsIm5iZiI6MTY1MDI4NTQzM30.BXJzGw05JCKo_d44uc-peSbJunZ2atOLuegzj8dENFM&searchPream=%7B%22page%22:1,%22limit%22:10%7D", parameters={masked}
 [DEBUG] 21:43:09.506 [http-nio-7089-exec-9] s.d.s.w.PropertySourcedRequestMappingHandlerMapping - looking up handler for path: /sys/loan/findLoanList
-[DEBUG] 21:43:09.506 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.LoanController#findLoanList(HttpServletRequest, String)
+[DEBUG] 21:43:09.506 [http-nio-7089-exec-9] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.yys.szcp.controller.TaskController#findLoanList(HttpServletRequest, String)
 [DEBUG] 21:43:09.507 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
 [DEBUG] 21:43:09.507 [http-nio-7089-exec-9] org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@24dac310] was not registered for synchronization because synchronization is not active
 [DEBUG] 21:43:09.507 [http-nio-7089-exec-9] o.s.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
@@ -6931,7 +6931,7 @@
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbBankRecordMapper'.
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbFinancialProductsMapper' and 'com.yys.szcp.mapper.DbFinancialProductsMapper' mapperInterface
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbFinancialProductsMapper'.
-[DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbLoanMapper' mapperInterface
+[DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbTaskMapper' mapperInterface
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLoanMapper'.
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLogMapper' and 'com.yys.szcp.mapper.DbLogMapper' mapperInterface
 [DEBUG] 21:43:28.077 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLogMapper'.
@@ -7063,7 +7063,7 @@
 [DEBUG] 21:43:29.888 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankCard matches criteria [is assignable to Object]
 [DEBUG] 21:43:29.888 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankRecord matches criteria [is assignable to Object]
 [DEBUG] 21:43:29.888 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbFinancialProducts matches criteria [is assignable to Object]
-[DEBUG] 21:43:29.889 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLoan matches criteria [is assignable to Object]
+[DEBUG] 21:43:29.889 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbTask matches criteria [is assignable to Object]
 [DEBUG] 21:43:29.889 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLog matches criteria [is assignable to Object]
 [DEBUG] 21:43:29.889 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbMenu matches criteria [is assignable to Object]
 [DEBUG] 21:43:29.889 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbRole matches criteria [is assignable to Object]
@@ -9509,7 +9509,7 @@
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbBankRecordMapper'.
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbFinancialProductsMapper' and 'com.yys.szcp.mapper.DbFinancialProductsMapper' mapperInterface
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbFinancialProductsMapper'.
-[DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbLoanMapper' mapperInterface
+[DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLoanMapper' and 'com.yys.szcp.mapper.DbTaskMapper' mapperInterface
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLoanMapper'.
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'dbLogMapper' and 'com.yys.szcp.mapper.DbLogMapper' mapperInterface
 [DEBUG] 21:45:35.986 [main] o.m.s.mapper.ClassPathMapperScanner - Enabling autowire by type for MapperFactoryBean with name 'dbLogMapper'.
@@ -9641,7 +9641,7 @@
 [DEBUG] 21:45:37.791 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankCard matches criteria [is assignable to Object]
 [DEBUG] 21:45:37.791 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbBankRecord matches criteria [is assignable to Object]
 [DEBUG] 21:45:37.792 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbFinancialProducts matches criteria [is assignable to Object]
-[DEBUG] 21:45:37.792 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLoan matches criteria [is assignable to Object]
+[DEBUG] 21:45:37.792 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbTask matches criteria [is assignable to Object]
 [DEBUG] 21:45:37.792 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbLog matches criteria [is assignable to Object]
 [DEBUG] 21:45:37.792 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbMenu matches criteria [is assignable to Object]
 [DEBUG] 21:45:37.793 [main] org.apache.ibatis.io.ResolverUtil - Checking to see if class com.yys.szcp.entity.DbRole matches criteria [is assignable to Object]

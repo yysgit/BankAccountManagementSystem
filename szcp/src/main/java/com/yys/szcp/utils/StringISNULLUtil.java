@@ -58,6 +58,22 @@ public class StringISNULLUtil {
         }
     }
 
+    public static Date mapToDateyyyyMMdd(Object object){
+        if(object!=null&&!"".equals(object)&& !"null".equals(object)){
 
+
+            SimpleDateFormat format =new SimpleDateFormat("yyyy-MM-dd");
+            Date d = null;
+            try {
+                d = format.parse(object.toString());
+            } catch (ParseException e) {
+
+                e.printStackTrace();
+            }
+            return d;
+        }else{
+            return null;
+        }
+    }
 
 }

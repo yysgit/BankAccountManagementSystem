@@ -7,16 +7,16 @@
           @click="addBankCardButton" style="margin-bottom: 10px;">添加任务</Button>
         <Row>
           <Col span="3" style="margin-right: 10px;">
-          <Input v-model="serachForm.Tank_name" placeholder="任务名称" clearable></Input>
+          <Input v-model="serachForm.name" placeholder="任务名称" clearable></Input>
           </Col>
           <Col span="3" style="margin-right: 10px;">
-          <Input v-model="serachForm.Application_name" placeholder="所属应用" clearable></Input>
+          <Input v-model="serachForm.apply" placeholder="所属应用" clearable></Input>
           </Col>
           <Col span="3" style="margin-right: 10px;">
-          <Input v-model="serachForm.Testmanager_name" placeholder="测试经理" clearable></Input>
+          <Input v-model="serachForm.managerUserName" placeholder="测试经理" clearable></Input>
           </Col>
           <Col span="3" style="margin-right: 10px;">
-          <Input v-model="serachForm.Tester_name" placeholder="测试人员" clearable></Input>
+          <Input v-model="serachForm.testUserName" placeholder="测试人员" clearable></Input>
           </Col>
 
           <!-- <Col span="3" style="margin-right: 10px;">
@@ -36,39 +36,39 @@
 
         <!--添加任务弹出框-->
         <Modal v-model="modalBankCardAdd" :title="modelTitle" :mask-closable="false">
-          <!-- Tank_name:"",//任务名称
-          Application_name:"",//所属应用名称
-          Testmanager_name:"",//测试经理姓名
-          Tester_name:"",//测试人员姓名
-          Commissioning_date:"",//投产日期 yy-mm-dd
-          Status:"",//任务分配状态 0待分配 已分配 -->
+          <!-- name:"",//任务名称
+          apply:"",//所属应用名称
+          managerUserName:"",//测试经理姓名
+          testUserName:"",//测试人员姓名
+          commissioningTime:"",//投产日期 yy-mm-dd
+          status:"",//任务分配状态 0待分配 已分配 -->
           <Form ref="formValidateBankCardAdd" :model="addForm" :rules="addFormRule"
             :label-width="120">
-            <FormItem label="任务名称" prop="Tank_name">
-              <Input v-model.trim="addForm.Tank_name" placeholder="请输入任务名称"></Input>
+            <FormItem label="任务名称" prop="name">
+              <Input v-model.trim="addForm.name" placeholder="请输入任务名称"></Input>
             </FormItem>
-            <FormItem label="所属应用名称" prop="Application_name">
-              <Input v-model.trim="addForm.Application_name" placeholder="请输入所属应用名称"></Input>
+            <FormItem label="所属应用名称" prop="apply">
+              <Input v-model.trim="addForm.apply" placeholder="请输入所属应用名称"></Input>
             </FormItem>
-            <FormItem label="测试经理姓名" prop="Testmanager_name">
-              <Input v-model.trim="addForm.Testmanager_name" placeholder="请输入测试经理姓名"></Input>
-            </FormItem>
-            <FormItem label="测试人员姓名" prop="Tester_name">
-              <Input v-model.trim="addForm.Tester_name" placeholder="请输入测试人员姓名"></Input>
-            </FormItem>
-            <FormItem label="投产日期" prop="Commissioning_date">
-              <Date-picker 
-              :value="addForm.Commissioning_date" 
+<!--            <FormItem label="测试经理姓名" prop="managerUserName">-->
+<!--              <Input v-model.trim="addForm.managerUserName" placeholder="请输入测试经理姓名"></Input>-->
+<!--            </FormItem>-->
+<!--            <FormItem label="测试人员姓名" prop="testUserName">-->
+<!--              <Input v-model.trim="addForm.testUserName" placeholder="请输入测试人员姓名"></Input>-->
+<!--            </FormItem>-->
+            <FormItem label="投产日期" prop="commissioningTime">
+              <Date-picker
+              :value="addForm.commissioningTime"
               placeholder="选择日期"
-              @on-change="addForm.Commissioning_date=$event"
+              @on-change="addForm.commissioningTime=$event"
               format="yyyy-MM-dd" type="date" style="width: 100%"></Date-picker>
             </FormItem>
-            <FormItem label="任务分配状态" prop="Status">
-              <Select v-model="addForm.Status" placeholder="请选择类型" clearable>
-                <Option value="0" key="0">待分配</Option>
-                <Option value="1" key="1">已分配</Option>
-              </Select>
-            </FormItem>
+<!--            <FormItem label="任务分配状态" prop="status">-->
+<!--              <Select v-model="addForm.status" placeholder="请选择类型" clearable>-->
+<!--                <Option value="0" key="0">待分配</Option>-->
+<!--                <Option value="1" key="1">已分配</Option>-->
+<!--              </Select>-->
+<!--            </FormItem>-->
           </Form>
           <div slot="footer">
             <Button type="text" size="large" @click="modalBankCardAdd=false">取消</Button>
@@ -114,46 +114,69 @@
         totalPage: 0,
 
         serachForm:{
-          Tank_name:"",//任务名称
-          Application_name:"",//所属应用名称
-          Testmanager_name:"",//测试经理姓名
-          Tester_name:"",//测试人员姓名
-          Commissioning_date:"",//投产日期 yy-mm-dd
-          Status:"",//任务分配状态 0待分配 已分配
+          name:"",//任务名称
+          apply:"",//所属应用名称
+          managerUserName:"",//测试经理姓名
+          testUserName:"",//测试人员姓名
+          commissioningTime:"",//投产日期 yy-mm-dd
+          status:"",//任务分配状态 0待分配 已分配
         },
 
         addForm:{
           id:"",
-          Tank_name:"",//任务名称
-          Application_name:"",//所属应用名称
-          Testmanager_name:"",//测试经理姓名
-          Tester_name:"",//测试人员姓名
-          Commissioning_date:"",//投产日期 yy-mm-dd
-          Status:"",//任务分配状态 0待分配 已分配
+          name:"",//任务名称
+          apply:"",//所属应用名称
+          managerUserName:"",//测试经理姓名
+          testUserName:"",//测试人员姓名
+          commissioningTime:"",//投产日期 yy-mm-dd
+          status:"",//任务分配状态 0待分配 已分配
         },
         //表单验证
         addFormRule: {
-          Tank_name: [
+          name: [
             { required: true, message: "请输入任务名称", trigger: "blur" },
           ],
-          Application_name: [
+          apply: [
             { required: true, message: "请输入应用名称", trigger: "blur" },
           ],
-          Testmanager_name: [
-            { required: true, message: "请输入经理姓名", trigger: "blur" },
+          // managerUserName: [
+          //   { required: true, message: "请输入经理姓名", trigger: "blur" },
+          // ],
+          // testUserName: [
+          //   { required: true, message: "请输入测试人员姓名", trigger: "blur" },
+          // ],
+          commissioningTime: [
+            { required: true, message: "请选择投产日期", trigger: "blur", pattern: /.+/},
           ],
-          Tester_name: [
-            { required: true, message: "请输入测试人员姓名", trigger: "blur" },
-          ],
-          Commissioning_date: [
-            { required: true, message: "请选择投产日期1", trigger: "blur", pattern: /.+/},
-          ],
-          Status: [
-            { required: true, message: "请选择任务分配状态", trigger: "change" },
-          ],
+          // status: [
+          //   { required: true, message: "请选择任务分配状态", trigger: "change" },
+          // ],
         },
-        
-       
+
+        sortFieldData: [
+          {
+            value: "principal",
+            label: "本金"
+          },
+          {
+            value: "holding_yield",
+            label: "收益率"
+          },
+          {
+            value: "profit_loss",
+            label: "盈亏"
+          },
+          {
+            value: "recommendation_level",
+            label: "推荐等级"
+          }
+        ],
+
+        stateTaskData:[{
+          id:0,title:'未分配'
+        },{
+          id:1,title:'已分配'
+        }],
 
         loading: true, //表格加载转圈
         loadingModel: false, //表单提交按钮转圈
@@ -161,7 +184,7 @@
         modalBankCardAdd: false,
         //添加表单
 
-     
+
         //修改表单
 
         //表格列
@@ -178,24 +201,29 @@
               );
             }
           },
-          { title: "任务编号", align: "center", width: 180, key: "cardCode" },
+
+          { title: "任务名称", align: "center", width: 100, key: "name" },
+          { title: "所属应用", align: "center", width: 150, key: "apply" },
+          { title: "测试经理", align: "center", width: 150, key: "managerUserName" },
+          { title: "测试人员", align: "center", width: 150, key: "testUserName" },
+
           {
-            title: "任务类型",
+            title: "分配状态",
             align: "center",
-            width: 150,
-            key: "cardType",
+            width: 100,
+            key: "state",
             render: (h, params) => {
-              if (params.row.cardType == 0) {
-                return h("div", { style: {} }, "类型1");
-              } else if (params.row.cardType == 1) {
-                return h("div", { style: {} }, "类型2");
+              for (let i = 0; i < this.stateTaskData.length; i++) {
+                if (params.row.state == this.stateTaskData[i].id) {
+                  return h("div", { style: {} }, this.stateTaskData[i].title);
+                }
               }
             }
           },
-          { title: "任务名称", align: "center", width: 100, key: "userName" },
-          { title: "所属应用", align: "center", width: 150, key: "balance" },
-          { title: "测试经理", align: "center", width: 150, key: "cardTime" },
-          { title: "测试人员", align: "center", width: 150, key: "lastActiveTime" },
+
+
+          { title: "投产日期", align: "center", width: 150, key: "commissioningTime" },
+          { title: "创建时间", align: "center", width: 150, key: "creatTime" },
           {
             title: "操作",
             key: "handle",
@@ -204,7 +232,7 @@
             render: (h, params) => {
               return h("div", [
                 (() => {
-                  if (this.buttonVerifAuthention("sys:bankCard:updateBankCard")) {
+                  if (this.buttonVerifAuthention("sys:task:updateTask")) {
                     return h(
                       "Button",
                       {
@@ -226,7 +254,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:bankCard:updateBankCard")) {
+                  if (this.buttonVerifAuthention("sys:task:updateUserTask")) {
                     return h(
                       "Button",
                       {
@@ -248,7 +276,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:bankCard:deleteBankCard")) {
+                  if (this.buttonVerifAuthention("sys:task:deleteBankCard")) {
                     return h(
                       "Button",
                       {
@@ -276,10 +304,11 @@
 
         //表格数据
         tableData: [],
-        findList:"/sys/bankCard/findBankCardList",     //分页查询任务记录列表
-        addUrl:"/sys/bankCard/addBankCard",        //添加任务记录
-        updateUrl:"/sys/bankCard/updateBankCard",     //更新任务记录
-        deleUrl:"/sys/bankCard/deleteBankCard",     //删除任务记录
+        findList:"/sys/task/findTaskList",     //分页查询任务记录列表
+        addUrl:"/sys/task/addTask",        //添加任务记录
+        updateUrl:"/sys/task/updateTask",     //更新任务记录
+        updateUserUrl:"/sys/task/updateUserTask",     //更新分配人员
+        deleUrl:"/sys/task/deleteTask",     //删除任务记录
 
       };
     },
@@ -305,10 +334,10 @@
         let _searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
-          Tank_name:this.serachForm.Tank_name,
-          Application_name:this.serachForm.Application_name,
-          Testmanager_name:this.serachForm.Testmanager_name,
-          Tester_name:this.serachForm.Tester_name
+          nameSearch:this.serachForm.name,
+          applySearch:this.serachForm.apply,
+          managerUserNameSearch:this.serachForm.managerUserName,
+          testUserNameSearch:this.serachForm.testUserName
         }
         let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
@@ -329,12 +358,12 @@
       // 清空
       addFormRush(){
         this.addForm.id = "";
-        this.addForm.Tank_name = "";//任务名称
-        this.addForm.Application_name = "";//所属应用名称
-        this.addForm.Testmanager_name = "";//测试经理姓名
-        this.addForm.Tester_name = "";//测试人员姓名
-        this.addForm.Commissioning_date = "";//投产日期 yy-mm-dd
-        this.addForm.Status = "";//任务分配状态 0待分配 已分配
+        this.addForm.name = "";//任务名称
+        this.addForm.apply = "";//所属应用名称
+        this.addForm.managerUserName = "";//测试经理姓名
+        this.addForm.testUserName = "";//测试人员姓名
+        this.addForm.commissioningTime = "";//投产日期 yy-mm-dd
+        this.addForm.status = "";//任务分配状态 0待分配 已分配
       },
       //点击添加子菜单按钮
       addBankCardButton(scope) {
@@ -345,13 +374,15 @@
       },
       //添加主菜单提交
       addBankCardClick() {
+
         if(this.modelType=="add"){
           this.handleSubmitAdd("formValidateBankCardAdd");
         }
-        if(this.modelType=="eidt"){
-          this.handleSubmitEdit("formValidateBankCardEdit");
-        }  
-          
+        if(this.modelType=="edit"){
+
+          this.handleSubmitEdit("formValidateBankCardAdd");
+        }
+
       },
       //表单验证提交
       handleSubmitAdd(name) {
@@ -359,10 +390,10 @@
           if (valid) {
             //表单提交
             //console.log(this.formValidate);
-            let bankCard = this.formValidateBankCardAdd;
+            let task = this.addForm;
             this.loadingModel = true; //启动提交按钮转圈
 
-            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:"task",xyfval:task,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
@@ -390,7 +421,7 @@
           content: "<p>你确认要删除此条信息吗!</p>",
           onOk: () => {
             let bankCardId = scope.row.id;
-            let searchPream = {xyfkey:"bankCardId",xyfval:bankCardId,xyfurl:this.deleUrl}
+            let searchPream = {xyfkey:"taskId",xyfval:bankCardId,xyfurl:this.deleUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.$Message.info(res.msg);
@@ -413,27 +444,28 @@
         this.modelType="edit";
         this.modelTitle="编辑";
         this.addForm.id = scope.row.id;
-        this.addForm.Tank_name = scope.row.Tank_name;
-        this.addForm.Application_name = scope.row.Application_name + "";
-        this.addForm.Testmanager_name = scope.row.Testmanager_name + "";
-        this.addForm.Tester_name = scope.row.Tester_name+ "";
-        this.addForm.Commissioning_date = scope.row.Commissioning_date+ "";
-        this.addForm.Status = scope.row.Status+ "";
+        this.addForm.name = scope.row.name;
+        this.addForm.apply = scope.row.apply ;
+        this.addForm.commissioningTime = scope.row.commissioningTime;
         this.modalBankCardAdd = true;
       },
 
       //表单验证提交
       handleSubmitEdit(name) {
+
         this.$refs[name].validate(valid => {
+
           if (valid) {
+
             //表单提交
-            let bankCard = this.formValidateBankCardEdit;
+            let bankCard = this.addForm;
             this.loadingModel = true; //启动提交按钮转圈
-  
-            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.updateUrl}
+
+            let searchPream = {xyfkey:"task",xyfval:bankCard,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
+              this.modalBankCardAdd = false; //关闭提交按钮转圈
               //情况表单数据
               this.addFormRush();
               //刷新菜单页面

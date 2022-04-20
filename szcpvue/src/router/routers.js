@@ -26,7 +26,7 @@ export default [
     },
     component: () => import('@/view/login/login.vue')
   },
-  
+
   {
     path: '/header',
     name: '/header',
@@ -219,13 +219,13 @@ export default [
         component: () => import('@/view/sys/fundManagerment/loan.vue')
       },
       {
-        path: 'sys/bankCard',
-        name: 'sys/bankCard',
+        path: 'sys/task',
+        name: 'sys/task',
         meta: {
           icon: 'ios-card',
           title: '任务信息'
         },
-        component: () => import('@/view/sys/fundManagerment/bankCard.vue')
+        component: () => import('@/view/sys/fundManagerment/task.vue')
       },
       // {
       //   path: 'sys/myFinancialProducts',
@@ -236,7 +236,7 @@ export default [
       //   },
       //   component: () => import('@/view/sys/fundManagerment/myFinancialProducts.vue')
       // },
-      
+
     ]
   },
 ]
