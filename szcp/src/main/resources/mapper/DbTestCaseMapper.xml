@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbTestCaseMapper">
+
+
+    <!--添加任务-->
+    <insert id="addTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
+        insert into db_test_case (name, apply, manager_user_id, commissioning_time, create_time)
+        values (#{name}, #{apply}, #{managerUserId}, #{commissioningTime}, now());
+    </insert>
+
+    <!--分页查询任务列表-->
+    <select id="findTestCaseList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        dbl.id,
+        dbl.name as name,
+        dbl.apply as apply,
+        dbl.test_user_id as testUserId,
+        dbl.manager_user_id as managerUserId,
+        dbl.create_time as creatTime,
+        dbl.commissioning_time as commissioningTime,
+        dbl.state as state,
+        dbau.admin_fullname as testUserName,
+        dbau2.admin_fullname as managerUserName
+        from db_test_case dbl
+        left join db_admin_user dbau on dbau.id = dbl.test_user_id
+        left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+
+        where 1=1
+        <if test="roleId=='3a'">
+            and dbl.test_user_id=#{userId}
+        </if>
+        <if test="nameSearch!=null and nameSearch!=''">
+            and (dbl.name LIKE concat(concat("%",#{nameSearch}),"%"))
+        </if>
+        <if test="applySearch!=null and applySearch!=''">
+            and (dbl.apply LIKE concat(concat("%",#{applySearch}),"%"))
+        </if>
+        <if test="testUserNameSearch!=null and testUserNameSearch!=''">
+            and (dbau.admin_fullname LIKE concat(concat("%",#{testUserNameSearch}),"%"))
+        </if>
+
+        <if test="managerUserNameSearch!=null and managerUserNameSearch!=''">
+            and (dbau2.admin_fullname LIKE concat(concat("%",#{managerUserNameSearch}),"%"))
+        </if>
+
+
+        order by dbl.create_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findTestCaseListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_test_case dbl
+        left join db_admin_user dbau on dbau.id = dbl.test_user_id
+        left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+        where 1=1
+        <if test="roleId=='3a'">
+            and test_user_id=#{userId}
+        </if>
+        <if test="nameSearch!=null and nameSearch!=''">
+            and (dbl.name LIKE concat(concat("%",#{nameSearch}),"%"))
+        </if>
+        <if test="applySearch!=null and applySearch!=''">
+            and (dbl.apply LIKE concat(concat("%",#{applySearch}),"%"))
+        </if>
+        <if test="testUserNameSearch!=null and testUserNameSearch!=''">
+            and (dbau.admin_fullname LIKE concat(concat("%",#{testUserNameSearch}),"%"))
+        </if>
+
+        <if test="managerUserNameSearch!=null and managerUserNameSearch!=''">
+            and (dbau2.admin_fullname LIKE concat(concat("%",#{managerUserNameSearch}),"%"))
+        </if>
+    </select>
+
+    <!--通过任务id 获取任务-->
+    <select id="findTestCaseById" resultType="com.yys.szcp.entity.DbTestCase" parameterType="java.lang.Integer">
+        select dbl.id,
+               dbl.name as name,
+               dbl.apply as apply,
+               dbl.test_user_id as testUserId,
+               dbl.manager_user_id as managerUserId,
+               dbl.create_time as creatTime,
+               dbl.commissioning_time as commissioningTime,
+               dbl.state as state,
+               dbau.admin_fullname as testUserName,
+               dbau2.admin_fullname as managerUserName
+        from db_test_case dbl
+                 left join db_admin_user dbau on dbau.id = dbl.test_user_id
+                 left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+        where id = #{testCaseId}
+    </select>
+
+
+    <!--更新任务-->
+    <update id="updateTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
+        update db_test_case
+        set name              = #{name}
+          , apply             =#{apply}
+          , commissioning_time=#{commissioningTime}
+        where id = #{id}
+    </update>
+
+
+    <!--更新任务-->
+    <update id="updateUserTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
+        update db_test_case
+        set test_user_id = #{testUserId}
+          , state=1
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
+        delete
+        from db_test_case
+        where id = #{id}
+    </delete>
+
+    <!--查询任务列表-->
+    <select id="findTestCaseAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select dbl.id,
+               dbl.name as name,
+               dbl.apply as apply,
+               dbl.test_user_id as testUserId,
+               dbl.manager_user_id as managerUserId,
+               dbl.create_time as creatTime,
+               dbl.commissioning_time as commissioningTime,
+               dbl.state as state,
+               dbau.admin_fullname as testUserName,
+               dbau2.admin_fullname as managerUserName
+        from db_test_case dbl
+                 left join db_admin_user dbau on dbau.id = dbl.test_user_id
+                 left join db_admin_user dbau2 on dbau2.id = dbl.manager_user_id
+        order by dbl.create_time DESC;
+    </select>
+
+
+</mapper>

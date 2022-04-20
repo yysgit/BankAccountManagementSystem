@@ -485,3 +485,5 @@ Caused by: java.net.NoRouteToHostException: No route to host: connect
 ; Column 'create_time' in order clause is ambiguous; nested exception is java.sql.SQLIntegrityConstraintViolationException: Column 'create_time' in order clause is ambiguous
 [ERROR] 00:41:49.190 [http-nio-7089-exec-3] c.yys.szcp.controller.TaskController - 添加任务错误: null
 [ERROR] 00:43:47.315 [http-nio-7089-exec-7] c.yys.szcp.controller.TaskController - 添加任务错误: null
+[ERROR] 01:01:26.756 [http-nio-7089-exec-6] c.yys.szcp.controller.TaskController - 添加任务错误: For input string: "gg"
+[ERROR] 01:03:47.177 [http-nio-7089-exec-8] c.yys.szcp.controller.TaskController - 添加任务错误: For input string: "gg"
