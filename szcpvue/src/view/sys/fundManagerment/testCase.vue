@@ -3,8 +3,10 @@
     <div style="min-width:1000px">
       <Card shadow>
         <!--添加测试用例-->
-        <Button v-if="buttonVerifAuthention('sys:bankRecord:addBankRecord')" type="primary" icon="md-add"
+        <Button v-if="buttonVerifAuthention('sys:testCase:findTestCaseById')" type="primary" icon="md-add"
           @click="addBankCardButton" style="margin-bottom: 10px;">添加测试用例</Button>
+        <Button v-if="buttonVerifAuthention('sys:testCase:findTestCaseById')" type="primary" icon="md-add"
+          @click="implementButton" style="margin-bottom: 10px;">+执行</Button>
         <Row>
           <Col span="3" style="margin-right: 10px;">
           <Input v-model="serachForm.Case_no" placeholder="测试用例编号" clearable></Input>
@@ -16,7 +18,7 @@
           <Input v-model="serachForm.Desinger_name" placeholder="设计人" clearable></Input>
           </Col>
           <Col span="2" style="margin-right: 10px;">
-            <Button type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
+            <Button v-if="buttonVerifAuthention('sys:testCase:findTestCaseList')" type="primary" icon="md-search" @click="searchQuery" style="margin-bottom: 10px;">查询</Button>
           </Col>
         </Row>
         <!--表格-->
@@ -27,6 +29,16 @@
         <!--添加测试用例弹出框-->
         <Modal v-model="modalBankCardAdd" :title="modelTitle" :mask-closable="false">
           <!-- 所属应用、交易名称、测试类型、设计人、输入数据、测试步骤、预期结果。 -->
+          <!-- Case_no:"",//用例编号
+          Application_name:"",//所属应用名称
+          Transaction_name:"",//交易名称
+          Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+          Desinger_name:"",//设计人
+          Input_data:"",//输入数据
+          Test_procedures:"",//测试步骤
+          Expected_result:"",//预期结果
+          Auctual_result:"",//实际结果
+          Status:""//执行状态0未测试1通过 2未通过 -->
           <Form ref="formValidateBankCardAdd" :model="addForm" :rules="addFormRule"
             :label-width="120">
             <FormItem label="所属应用名称" prop="Application_name">
@@ -36,8 +48,8 @@
               <Input v-model.trim="addForm.Transaction_name" placeholder="请输入交易名称"></Input>
             </FormItem>
             <FormItem label="测试类型" prop="Test_type">
-              <!-- <Input v-model.trim="addForm.Test_type" placeholder="请输入测试类型"></Input> -->
-              <Select v-model="addForm.Test_type" placeholder="缺陷等级" clearable>
+
+              <Select v-model="addForm.Test_type" placeholder="请选择" clearable>
                 <Option value="0" key="0">正常类测试</Option>
                 <Option value="1" key="1">异常类测试</Option>
                 <Option value="2" key="2">边界值测试</Option>
@@ -82,7 +94,7 @@
               <Input v-model.trim="implementForm.Auctual_result" placeholder="请输入实际结果"></Input>
             </FormItem>
             <FormItem label="执行状态" prop="Status">
-              <Select v-model="implementForm.Status" placeholder="缺陷等级" clearable>
+              <Select v-model="implementForm.Status" placeholder="请选择" clearable>
                 <Option value="0" key="0">未测试</Option>
                 <Option value="1" key="1">通过</Option>
                 <Option value="2" key="2">未通过</Option>
@@ -92,7 +104,7 @@
           </Form>
           <div slot="footer">
             <Button type="text" size="large" @click="implementModel=false">取消</Button>
-            <Button type="primary" size="large" @click="implementModelClick" :loading="loadingModel">确定</Button>
+            <Button type="primary" size="large" @click="addBankCardClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
 
@@ -156,44 +168,68 @@
           Expected_result:"",//预期结果
           Auctual_result:"",//实际结果
           Status:""//执行状态0未测试1通过 2未通过
-          
         },
+        // 所属应用、交易名称、测试类型Test_type、设计人、输入数据、测试步骤、预期结果
         //表单验证
         addFormRule: {
-          Tank_name: [
-            { required: true, message: "请输入任务名称", trigger: "blur" },
-          ],
           Application_name: [
-            { required: true, message: "请输入应用名称", trigger: "blur" },
+            { required: true, message: "请输入所属应用名称", trigger: "blur" },
           ],
-          Testmanager_name: [
-            { required: true, message: "请输入经理姓名", trigger: "blur" },
+          Transaction_name: [
+            { required: true, message: "请输入交易名称", trigger: "blur" },
           ],
-          Tester_name: [
-            { required: true, message: "请输入测试人员姓名", trigger: "blur" },
+          Test_type: [
+            { required: true, message: "请选择测试类型", trigger: "change" },
           ],
-          Commissioning_date: [
-            { required: true, message: "请选择投产日期1", trigger: "blur", pattern: /.+/},
+          Desinger_name: [
+            { required: true, message: "请输入设计人", trigger: "blur" },
           ],
-          Status: [
-            { required: true, message: "请选择任务分配状态", trigger: "change" },
+          Input_data: [
+            { required: true, message: "请输入输入数据", trigger: "blur" },
+          ],
+          Test_procedures: [
+            { required: true, message: "请输入测试步骤", trigger: "blur" },
+          ],
+          Expected_result: [
+            { required: true, message: "请输入预期结果", trigger: "blur" },
           ],
         },
+        // Case_no:"",//用例编号
+        //   Application_name:"",//所属应用名称
+        //   Transaction_name:"",//交易名称
+        //   Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+        //   Desinger_name:"",//设计人
+        //   Input_data:"",//输入数据
+        //   Test_procedures:"",//测试步骤
+        //   Expected_result:"",//预期结果
+        //   Auctual_result:"",//实际结果
+        //   Status:""//执行状态0未测试1通过 2未通过
+        // 执行测试用例：交易名称、测试步骤、预期结果、实际结果、执行状态
         implementFormRule: {
-          
+          Transaction_name: [
+            { required: true, message: "请输入交易名称", trigger: "blur" },
+          ],
+          Test_procedures: [
+            { required: true, message: "请输入测试步骤", trigger: "blur" },
+          ],
+          Expected_result: [
+            { required: true, message: "请输入预期结果", trigger: "blur" },
+          ],
+          Auctual_result: [
+            { required: true, message: "请输入实际结果", trigger: "blur" },
+          ],
+          Status: [
+            { required: true, message: "请选择执行状态", trigger: "change" },
+          ],
+ 
         },
         // 执行
         implementForm:{
-          Case_no:"",//用例编号
-          Application_name:"",//所属应用名称
-          Transaction_name:"",//交易名称
-          Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
-          Desinger_name:"",//设计人
-          Input_data:"",//输入数据
-          Test_procedures:"",//测试步骤
-          Expected_result:"",//预期结果
-          Auctual_result:"",//实际结果
-          Status:""//执行状态0未测试1通过 2未通过
+          Transaction_name:"",
+          Test_procedures:"",
+          Expected_result:"",
+          Auctual_result:"",
+          Status:""
         },
         loading: true, //表格加载转圈
         loadingModel: false, //表单提交按钮转圈
@@ -216,39 +252,39 @@
               );
             }
           },
-          { title: "用例编号", align: "center", key: "Case_no" },
-          { title: "所属应用", align: "center", key: "Application_name" },
+          { title: "用例编号", align: "center", key: "caseNo" },
+          { title: "所属应用", align: "center", key: "transactionName" },
           {
             title: "测试类型",
             align: "center",
-            key: "Test_type",
+            key: "testType",
             render: (h, params) => {
-              if (params.row.Test_type == "0") {
+              if (params.row.testType == "0") {
                 return h("div", { style: {} }, "正常类测试");
-              } else if (params.row.Test_type == "1") {
+              } else if (params.row.testType == "1") {
                 return h("div", { style: {} }, "异常类测试");
-              } else if (params.row.Test_type == "2") {
+              } else if (params.row.testType == "2") {
                 return h("div", { style: {} }, "边界值测试");
-              } else if (params.row.Test_type == "3") {
+              } else if (params.row.testType == "3") {
                 return h("div", { style: {} }, "其他类测试");
               }
             }
           },
-          { title: "设计人", align: "center", key: "Desinger_name" },
-          { title: "输入数据", align: "center", key: "Input_data" },
-          { title: "测试步骤", align: "center", key: "Test_procedures" },
-          { title: "预期结果", align: "center", key: "Expected_result" },
-          { title: "实际结果", align: "center", key: "Auctual_result" },
+          { title: "设计人", align: "center", key: "desingerName" },
+          { title: "输入数据", align: "center", key: "inputData" },
+          { title: "测试步骤", align: "center", key: "testProcedures" },
+          { title: "预期结果", align: "center", key: "expectedResult" },
+          { title: "实际结果", align: "center", key: "auctualResult" },
           {
             title: "执行状态",
             align: "center",
-            key: "Status",
+            key: "status",
             render: (h, params) => {
-              if (params.row.Status == "0") {
+              if (params.row.status == "0") {
                 return h("div", { style: {} }, "未测试");
-              } else if (params.row.Status == "1") {
+              } else if (params.row.status == "1") {
                 return h("div", { style: {} }, "通过");
-              } else if (params.row.Status == "2") {
+              } else if (params.row.status == "2") {
                 return h("div", { style: {} }, "未通过");
               }
             }
@@ -261,7 +297,7 @@
             render: (h, params) => {
               return h("div", [
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:updateFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:testCase:updateTestCase")) {
                     return h(
                       "Button",
                       {
@@ -283,7 +319,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:deleteFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:testCase:deleteTestCase")) {
                     return h(
                       "Button",
                       {
@@ -305,7 +341,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:financialProducts:addUserFinancialProducts")) {
+                  if (this.buttonVerifAuthention("sys:testCase:updateTestCase")) {
                     return h(
                       "Button",
                       {
@@ -331,12 +367,18 @@
           }
         ],
 
+        // sys/testCase/addTestCase        添加测试用例
+        // sys/testCase/findTestCaseById     查询测试用例
+        // sys/testCase/updateTestCase     更新测试用例
+        // sys/testCase/deleteTestCase     删除测试用例
+        // sys/testCase/findTestCaseList     分页查询测试用例列表
+        // sys/testCase/findTestCaseAllList     查询所有测试用例列表
         //表格数据
         tableData: [],
-        findList:"/sys/bankCard/findBankCardList",     //分页查询任务记录列表
-        addUrl:"/sys/bankCard/addBankCard",        //添加测试用例记录
-        updateUrl:"/sys/bankCard/updateBankCard",     //更新任务记录
-        deleUrl:"/sys/bankCard/deleteBankCard",     //删除任务记录
+        findList:"/sys/testCase/findTestCaseList",     //分页查询任务记录列表
+        addUrl:"/sys/testCase/addTestCase",        //添加测试用例记录
+        updateUrl:"/sys/testCase/updateTestCase",     //更新任务记录
+        deleUrl:"/sys/testCase/deleteTestCase",     //删除任务记录
 
       };
     },
@@ -362,9 +404,9 @@
         let _searchPream = {
           page: this.currentPage,
           limit: this.fetchNum,
-          Case_no:this.serachForm.Case_no,
-          Application_name:this.serachForm.Application_name,
-          Desinger_name:this.serachForm.Desinger_name,
+          // Case_no:this.serachForm.Case_no,
+          // Application_name:this.serachForm.Application_name,
+          // Desinger_name:this.serachForm.Desinger_name,
         }
         let searchPream = {xyfkey:"searchPream",xyfval:_searchPream,xyfurl:this.findList}
         //发送请求
@@ -382,15 +424,22 @@
         this.currentPage = 1;
         this.queryList();
       },
-      // 清空
+      // 清空调试完成后放开
       addFormRush(){
-        this.addForm.id = "";
-        this.addForm.Tank_name = "";//任务名称
-        this.addForm.Application_name = "";//所属应用名称
-        this.addForm.Testmanager_name = "";//测试经理姓名
-        this.addForm.Tester_name = "";//测试人员姓名
-        this.addForm.Commissioning_date = "";//投产日期 yy-mm-dd
-        this.addForm.Status = "";//任务分配状态 0待分配 已分配
+        for (let key in this.addForm) {
+          this.addForm[key] = "";
+        }
+      },
+      // 清空调试完成后放开
+      addImplementRush(){
+        for (let key in this.implementForm) {
+          this.implementForm[key] = "";
+        }
+      },
+      addFormRush(){
+        for (let key in this.addForm) {
+          this.addForm[key] = "";
+        }
       },
       //点击添加子菜单按钮
       addBankCardButton(scope) {
@@ -405,23 +454,43 @@
           this.handleSubmitAdd("formValidateBankCardAdd");
         }
         if(this.modelType=="eidt"){
-          this.handleSubmitEdit("formValidateBankCardEdit");
+          this.handleSubmitEdit("formValidateBankCardAdd");
+        }  
+        if(this.modelType=="apply"){
+          this.handleSubmitApply("implementModelRef");
         }  
       },
-      //申请提交
-      implementModelClick() {
-        this.implementModel = true;
-      },
+
       //表单验证提交
       handleSubmitAdd(name) {
         this.$refs[name].validate(valid => {
           if (valid) {
             //表单提交
+            // 添加测试用例：所属应用、交易名称、测试类型Test_type、设计人、输入数据、测试步骤、预期结果。
+            // Case_no:"",//用例编号
+            // Application_name:"",//所属应用名称
+            // Transaction_name:"",//交易名称
+            // Test_type:"",//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+            // Desinger_name:"",//设计人
+            // Input_data:"",//输入数据
+            // Test_procedures:"",//测试步骤
+            // Expected_result:"",//预期结果
+            // Auctual_result:"",//实际结果
+            // Status:""//执行状态0未测试1通过 2未通过
             //console.log(this.formValidate);
-            let bankCard = this.formValidateBankCardAdd;
+            let _obj = {
+              Application_name:"所属应用????",//所属应用
+              transactionName:this.addForm.Transaction_name,//交易名称
+              testType:this.addForm.Test_type,//测试类型
+              desingerName:this.addForm.Desinger_name,//设计人
+              inputData:this.addForm.Input_data,//输入数据
+              testProcedures:this.addForm.Test_procedures,//测试步骤
+              expectedResult:this.addForm.Expected_result,//预期结果
+            }
+
             this.loadingModel = true; //启动提交按钮转圈
 
-            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.addUrl}
+            let searchPream = {xyfkey:"testCase",xyfval:_obj,xyfurl:this.addUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
@@ -449,7 +518,7 @@
           content: "<p>你确认要删除此条信息吗!</p>",
           onOk: () => {
             let bankCardId = scope.row.id;
-            let searchPream = {xyfkey:"bankCardId",xyfval:bankCardId,xyfurl:this.deleUrl}
+            let searchPream = {xyfkey:"testCaseId",xyfval:bankCardId,xyfurl:this.deleUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.$Message.info(res.msg);
@@ -471,26 +540,24 @@
       editBankCardButton(scope) {
         this.modelType="edit";
         this.modelTitle="编辑";
-          // Application_name:"所属应用名称"
-          // Transaction_name:"交易名称"
-          // Test_type:"测试类型"
-          // Desinger_name:"设计人"
-          // Input_data:"输入数据"
-          // Test_procedures:"测试步骤"
-          // Expected_result:"预期结果"
-        this.addForm.id = scope.row.id;
-        this.addForm.Application_name = scope.row.Application_name;
-        this.addForm.Transaction_name = scope.row.Transaction_name + "";
-        this.addForm.Test_type = scope.row.Test_type + "";
-        this.addForm.Desinger_name = scope.row.Desinger_name+ "";
-        this.addForm.Input_data = scope.row.Input_data+ "";
-        this.addForm.Test_procedures = scope.row.Test_procedures+ "";
-        this.addForm.Expected_result = scope.row.Expected_result+ "";
+        let _row = scope.row;
+        this.addForm.Case_no = _row.id,//用例编号
+        this.addForm.Application_name = _row.caseNoName;//所属应用名称
+        this.addForm.Transaction_name = _row.transactionName;//交易名称
+        this.addForm.Test_type = _row.testType;//测试类型 0 正常类测试 1异常类测试2边界值测试3其他类测试
+        this.addForm.Desinger_name = _row.desingerName;//设计人
+        this.addForm.Input_data = _row.inputData;//输入数据
+        this.addForm.Test_procedures = _row.testProcedures;//测试步骤
+        this.addForm.Expected_result = _row.expectedResult;//预期结果
+        this.addForm.Auctual_result = _row.auctualResult;//实际结果
+        this.addForm.Status = _row.status;//执行状态0未测试1通过 2未通过 
+
         this.modalBankCardAdd = true;
       },
 
       // 执行
       implementButton(scope){
+        this.modelType="apply"
         this.implementModel = true;  
       },
 
@@ -503,12 +570,39 @@
             let bankCard = this.formValidateBankCardEdit;
             this.loadingModel = true; //启动提交按钮转圈
   
-            let searchPream = {xyfkey:"bankCard",xyfval:bankCard,xyfurl:this.updateUrl}
+            let searchPream = {xyfkey:"testCase",xyfval:bankCard,xyfurl:this.updateUrl}
             //发送请求
             this.ajaxPost({searchPream}).then(res => {
               this.loadingModel = false; //关闭提交按钮转圈
               //情况表单数据
               this.addFormRush();
+              //刷新菜单页面
+              this.queryList();
+            }).catch((e) => {
+              console.log(e);
+              this.$Message.error("操作失败了!");
+              this.loadingModel = false; //关闭提交按钮转圈
+            });
+
+          } else {
+            this.$Message.error("Fail!");
+          }
+        });
+      },
+      //表单申请提交
+      handleSubmitApply(name) {
+        this.$refs[name].validate(valid => {
+          if (valid) {
+            //表单提交
+            let bankCard = this.formValidateBankCardEdit;
+            this.loadingModel = true; //启动提交按钮转圈
+  
+            let searchPream = {xyfkey:"testCase",xyfval:bankCard,xyfurl:this.updateUrl}
+            //发送请求
+            this.ajaxPost({searchPream}).then(res => {
+              this.loadingModel = false; //关闭提交按钮转圈
+              //情况表单数据
+              this.addImplementRush();
               //刷新菜单页面
               this.queryList();
             }).catch((e) => {

@@ -192,13 +192,13 @@ export default [
     component: Main,
     children: [
       {
-        path: 'sys/financialProducts',
-        name: 'sys/financialProducts',
+        path: 'sys/testCase',
+        name: 'sys/testCase',
         meta: {
           icon: 'ios-card',
           title: '测试用例'
         },
-        component: () => import('@/view/sys/fundManagerment/financialProducts.vue')
+        component: () => import('@/view/sys/fundManagerment/testCase.vue')
       },
       {
         path: 'sys/bankRecord',

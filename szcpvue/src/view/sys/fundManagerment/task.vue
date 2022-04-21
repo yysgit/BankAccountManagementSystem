@@ -75,6 +75,37 @@
             <Button type="primary" size="large" @click="addBankCardClick" :loading="loadingModel">确定</Button>
           </div>
         </Modal>
+        <!--添加任务弹出框-->
+        <Modal v-model="modalShareAdd" title="分配" :mask-closable="false">
+   
+          <Form ref="formValidateTaskShareAdd" :model="shareForm" :rules="shareFormRule"
+            :label-width="120">
+            <!-- <FormItem label="任务名称" prop="name">
+              <Input v-model.trim="shareForm.name" placeholder="请输入任务名称"></Input>
+            </FormItem>
+            <FormItem label="所属应用名称" prop="apply">
+              <Input v-model.trim="shareForm.apply" placeholder="请输入所属应用名称"></Input>
+            </FormItem> -->
+<!--            <FormItem label="测试经理姓名" prop="managerUserName">-->
+<!--              <Input v-model.trim="shareForm.managerUserName" placeholder="请输入测试经理姓名"></Input>-->
+<!--            </FormItem>-->
+           <FormItem label="测试人员姓名" prop="testUserName">
+             <Input v-model.trim="shareForm.testUserName" placeholder="请输入测试人员姓名"></Input>
+           </FormItem>
+            <!-- <FormItem label="投产日期" prop="commissioningTime">
+              <Date-picker
+              :value="shareForm.commissioningTime"
+              placeholder="选择日期"
+              @on-change="shareForm.commissioningTime=$event"
+              format="yyyy-MM-dd" type="date" style="width: 100%"></Date-picker>
+            </FormItem> -->
+          </Form>
+          <div slot="footer">
+            <Button type="text" size="large" @click="modalShareAdd=false">取消</Button>
+            <Button type="primary" size="large" @click="addBankCardClick" :loading="loadingModel">确定</Button>
+          </div>
+        </Modal>   
+
 
       </Card>
     </div>
@@ -139,20 +170,23 @@
           apply: [
             { required: true, message: "请输入应用名称", trigger: "blur" },
           ],
-          // managerUserName: [
-          //   { required: true, message: "请输入经理姓名", trigger: "blur" },
-          // ],
-          // testUserName: [
-          //   { required: true, message: "请输入测试人员姓名", trigger: "blur" },
-          // ],
           commissioningTime: [
             { required: true, message: "请选择投产日期", trigger: "blur", pattern: /.+/},
           ],
-          // status: [
-          //   { required: true, message: "请选择任务分配状态", trigger: "change" },
-          // ],
         },
-
+        modalShareAdd:false,//分配弹窗
+        shareForm:{
+          id:"",
+          managerUserName:"",//测试经理姓名
+          testUserName:"",//测试人员姓名
+        },
+        //表单验证
+        shareFormRule: {
+          testUserName: [
+            { required: true, message: "请输入人员姓名", trigger: "blur" },
+          ],
+       
+        },  
         sortFieldData: [
           {
             value: "principal",
@@ -254,29 +288,7 @@
                   }
                 })(),
                 (() => {
-                  if (this.buttonVerifAuthention("sys:task:updateUserTask")) {
-                    return h(
-                      "Button",
-                      {
-                        props: {
-                          type: "primary",
-                          size: "small"
-                        },
-                        style: {
-                          marginRight: "5px"
-                        },
-                        on: {
-                          click: () => {
-                            this.editBankCardButton(params);
-                          }
-                        }
-                      },
-                      "分配"
-                    );
-                  }
-                })(),
-                (() => {
-                  if (this.buttonVerifAuthention("sys:task:deleteBankCard")) {
+                  if (this.buttonVerifAuthention("sys:task:deleteTask")) {
                     return h(
                       "Button",
                       {
@@ -294,6 +306,28 @@
                         }
                       },
                       "删除"
+                    );
+                  }
+                })(),
+                (() => {
+                  if (this.buttonVerifAuthention("sys:task:updateUserTask")) {
+                    return h(
+                      "Button",
+                      {
+                        props: {
+                          type: "primary",
+                          size: "small"
+                        },
+                        style: {
+                          marginRight: "5px"
+                        },
+                        on: {
+                          click: () => {
+                            this.shareBankCardButton(params);
+                          }
+                        }
+                      },
+                      "分配"
                     );
                   }
                 })()
@@ -365,6 +399,15 @@
         this.addForm.commissioningTime = "";//投产日期 yy-mm-dd
         this.addForm.status = "";//任务分配状态 0待分配 已分配
       },
+      shareFormRush(){
+        this.shareForm.id = "";
+        // this.shareForm.name = "";//任务名称
+        // this.shareForm.apply = "";//所属应用名称
+        this.shareForm.managerUserName = "";//测试经理姓名
+        this.shareForm.testUserName = "";//测试人员姓名
+        // this.shareForm.commissioningTime = "";//投产日期 yy-mm-dd
+        // this.shareForm.status = "";//任务分配状态 0待分配 已分配
+      },
       //点击添加子菜单按钮
       addBankCardButton(scope) {
         this.addFormRush();
@@ -379,8 +422,10 @@
           this.handleSubmitAdd("formValidateBankCardAdd");
         }
         if(this.modelType=="edit"){
-
           this.handleSubmitEdit("formValidateBankCardAdd");
+        }
+        if(this.modelType=="share"){
+          this.handleSubmitShare("formValidateTaskShareAdd");
         }
 
       },
@@ -449,6 +494,14 @@
         this.addForm.commissioningTime = scope.row.commissioningTime;
         this.modalBankCardAdd = true;
       },
+      //分配
+      shareBankCardButton(scope) {
+        this.modelType="share";
+        this.shareForm.id = scope.row.id;
+        this.shareForm.name = scope.row.name;
+        this.shareForm.apply = scope.row.apply ;
+        this.modalShareAdd = true;
+      },
 
       //表单验证提交
       handleSubmitEdit(name) {
@@ -476,6 +529,33 @@
               this.loadingModel = false; //关闭提交按钮转圈
             });
 
+          } else {
+            this.$Message.error("Fail!");
+          }
+        });
+      },
+      //表单验证提交
+      handleSubmitShare(name) {
+        this.$refs[name].validate(valid => {
+          if (valid) {
+            //表单提交
+            let bankCard = this.addForm;
+            this.loadingModel = true; //启动提交按钮转圈
+
+            let searchPream = {xyfkey:"task",xyfval:bankCard,xyfurl:this.updateUrl11}
+            //发送请求
+            this.ajaxPost({searchPream}).then(res => {
+              this.loadingModel = false; //关闭提交按钮转圈
+              this.modalShareAdd = false; //关闭提交按钮转圈
+              //情况表单数据
+              this.shareFormRush();
+              //刷新菜单页面
+              this.queryList();
+            }).catch((e) => {
+              console.log(e);
+              this.$Message.error("操作失败了!");
+              this.loadingModel = false; //关闭提交按钮转圈
+            });
           } else {
             this.$Message.error("Fail!");
           }
