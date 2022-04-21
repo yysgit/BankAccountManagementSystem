@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbBugMapper">
+
+
+    <!--添加缺陷-->
+    <insert id="addBug" parameterType="com.yys.szcp.entity.DbBug">
+        insert into db_bug (title, status, bug_introducer_user_id, bug_zrr_user_id,
+                            bug_grade,bug_type,create_time)
+        values (#{title}, #{status}, #{bugIntroducerUserId}, #{bugZrrUserId},
+                #{bugGrade}, #{bugType}, now())
+    </insert>
+
+    <!--分页查询缺陷列表-->
+    <select id="findBugList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        dbl.id,
+        dbl.but_code as butCode,
+        dbl.title as title,
+        dbl.status as status,
+        dbl.bug_introducer_user_id as bugIntroducerUserId,
+        dbl.bug_zrr_user_id as bugZrrUserId,
+        dbl.bug_grade as bugGrade,
+        dbl.bug_type as bugType,
+        dbl.create_time as createTime,
+        dbau.admin_fullname as bugIntroducerAdminFullname,
+        dbau2.admin_fullname as bugZrrAdminFullname
+        from db_bug dbl
+        left join db_admin_user dbau on dbau.id = dbl.bug_introducer_user_id
+        left join db_admin_user dbau2 on dbau2.id = dbl.bug_zrr_user_id
+
+        where 1=1
+        <if test="roleId=='3a'">
+
+        </if>
+        <if test="butCodeSearch!=null and butCodeSearch!=''">
+            and (dbl.but_code LIKE concat(concat("%",#{butCodeSearch}),"%"))
+        </if>
+        <if test="titleSearch!=null and titleSearch!=''">
+            and (dbl.title LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="statusSearch!=null and statusSearch!=''">
+            and (dbl.status LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="bugIntroducerAdminFullnameSearch!=null and bugIntroducerAdminFullnameSearch!=''">
+            and ( dbau2.admin_fullname LIKE concat(concat("%",#{bugIntroducerAdminFullnameSearch}),"%"))
+        </if>
+        <if test="bugZrrAdminFullnameSearch!=null and bugZrrAdminFullnameSearch!=''">
+            and (dbau.admin_fullname LIKE concat(concat("%",#{bugZrrAdminFullnameSearch}),"%"))
+        </if>
+        <if test="bugGradeNameSearch!=null and bugGradeNameSearch!=''">
+            and (dbl.bug_grade LIKE concat(concat("%",#{bugGradeNameSearch}),"%"))
+        </if>
+
+        order by dbl.create_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findBugListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+
+        from db_bug dbl
+        left join db_admin_user dbau on dbau.id = dbl.bug_introducer_user_id
+        left join db_admin_user dbau2 on dbau2.id = dbl.bug_zrr_user_id
+
+        where 1=1
+        <if test="roleId=='3a'">
+
+        </if>
+        <if test="butCodeSearch!=null and butCodeSearch!=''">
+            and (dbl.but_code LIKE concat(concat("%",#{butCodeSearch}),"%"))
+        </if>
+        <if test="titleSearch!=null and titleSearch!=''">
+            and (dbl.title LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="statusSearch!=null and statusSearch!=''">
+            and (dbl.status LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="bugIntroducerAdminFullnameSearch!=null and bugIntroducerAdminFullnameSearch!=''">
+            and ( dbau2.admin_fullname LIKE concat(concat("%",#{bugIntroducerAdminFullnameSearch}),"%"))
+        </if>
+        <if test="bugZrrAdminFullnameSearch!=null and bugZrrAdminFullnameSearch!=''">
+            and (dbau.admin_fullname LIKE concat(concat("%",#{bugZrrAdminFullnameSearch}),"%"))
+        </if>
+        <if test="bugGradeNameSearch!=null and bugGradeNameSearch!=''">
+            and (dbl.bug_grade LIKE concat(concat("%",#{bugGradeNameSearch}),"%"))
+        </if>
+
+
+        order by dbl.create_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <!--通过缺陷id 获取缺陷-->
+    <select id="findBugById" resultType="com.yys.szcp.entity.DbBug" parameterType="java.lang.Integer">
+        select
+        dbl.id,
+        dbl.but_code as butCode,
+        dbl.title as title,
+        dbl.status as status,
+        dbl.bug_introducer_user_id as bugIntroducerUserId,
+        dbl.bug_zrr_user_id as bugZrrUserId,
+        dbl.bug_grade as bugGrade,
+        dbl.bug_type as bugType,
+        dbl.create_time as createTime,
+        dbau.admin_fullname as bugIntroducerAdminFullname,
+        dbau2.admin_fullname as bugZrrAdminFullname
+        from db_bug dbl
+        left join db_admin_user dbau on dbau.id = dbl.bug_introducer_user_id
+        left join db_admin_user dbau2 on dbau2.id = dbl.bug_zrr_user_id
+
+        where 1=1
+        <if test="roleId=='3a'">
+
+        </if>
+        <if test="butCodeSearch!=null and butCodeSearch!=''">
+            and (dbl.but_code LIKE concat(concat("%",#{butCodeSearch}),"%"))
+        </if>
+        <if test="titleSearch!=null and titleSearch!=''">
+            and (dbl.title LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="statusSearch!=null and statusSearch!=''">
+            and (dbl.status LIKE concat(concat("%",#{titleSearch}),"%"))
+        </if>
+        <if test="bugZrrAdminFullnameSearch!=null and bugZrrAdminFullnameSearch!=''">
+            and (dbau.admin_fullname LIKE concat(concat("%",#{bugZrrAdminFullnameSearch}),"%"))
+        </if>
+        <if test="bugGradeNameSearch!=null and bugGradeNameSearch!=''">
+            and (dbl.bug_grade LIKE concat(concat("%",#{bugGradeNameSearch}),"%"))
+        </if>
+        where id = #{bugId}
+    </select>
+
+
+    <!--更新缺陷-->
+    <update id="updateBug" parameterType="com.yys.szcp.entity.DbBug">
+        update db_bug
+        set but_code              = #{butCode}
+          , title             =#{title}
+          , status             =#{status}
+          , bug_introducer_user_id             =#{bugIntroducerUserId}
+          , bug_zrr_user_id             =#{bugZrrUserId}
+          , bug_grade             =#{bugGrade}
+          , bug_type             =#{bugType}
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteBug" parameterType="com.yys.szcp.entity.DbBug">
+        delete
+        from db_bug
+        where id = #{id}
+    </delete>
+
+    <!--查询缺陷列表-->
+    <select id="findBugAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+            dbl.id,
+            dbl.but_code as butCode,
+            dbl.title as title,
+            dbl.status as status,
+            dbl.bug_introducer_user_id as bugIntroducerUserId,
+            dbl.bug_zrr_user_id as bugZrrUserId,
+            dbl.bug_grade as bugGrade,
+            dbl.bug_type as bugType,
+            dbl.create_time as createTime,
+            dbau.admin_fullname as bugIntroducerAdminFullname,
+            dbau2.admin_fullname as bugZrrAdminFullname
+        from db_bug dbl
+                 left join db_admin_user dbau on dbau.id = dbl.bug_introducer_user_id
+                 left join db_admin_user dbau2 on dbau2.id = dbl.bug_zrr_user_id
+        order by dbl.create_time DESC;
+    </select>
+
+
+</mapper>

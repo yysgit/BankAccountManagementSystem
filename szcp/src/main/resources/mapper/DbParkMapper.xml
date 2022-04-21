@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yys.szcp.mapper.DbParkMapper">
+
+
+    <!--添加园区-->
+    <insert id="addPark" parameterType="com.yys.szcp.entity.DbPark">
+        insert into db_park (title, content, create_user_id,create_time)
+        values (#{title,}, #{content}, #{createUserId}, now());
+    </insert>
+
+    <!--分页查询园区列表-->
+    <select id="findParkList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        dbl.id,
+        dbl.title as title,
+        dbl.content as content,
+        dbl.create_user_id as create_user_id,
+        dbl.create_time as createTime,
+        dbau.admin_fullname as adminFullname
+        from db_park dbl
+        left join db_admin_user dbau on dbau.id = dbl.create_user_id
+        order by dbl.create_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <select id="findParkListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(*)
+        from db_park dbl
+                 left join db_admin_user dbau on dbau.id = dbl.create_user_id
+        order by dbl.create_time DESC
+        limit #{page} , #{limit};
+    </select>
+
+    <!--通过园区id 获取园区-->
+    <select id="findParkById" resultType="com.yys.szcp.entity.DbPark" parameterType="java.lang.Integer">
+        select
+            dbl.id,
+            dbl.title as title,
+            dbl.content as content,
+            dbl.create_user_id as create_user_id,
+            dbl.create_time as createTime,
+            dbau.admin_fullname as adminFullname
+        from db_park dbl
+                 left join db_admin_user dbau on dbau.id = dbl.create_user_id
+        where id = #{testCaseId}
+    </select>
+
+
+    <!--更新园区-->
+    <update id="updatePark" parameterType="com.yys.szcp.entity.DbPark">
+
+        update db_park
+        set title              = #{title}
+          , content             =#{content}
+        where id = #{id}
+    </update>
+
+
+    <delete id="deletePark" parameterType="com.yys.szcp.entity.DbPark">
+        delete
+        from db_park
+        where id = #{id}
+    </delete>
+
+    <!--查询园区列表-->
+    <select id="findParkAllList" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+            dbl.id,
+            dbl.title as title,
+            dbl.content as content,
+            dbl.create_user_id as create_user_id,
+            dbl.create_time as createTime,
+            dbau.admin_fullname as adminFullname
+        from db_park dbl
+                 left join db_admin_user dbau on dbau.id = dbl.create_user_id
+        order by dbl.create_time DESC;
+    </select>
+
+
+</mapper>
