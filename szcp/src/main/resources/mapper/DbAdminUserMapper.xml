@@ -9,6 +9,27 @@
     values (#{adminName}, #{adminPassword},#{adminFullname},#{adminPhone},#{roleId},now(),now(),#{address},#{idcard});
   </insert>
 
+
+    <select id="findAdminUserListByRoleId" resultType="java.util.Map" parameterType="java.util.Map">
+        select
+        dbau.id,
+        dbau.admin_name AS adminName,
+        dbau.admin_fullname AS adminFullname,
+        dbau.admin_phone AS adminPhone,
+        dbau.role_id AS roleId,
+        dbau.create_time AS createTime,
+        dbau.update_time AS updateTime,
+        dbr.role_name AS roleName,
+        dbau.idcard AS idcard,
+        dbau.address AS address,
+        dbau.credit AS credit
+        from db_admin_user dbau
+        left join db_role dbr on dbr.id=dbau.role_id
+        where  dbau.delete_status=0
+        and dbau.role_id=#{roleId}
+        order by dbau.update_time DESC ;
+    </select>
+
     <!--查询管理员用户列表-->
     <select id="findAdminUserListByOrganId" resultType="java.util.Map" parameterType="java.util.Map">
         select

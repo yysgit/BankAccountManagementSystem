@@ -7,9 +7,9 @@
     <insert id="addTestCase" parameterType="com.yys.szcp.entity.DbTestCase">
         insert into db_test_case (case_no, transaction_name, test_type, desinger_name,
                                   status,input_data,test_procedures,expected_result,
-                                  auctual_result,create_time)
-        values (#{caseNo}, #{transactionName}, #{testType}, #{desingerName},0,
-                #{inputData}, #{testProcedures}, #{expectedResult},#{auctualResult}, now());
+                                  auctual_result,create_time,task_id)
+        values (#{caseNo}, #{transactionName}, #{testType}, #{desingerName},#{status},
+                #{inputData}, #{testProcedures}, #{expectedResult},#{auctualResult}, now(),#{taskId});
     </insert>
 
     <!--分页查询任务列表-->
@@ -26,6 +26,7 @@
         dbl.expected_result as expectedResult,
         dbl.auctual_result as auctualResult,
         dbl.create_time as createTime,
+        dbl.task_id as taskId,
         dt.apply,
         dbau.admin_fullname as adminFullname
         from db_test_case dbl
@@ -85,6 +86,7 @@
             dbl.test_procedures as testProcedures,
             dbl.expected_result as expectedResult,
             dbl.auctual_result as auctualResult,
+            dbl.task_id as taskId,
             dbl.create_time as createTime,
             dt.apply,
             dbau.admin_fullname as adminFullname
@@ -130,6 +132,7 @@
             dbl.input_data as inputData,
             dbl.test_procedures as testProcedures,
             dbl.expected_result as expectedResult,
+            dbl.task_id as taskId,
             dbl.auctual_result as auctualResult,
             dbl.create_time as createTime,
             dt.apply,

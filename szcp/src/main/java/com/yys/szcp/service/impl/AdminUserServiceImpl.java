@@ -50,6 +50,12 @@ public class AdminUserServiceImpl implements DbAdminUserService {
 	}
 
 	@Override
+	public List<Map> findAdminUserListByRoleId(Map map) {
+		return adminUserMapper.findAdminUserListByRoleId(map);
+	}
+
+
+	@Override
 	public List<Map> findAdminUserListByOrganId(Map map) {
 		return adminUserMapper.findAdminUserListByOrganId(map);
 	}

@@ -12,8 +12,13 @@ public interface DbAdminUserService {
     int addAdminUser(DbAdminUser adminUser);
 
     //分页通过机构id查询管理员用户
+    List<Map> findAdminUserListByRoleId(Map map);
+
+
     List<Map> findAdminUserListByOrganId(Map map);
     int findAdminUserListByOrganIdCount(Map map);
+
+
 
     //初始化密码
     int editPasswordAdminUserInit(DbAdminUser adminUser);

@@ -178,6 +178,33 @@ public class AdminController {
         }
     }
 
+    /**
+     * 查询管理用户
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping("/findAdminUserListByRoleId")
+    @ResponseBody
+    public ResultUtil findAdminUserListByRoleId(HttpServletRequest request, String searchPream) {
+        try {
+            ResultUtil resultUtil = new ResultUtil();
+            //封装数据
+            Map search = (Map) JSONUtils.parse(searchPream);
+            DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
+            Map map = new HashMap();
+            map.put("roleId",StringISNULLUtil.mapToInteger(search.get("roleId")) );
+            resultUtil.setData(adminService.findAdminUserListByRoleId(map));
+            resultUtil.setMsg("查询成功!");
+            resultUtil.setCode(ExceptionConstant.SUCCESS_HTTPREUQEST);
+            return resultUtil;
+        } catch (Exception e) {
+
+            logger.error("查询管理用户列表错误: " + e);
+            return ResultUtil.error("查询失败!");
+        }
+    }
+
 
     /**
      * 更新用户

@@ -131,7 +131,9 @@ public class TaskController {
             taskMy.setId(StringISNULLUtil.mapToInteger(task1.get("id").toString()));
             DbAdminUser adminUser = (DbAdminUser) request.getAttribute("adminUser");
 
-            taskMy.setTestUserId(StringISNULLUtil.mapToInteger(task1.get("testUserId")));
+            taskMy.setTestUserId(StringISNULLUtil.mapToInteger(task1.get("testUserName")));
+            taskMy.setId(StringISNULLUtil.mapToInteger(task1.get("id")));
+
 
             taskService.updateUserTask(taskMy);
             return ResultUtil.success("修改成功!");

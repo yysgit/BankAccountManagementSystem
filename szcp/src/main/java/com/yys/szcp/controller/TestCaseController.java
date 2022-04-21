@@ -57,9 +57,9 @@ public class TestCaseController {
             testCaseMy.setDesingerName(StringISNULLUtil.mapToString(testCase1.get("desingerName")));
             testCaseMy.setStatus(StringISNULLUtil.mapToInteger(testCase1.get("status")));
             testCaseMy.setInputData(StringISNULLUtil.mapToString(testCase1.get("inputData")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("testProcedures")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("expectedResult")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("auctualResult")));
+            testCaseMy.setTestProcedures(StringISNULLUtil.mapToString(testCase1.get("testProcedures")));
+            testCaseMy.setExpectedResult(StringISNULLUtil.mapToString(testCase1.get("expectedResult")));
+            testCaseMy.setAuctualResult(StringISNULLUtil.mapToString(testCase1.get("auctualResult")));
             testCaseMy.setTaskId(StringISNULLUtil.mapToInteger(testCase1.get("taskId")));
 
             testCaseService.addTestCase(testCaseMy);
@@ -113,10 +113,11 @@ public class TestCaseController {
             testCaseMy.setDesingerName(StringISNULLUtil.mapToString(testCase1.get("desingerName")));
             testCaseMy.setStatus(StringISNULLUtil.mapToInteger(testCase1.get("status")));
             testCaseMy.setInputData(StringISNULLUtil.mapToString(testCase1.get("inputData")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("testProcedures")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("expectedResult")));
-            testCaseMy.setCaseNo(StringISNULLUtil.mapToString(testCase1.get("auctualResult")));
+            testCaseMy.setTestProcedures(StringISNULLUtil.mapToString(testCase1.get("testProcedures")));
+            testCaseMy.setExpectedResult(StringISNULLUtil.mapToString(testCase1.get("expectedResult")));
+            testCaseMy.setAuctualResult(StringISNULLUtil.mapToString(testCase1.get("auctualResult")));
             testCaseMy.setTaskId(StringISNULLUtil.mapToInteger(testCase1.get("taskId")));
+
             testCaseService.updateTestCase(testCaseMy);
             return ResultUtil.success("修改成功!");
         } catch (Exception e) {

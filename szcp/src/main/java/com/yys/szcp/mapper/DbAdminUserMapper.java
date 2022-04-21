@@ -26,6 +26,8 @@ public interface DbAdminUserMapper {
      */
     @MapKey("id")
     List<Map> findAdminUserListByOrganId(Map map);
+    @MapKey("id")
+    List<Map> findAdminUserListByRoleId(Map map);
     int findAdminUserListByOrganIdCount(Map map);
 
     /**
